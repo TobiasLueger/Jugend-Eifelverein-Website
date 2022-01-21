@@ -18,7 +18,7 @@ const Header = ({
 
   return (
     <header className="App-header">
-      <p>Wanderjugend im Eifelverein Rheinbach</p>
+      <p>Wanderjugend im Eifelverein Rheinbach 🎊</p>
       <p>
         <ul>
           {data.data.map(({attributes, id}) => (
