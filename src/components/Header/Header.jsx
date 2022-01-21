@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg'
-import Header from './components/Header/Header';
 import axios from "axios"
-import './App.css'
 
-function App() {
+const Header = ({
+
+}) => {
   const [data, setData] = useState({ data: [], meta: {} })
 
   useEffect(() => {
@@ -18,13 +17,19 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Header></Header>
-      <main>
-        
-      </main>
-    </div>
+    <header className="App-header">
+      <p>Test Page</p>
+      <p>
+        <ul>
+          {data.data.map(({attributes, id}) => (
+              <li key={id} class={id}>
+                <a href={attributes.slug}>{attributes.title}</a>
+              </li>
+          ))}
+        </ul>
+      </p>
+    </header>
   )
 }
 
-export default App
+export default Header
