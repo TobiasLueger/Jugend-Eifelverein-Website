@@ -9,7 +9,8 @@ const Header = ({
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        'https://api2-eifeljugend.herokuapp.com/api/pages?populate=*',
+        // 'https://api2-eifeljugend.herokuapp.com/api/pages?populate=*',
+        'http://localhost:3050/api/pages?populate=*',
       );
       setData(result.data);
     };
