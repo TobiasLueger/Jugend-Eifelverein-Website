@@ -1,0 +1,30 @@
+on:
+  push:
+    branches:
+      - master
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: "16.13.2"
+
+      - name: 🔨 Build Project
+        run: |
+          npm install
+          npm run build
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          server: jugend.eifel-53359.de
+          username: ${{ secrets.ftp_username }}
+          password: ${{ secrets.ftp_password }}
+          local-dir: ./dist/
