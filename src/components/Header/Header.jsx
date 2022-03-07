@@ -20,6 +20,7 @@ const Header = ({
   return (
     <header className="App-header">
       <p>Wanderjugend im Eifelverein Rheinbach 🎊</p>
+      <small>Wir sind bald wieder für euch da!</small>
       <p>
         <ul>
           {data.data.map(({attributes, id}) => (
