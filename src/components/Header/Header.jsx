@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { helloMessage } from "../../lib/getData";
-import HeaderWrapper from "./components/HeaderWrapper";
 
 const Header = ({}) => {
 	const [data, setData] = useState({ data: [], meta: {} });
@@ -27,15 +26,26 @@ const Header = ({}) => {
 	// const data = getData;
 
 	return (
-		<header className="bg-gray-800 text-white">
-			<p>Header</p>
-			<ul>
+		<header className="bg-white h-24  text-black flex items-center left-2/4 -translate-x-1/2 fixed w-11/12 rounded-b-3xl rounded-br-3xl">
+			<a href="/" className="flex items-center h-full">
+				<img
+					src="https://jugend.eifel-53359.de/newsletter/logo-short.png"
+					alt="Logo"
+					className="w-36 h-18"
+				/>
+			</a>
+			<ul className="flex items-center h-full">
 				{data.data.map(({ attributes, id }) => (
 					<li key={id} className={id}>
-						<a href={attributes.slug}>{attributes.title}</a>
+						<a className="font-lato font-bold" href={attributes.slug}>
+							{attributes.title}
+						</a>
 					</li>
 				))}
 			</ul>
+			<button className="flex justify-center items-center justify-self-end rounded-full bg-green-700 text-white p-5 w-44 h-9">
+				Login
+			</button>
 		</header>
 	);
 };
