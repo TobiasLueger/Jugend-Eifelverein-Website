@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import axios from "axios";
-import "./tailwind.css";
+import "./styles/tailwind.css";
 
-function App() {
+interface footerProps {
+	allData?: object;
+}
+
+const App: React.FC<footerProps> = () => {
 	const [data, setData] = useState({ data: [], meta: {} });
 
 	useEffect(() => {
@@ -22,10 +25,10 @@ function App() {
 	return (
 		<div className="App bg-slate-600 h-screen">
 			<Header />
-			<main></main>
-			<Footer allData={data} />
+			<main className="pt-[150px] h-[3000px]"></main>
+			<Footer />
 		</div>
 	);
-}
+};
 
 export default App;
