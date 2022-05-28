@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { helloMessage } from "../../lib/getData";
+import { Link } from "react-router-dom";
+//import { helloMessage } from "../../lib/getData";
 
 const Header = ({}) => {
 	const [data, setData] = useState({ data: [], meta: {} });
 
-	useEffect(() => {
+	/* 	useEffect(() => {
 		helloMessage().then((res) => setData(res));
-	}, []);
+	}, []); */
 	// const [data, setData] = useState({ data: [], meta: {} })
 
 	// useEffect(() => {
@@ -29,27 +30,51 @@ const Header = ({}) => {
 			<div className="flex items-center">
 				<a href="/" className="flex items-center h-full mr-[50px]">
 					<img
-						src="https://jugend.eifel-53359.de/www/img/logo-short.png"
+						src="https://jugend.eifel-53359.de/www/img/wier-logo.jpeg"
 						alt="Logo"
-						className="w-[115px]"
+						className="w-[100px]"
 					/>
 				</a>
-				<ul className="flex items-center h-full">
-					{data.data.map(({ attributes, id }) => (
-						<li key={id} className={id}>
+				<nav>
+					<ul className="flex items-center justify-between h-full">
+						<li className="ml-12">
+							<Link className="font-lato font-bold text-[18px]" to="/about">
+								Über Uns
+							</Link>
+						</li>
+						<li className="ml-12">
+							<Link className="font-lato font-bold text-[18px]" to="/events">
+								Events
+							</Link>
+						</li>
+						<li className="ml-12">
+							<Link className="font-lato font-bold text-[18px]" to="/news">
+								Berichte
+							</Link>
+						</li>
+						<li className="ml-12">
+							<Link className="font-lato font-bold text-[18px]" to="/members">
+								Mitglied werden
+							</Link>
+						</li>
+						<li className="ml-12">
 							<a
-								className="font-lato font-bold text-[20px]"
-								href={attributes.slug}
+								href="https://eifelverein-rheinbach.de/"
+								target="blank"
+								className="font-lato font-bold text-[16px]"
 							>
-								{attributes.title}
+								Eifelverein
 							</a>
 						</li>
-					))}
-				</ul>
+					</ul>
+				</nav>
 			</div>
-			<button className="flex justify-center items-center justify-self-end font-bold rounded-full bg-green-700 text-white py-[12px] px-[70px] mr-[20px]">
+			<a
+				href="/login"
+				className="flex justify-center items-center justify-self-end font-bold rounded-full bg-green-700 text-white py-[12px] px-[70px] mr-[16px]"
+			>
 				Login
-			</button>
+			</a>
 		</header>
 	);
 };
