@@ -26,7 +26,7 @@ const Header = ({}) => {
 	// const data = getData;
 
 	return (
-		<header className="bg-white h-24  text-black flex items-center left-2/4 -translate-x-1/2 fixed w-11/12 rounded-b-3xl rounded-br-3xl justify-between p-[15px]">
+		<header className="bg-white h-24  text-black flex items-center left-2/4 -translate-x-1/2 fixed w-11/12 rounded-b-3xl rounded-br-3xl justify-between p-[15px] z-[100]">
 			<div className="flex items-center">
 				<a href="/" className="flex items-center h-full mr-[50px]">
 					<img
@@ -61,7 +61,7 @@ const Header = ({}) => {
 							<a
 								href="https://eifelverein-rheinbach.de/"
 								target="blank"
-								className="font-lato font-bold text-[16px]"
+								className="font-lato font-bold text-[18px]"
 							>
 								Eifelverein
 							</a>

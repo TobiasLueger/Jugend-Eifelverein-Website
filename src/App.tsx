@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import { Routes, Route } from "react-router-dom";
+import Member from "./routes/member";
+import Home from "./routes/home";
+import About from "./routes/about";
+import Events from "./routes/events";
+import News from "./routes/news";
+import NotFound from "./routes/notFound";
 /* import axios from "axios"; */
 import "./styles/tailwind.css";
 
@@ -23,9 +30,16 @@ const App: React.FC<footerProps> = () => {
 	}, []);
  */
 	return (
-		<div className="App bg-slate-600 h-screen">
+		<div className="App bg-white h-screen">
 			<Header />
-			<main className="pt-[150px] h-[3000px]"></main>
+			<Routes>
+				<Route path="*" element={<NotFound />} />
+				<Route path="/" element={<Home />} />
+				<Route path="/about" element={<About />} />
+				<Route path="/events" element={<Events />} />
+				<Route path="/news" element={<News />} />
+				<Route path="/members" element={<Member />} />
+			</Routes>
 			<Footer />
 		</div>
 	);
