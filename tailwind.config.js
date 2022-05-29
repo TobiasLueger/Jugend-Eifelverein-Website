@@ -5,6 +5,17 @@ module.exports = {
 			fontFamily: {
 				lato: ['"Lato"', "sans-serif"],
 			},
+			animation: {
+				bounceCenter: "bounceCenter 1s linear infinite",
+			},
+			keyframes: {
+				bounceCenter: {
+					"0%, 100%": {
+						transform: "translate(-50%, -15%)",
+					},
+					"50%": { transform: "translate(-50%, 0)" },
+				},
+			},
 		},
 	},
 	plugins: [],
