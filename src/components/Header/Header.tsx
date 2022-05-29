@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { List } from "phosphor-react";
 //import { helloMessage } from "../../lib/getData";
 
 const Header = ({}) => {
@@ -35,10 +36,8 @@ const Header = ({}) => {
 						className="w-[100px]"
 					/>
 				</a>
-				<div class="space-y-2 block lg:hidden">
-					<div class="w-8 h-0.5 bg-gray-600"></div>
-					<div class="w-8 h-0.5 bg-gray-600"></div>
-					<div class="w-8 h-0.5 bg-gray-600"></div>
+				<div className="space-y-2 block lg:hidden">
+					<List size={40} color="#67B31F" weight="bold" />
 				</div>
 				<div className="hidden lg:flex items-center justify-between">
 					<nav>
