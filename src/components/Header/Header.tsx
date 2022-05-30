@@ -6,6 +6,12 @@ import { List } from "phosphor-react";
 const Header = ({}) => {
 	const [data, setData] = useState({ data: [], meta: {} });
 
+	const [isActive, setActive] = useState(false);
+
+	const toggleClass = () => {
+		setActive(!isActive);
+	};
+
 	/* 	useEffect(() => {
 		helloMessage().then((res) => setData(res));
 	}, []); */
@@ -36,10 +42,16 @@ const Header = ({}) => {
 						className="w-[100px]"
 					/>
 				</a>
-				<div className="space-y-2 block lg:hidden">
+				<div className="space-y-2 block lg:hidden" onClick={toggleClass}>
 					<List size={40} color="#67B31F" weight="bold" />
 				</div>
-				<div className="hidden lg:flex items-center justify-between">
+				<div
+					className={
+						isActive
+							? "block fixed h-screen bg-white top-24 -left-4 w-screen lg:flex items-center justify-between"
+							: "hidden lg:flex items-center justify-between"
+					}
+				>
 					<nav>
 						<ul className="flex items-center justify-between h-full">
 							<li className="ml-12">
