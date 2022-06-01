@@ -9,7 +9,6 @@ const Header = ({}) => {
 	const [isActive, setActive] = useState(false);
 
 	const toggleClass = (state = undefined) => {
-		console.log("isActive", state, isActive);
 		setActive(state === undefined ? !isActive : state);
 	};
 
@@ -40,7 +39,7 @@ const Header = ({}) => {
 	// const data = getData;
 
 	return (
-		<header className="bg-white h-24  text-black flex items-center left-2/4 -translate-x-1/2 fixed w-11/12 rounded-b-3xl rounded-br-3xl p-[15px] z-[100]">
+		<header className="bg-white h-24  text-black flex items-center left-2/4 -translate-x-1/2 fixed w-11/12 rounded-b-3xl p-[15px] z-[100]">
 			<div className="flex items-center w-full justify-between lg:justify-start">
 				<a href="/" className="flex items-center h-full mr-[50px]">
 					<img
@@ -62,24 +61,24 @@ const Header = ({}) => {
 				<div
 					className={
 						isActive
-							? "block fixed h-screen bg-white pt-24 top-0 -z-[1] -left-[32px] navi-w flex justify-center"
+							? "block fixed h-screen bg-white pt-24 lg:p-0 top-0 -z-[1] -left-[32px] navi-w lg:flex justify-center"
 							: "hidden lg:flex lg:w-full items-center justify-between"
 					}
 				>
-					<div className="h-fit top-[20%] relative lg:flex flex-row lg:w-full lg:justify-between">
+					<div className="h-fit lg:h-auto top-[20%] relative lg:flex flex-row lg:w-full lg:justify-between">
 						<nav>
 							<ul
 								className={
 									isActive
-										? "flex flex-col items-center justify-between h-full"
+										? "flex flex-col lg:flex-row items-center justify-between h-full"
 										: "flex items-center justify-between h-full"
 								}
 							>
 								<li className="lg:ml-12 mb-5 lg:mb-0">
 									<Link
 										className="font-lato font-bold text-[20px] lg:text-[18px]"
-										to="/about"
-										onClick={() => toggleClass()}
+										to="/ueber-uns"
+										onClick={() => toggleClass(false)}
 									>
 										Über Uns
 									</Link>
@@ -88,7 +87,7 @@ const Header = ({}) => {
 									<Link
 										className="font-lato font-bold text-[20px] lg:text-[18px]"
 										to="/events"
-										onClick={() => toggleClass()}
+										onClick={() => toggleClass(false)}
 									>
 										Events
 									</Link>
@@ -96,8 +95,8 @@ const Header = ({}) => {
 								<li className="lg:ml-12 mb-5 lg:mb-0">
 									<Link
 										className="font-lato font-bold text-[20px] lg:text-[18px]"
-										to="/news"
-										onClick={() => toggleClass()}
+										to="/berichte"
+										onClick={() => toggleClass(false)}
 									>
 										Berichte
 									</Link>
@@ -105,8 +104,8 @@ const Header = ({}) => {
 								<li className="lg:ml-12 mb-5 lg:mb-0">
 									<Link
 										className="font-lato font-bold text-[20px] lg:text-[18px]"
-										to="/members"
-										onClick={() => toggleClass()}
+										to="/mitglied-werden"
+										onClick={() => toggleClass(false)}
 									>
 										Mitglied werden
 									</Link>
@@ -126,7 +125,7 @@ const Header = ({}) => {
 						<a
 							href="/login"
 							className="flex justify-center items-center justify-self-end font-bold rounded-full bg-green-700 text-white py-[12px] px-[70px] lg:mr-[16px] lg:ml-24"
-							onClick={() => toggleClass()}
+							onClick={() => toggleClass(false)}
 						>
 							Login
 						</a>

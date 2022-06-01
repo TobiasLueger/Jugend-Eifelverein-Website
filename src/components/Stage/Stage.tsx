@@ -3,7 +3,11 @@ import { useState, useEffect } from "react";
 
 export default function Stage() {
 	function scrollDown() {
-		window.scrollTo(0, window.innerHeight);
+		window.scrollTo({
+			top: window.innerHeight,
+			left: 0,
+			behavior: "smooth",
+		});
 	}
 
 	return (
