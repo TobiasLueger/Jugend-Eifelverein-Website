@@ -13,7 +13,7 @@ export default function Teaser() {
         <p className="text-[24px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet culpa nostrum enim quia error in. Aspernatur maxime dolorem id libero excepturi odit minus nulla quasi veniam non quo, necessitatibus impedit.</p>
         <a
 							href="/login"
-							className="flex justify-center items-center justify-self-end font-bold rounded-full bg-green-700 text-white py-[12px] px-[70px] lg:mr-[16px] lg:ml-24"
+							className="flex justify-center items-center justify-self-end font-bold rounded-2xl bg-green-700 text-white py-[12px] px-[70px] lg:mr-[16px] lg:ml-24"
 						>
 							Zum  Event
 						</a>
