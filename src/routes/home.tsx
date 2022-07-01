@@ -4,7 +4,7 @@ export default function Home() {
 	return (
 		<main>
 			<Stage />
-			<div className="h-[500px] bg-[#105157]"></div>
+			<div className="h-[500px] bg-[#133a4a]"></div>
 		</main>
 	);
 }
