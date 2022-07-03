@@ -30,15 +30,15 @@ const App: React.FC<footerProps> = () => {
 	}, []);
  */
 	return (
-		<div className="App bg-white h-screen">
+		<div className="App bg-white relative overflow-hidden">
 			<Header />
 			<Routes>
 				<Route path="*" element={<NotFound />} />
 				<Route path="/" element={<Home />} />
-				<Route path="/about" element={<About />} />
+				<Route path="/ueber-uns" element={<About />} />
 				<Route path="/events" element={<Events />} />
-				<Route path="/news" element={<News />} />
-				<Route path="/members" element={<Member />} />
+				<Route path="/berichte" element={<News />} />
+				<Route path="/mitglied-werden" element={<Member />} />
 			</Routes>
 			<Footer />
 		</div>
