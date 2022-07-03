@@ -19,7 +19,7 @@ jobs:
 
       - name: 🔨 Build Project
         run: |
-          npm install
+          npm install  --legacy-peer-deps
           npm run build
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
