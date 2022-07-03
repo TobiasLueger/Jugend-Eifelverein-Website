@@ -30,7 +30,7 @@ const App: React.FC<footerProps> = () => {
 	}, []);
  */
 	return (
-		<div className="App bg-white relative">
+		<div className="App bg-white relative overflow-hidden">
 			<Header />
 			<Routes>
 				<Route path="*" element={<NotFound />} />
