@@ -1,8 +1,4 @@
-import { CaretDown } from "phosphor-react";
-import { useState, useEffect } from "react";
-
 export default function Teaser({ title, content, data, key }) {
-	console.log("DATA", data);
 	return (
 		<div
 			className="w-full flex flex-row gap-16 bg-[#133849] p-10 rounded-2xl my-5"
@@ -12,13 +8,12 @@ export default function Teaser({ title, content, data, key }) {
 				<img className="rounded-2xl" src={data.bild} alt="" />
 			</div>
 			<div className="w-[50%] pt-5 text-white">
-				<h2>{title}</h2>
-				<p>{data.fur_wen}</p>
 				<p>{data.startdatum}</p>
 				<p>{data.startzeit}</p>
 				{data.enddatum && <p>/ {data.enddatum}</p>}
 				{data.endzeit && <p>/ {data.endzeit}</p>}
-
+				<h2>{title}</h2>
+				<p>{data.fur_wen}</p>
 				<p
 					className="text-[24px] text-white"
 					dangerouslySetInnerHTML={{ __html: content }}
