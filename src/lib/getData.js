@@ -1,11 +1,10 @@
 import axios from "axios";
 
-const test = "";
-
-export const helloMessage = () => {
+const getData = (slug) => {
 	return axios
-		.get("https://api2-eifeljugend.herokuapp.com/api/pages?populate=*")
+		.get(`https://jugend.eifel-53359.de/api/wp-json/wp/v2/${slug}`)
 		.then((res) => {
+			console.log("RES DATA:", res.data);
 			return res.data;
 		})
 		.catch(() => {
@@ -13,13 +12,4 @@ export const helloMessage = () => {
 		});
 };
 
-// export function getData(){
-//     const fetchData = async () => {
-//         const result = await axios(
-//             //'https://api2-eifeljugend.herokuapp.com/api/pages?populate=*',
-//             'http://localhost:55555/api/pages?populate=*',
-//         );
-//         return result.data;
-//     };
-//     fetchData();
-// }
+export default getData;
