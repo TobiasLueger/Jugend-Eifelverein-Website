@@ -7,3 +7,24 @@
 		width: calc(100vw + 30px);
 	}
 }
+
+@layer base {
+	h1 {
+	}
+
+	h2 {
+		@apply font-lato font-bold text-[22px] leading-[22px] lg:text-[50px] lg:leading-[50px] mb-5;
+	}
+
+	p {
+		@apply my-5;
+	}
+
+	main {
+		@apply left-2/4 -translate-x-1/2 relative w-11/12 py-8;
+	}
+
+	section {
+		@apply my-5;
+	}
+}
