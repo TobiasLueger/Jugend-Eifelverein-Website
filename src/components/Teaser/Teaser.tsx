@@ -1,4 +1,14 @@
-export default function Teaser({ title, content, data, key }) {
+export default function Teaser({
+	title,
+	content,
+	data,
+	key,
+}: {
+	title: string;
+	content: string;
+	data: any;
+	key: string;
+}) {
 	return (
 		<div
 			className="w-full flex flex-row gap-16 bg-[#133849] p-10 rounded-2xl my-5"
