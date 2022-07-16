@@ -1,15 +1,21 @@
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 const getData = (slug) => {
-	return axios
-		.get(`https://jugend.eifel-53359.de/api/wp-json/wp/v2/${slug}`)
-		.then((res) => {
-			console.log("RES DATA:", res.data);
-			return res.data;
-		})
-		.catch(() => {
-			return "Server not responding. Start the server and refresh this page.";
-		});
+	return axios.get(`https://jugend.eifel-53359.de/api/wp-json/wp/v2/${slug}`);
 };
 
-export default getData;
+const useEventData = (slugtype) => {
+	const [eventData, setEventData] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(false);
+	useEffect(() => {
+		getData(slugtype)
+			.then((response) => setEventData(response.data))
+			.catch((error) => setError(true))
+			.finally(() => setLoading(false));
+	}, []);
+	return { eventData, loading, error };
+};
+
+export default useEventData;

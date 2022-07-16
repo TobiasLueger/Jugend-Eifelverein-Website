@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { List, X } from "phosphor-react";
 //import { helloMessage } from "../../lib/getData";
@@ -17,26 +17,6 @@ const Header = ({}) => {
 			toggleClass(false);
 		});
 	}, []);
-
-	/* 	useEffect(() => {
-		helloMessage().then((res) => setData(res));
-	}, []); */
-	// const [data, setData] = useState({ data: [], meta: {} })
-
-	// useEffect(() => {
-	//   // const fetchData = async () => {
-	//   //   const result = await axios(
-	//   //    //'https://api2-eifeljugend.herokuapp.com/api/pages?populate=*',
-	//   //    'http://localhost:55555/api/pages?populate=*',
-	//   //   );
-	//   //   setData(result.data);
-	//   // };
-	//   // fetchData();
-	//   setData(getData);
-	// }, []);
-
-	//console.log(data);
-	// const data = getData;
 
 	return (
 		<header className="bg-white h-24  text-black flex items-center left-2/4 -translate-x-1/2 fixed w-11/12 rounded-b-3xl p-[15px] z-[100]">
