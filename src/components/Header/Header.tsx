@@ -1,14 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { List, X } from "phosphor-react";
-//import { helloMessage } from "../../lib/getData";
 
 const Header = ({}) => {
-	const [data, setData] = useState({ data: [], meta: {} });
+	const [isActive, setActive] = useState();
 
-	const [isActive, setActive] = useState(false);
-
-	const toggleClass = (state = undefined) => {
+	const toggleClass = (state: any = undefined) => {
 		setActive(state === undefined ? !isActive : state);
 	};
 
@@ -25,7 +22,7 @@ const Header = ({}) => {
 					<img
 						src="https://jugend.eifel-53359.de/www/img/wier-logo.jpeg"
 						alt="Logo"
-						className="w-[100px]"
+						className="w-[100px] min-w-[100px]"
 					/>
 				</a>
 				<div
@@ -101,14 +98,6 @@ const Header = ({}) => {
 								</li>
 							</ul>
 						</nav>
-
-						<a
-							href="/login"
-							className="flex justify-center items-center justify-self-end font-bold rounded-full bg-green-700 text-white py-[12px] px-[70px] lg:mr-[16px] lg:ml-24"
-							onClick={() => toggleClass(false)}
-						>
-							Login
-						</a>
 					</div>
 				</div>
 			</div>

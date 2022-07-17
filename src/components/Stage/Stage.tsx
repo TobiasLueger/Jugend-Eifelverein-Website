@@ -28,7 +28,7 @@ export default function Stage() {
 						<div className=" w-[90%] h-[90%] bg-[url('../images/gruppenfoto.png')] bg-cover bg-no-repeat bg-center right-0 rounded-full bottom-24 z-[1]"></div>
 					</div>
 					<div
-						className="absolute bottom-4 left-2/4 -translate-x-1/2 rounded-full bg-white p-2 animate-bounceCenter"
+						className="absolute bottom-4 left-2/4 -translate-x-1/2 rounded-full bg-white p-2 animate-bounceCenter cursor-pointer"
 						onClick={scrollDown}
 					>
 						<CaretDown size={30} color="#67B31F" weight="bold" />

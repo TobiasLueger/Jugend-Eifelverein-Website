@@ -7,10 +7,20 @@ export default function Home() {
 			<Stage />
 			<main>
 				<section>
+					<h2>WIER</h2>
+					<p> wer sind wir eigentlich und was machen wir!</p>
+				</section>
+				<section>
 					<h2>Events</h2>
 					<p> hier kannst du alle unsere Events sehen</p>
 					<EventList count="3" />
-					<a href="#">Mehr Anzeigen</a>
+					<a href="/events" className="btn mx-auto">
+						Mehr Events
+					</a>
+				</section>
+				<section>
+					<h2>Berichte</h2>
+					<p> wer sind wir eigentlich und was machen wir!</p>
 				</section>
 			</main>
 		</>

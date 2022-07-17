@@ -6,6 +6,7 @@ import Member from "./routes/member";
 import Home from "./routes/home";
 import About from "./routes/about";
 import Events from "./routes/events";
+import Event from "./routes/event";
 import News from "./routes/news";
 import NotFound from "./routes/notFound";
 /* import axios from "axios"; */
@@ -26,6 +27,7 @@ const App: React.FC<footerProps> = () => {
 				<Route path="/events" element={<Events />} />
 				<Route path="/berichte" element={<News />} />
 				<Route path="/mitglied-werden" element={<Member />} />
+				<Route path="/events/:id" element={<Event />} />
 			</Routes>
 			<Footer />
 		</div>
