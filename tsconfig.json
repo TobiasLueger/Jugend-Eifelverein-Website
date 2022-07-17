@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"jsx": "react-jsx",
 		"esModuleInterop": true,
-		"lib": ["es2020"],
+		"lib": ["es2020", "dom"],
 		"module": "es2022",
 		"preserveConstEnums": true,
 		"moduleResolution": "node",
