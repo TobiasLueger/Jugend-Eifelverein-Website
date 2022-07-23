@@ -16,9 +16,9 @@ export default function Teaser({
 	slug: string;
 }) {
 	return (
-		<NavLink to={"/events/" + slug}>
+		<NavLink to={"/events/" + slug} className="h-full">
 			<div
-				className="w-full relative block bg-[#fffaea] rounded-[6px] border-[#133849] border-[1px] group overflow-hidden"
+				className="w-full h-full relative block bg-[#fffaea] rounded-[6px] border-[#133849] border-[1px] group overflow-hidden"
 				key={key}
 			>
 				<div className="w-full h-[179px] lg:h-[210px] relative overflow-hidden object-cover">
@@ -29,11 +29,19 @@ export default function Teaser({
 					/>
 				</div>
 				<div className="w-full py-[20px] lg:py-[25px] px-[25px] lg:px-[30px] text-[#133849]">
-					<div className="flex flex-row">
-						<p>{data.startdatum}</p>
-						{data.startzeit && <p className="ml-2">{data.startzeit} Uhr</p>}
-						{data.enddatum && <p className="ml-2">- {data.enddatum}</p>}
-						{data.endzeit && <p className="ml-2"> {data.endzeit} Uhr</p>}
+					<div className="flex flex-row flex-wrap">
+						<div>
+							{data.startdatum && <span>{data.startdatum}</span>}
+							{data.startzeit && (
+								<span className="ml-2">{data.startzeit} Uhr</span>
+							)}
+						</div>
+						<div>
+							{data.enddatum && <span className="ml-2">- {data.enddatum}</span>}
+							{data.endzeit && (
+								<span className="ml-2"> {data.endzeit} Uhr</span>
+							)}
+						</div>
 					</div>
 
 					<h2>{title}</h2>

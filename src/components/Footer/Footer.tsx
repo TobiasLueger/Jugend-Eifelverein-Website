@@ -37,9 +37,9 @@ const Footer = ({}) => {
 						</Link>
 						<Link
 							className="font-lato text-[20px] lg:text-[18px] text-center lg:text-left"
-							to="/mitglied-werden"
+							to="/newsletter"
 						>
-							Mitglied werden
+							Newsletter
 						</Link>
 						<a
 							href="https://eifelverein-rheinbach.de/"
@@ -83,7 +83,7 @@ const Footer = ({}) => {
 					<div className="border-b-2 lg:border-r-2 border-[#fff]"></div>
 					<div className="w-full lg:w-3/12 px-5 text-right flex flex-col items-center lg:items-end pb-5 lg:pb-0">
 						<Link
-							className="font-lato font-bold text-[16px] flex flex-row items-center mb-5 transition-all group"
+							className="font-lato font-bold text-[16px] flex flex-row items-center transition-all group"
 							to="/message"
 						>
 							<p>Schreib uns eine Nachricht </p>

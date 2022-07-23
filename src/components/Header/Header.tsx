@@ -53,7 +53,7 @@ const Header = ({}) => {
 							>
 								<li className="lg:ml-12 mb-5 lg:mb-0">
 									<Link
-										className="font-lato font-bold text-[20px] lg:text-[18px]"
+										className="font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
 										to="/ueber-uns"
 										onClick={() => toggleClass(false)}
 									>
@@ -62,7 +62,7 @@ const Header = ({}) => {
 								</li>
 								<li className="lg:ml-14 mb-5 lg:mb-0">
 									<Link
-										className="font-lato font-bold text-[20px] lg:text-[18px]"
+										className="font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
 										to="/events"
 										onClick={() => toggleClass(false)}
 									>
@@ -71,7 +71,7 @@ const Header = ({}) => {
 								</li>
 								<li className="lg:ml-14 mb-5 lg:mb-0">
 									<Link
-										className="font-lato font-bold text-[20px] lg:text-[18px]"
+										className="font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
 										to="/berichte"
 										onClick={() => toggleClass(false)}
 									>
@@ -80,18 +80,18 @@ const Header = ({}) => {
 								</li>
 								<li className="lg:ml-14 mb-5 lg:mb-0">
 									<Link
-										className="font-lato font-bold text-[20px] lg:text-[18px]"
-										to="/mitglied-werden"
+										className="font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
+										to="/newsletter"
 										onClick={() => toggleClass(false)}
 									>
-										Mitglied werden
+										Newsletter
 									</Link>
 								</li>
 								<li className="lg:ml-14 mb-10 lg:mb-0">
 									<a
 										href="https://eifelverein-rheinbach.de/"
 										target="blank"
-										className="font-lato font-bold text-[20px] lg:text-[18px]"
+										className="font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
 									>
 										Eifelverein
 									</a>

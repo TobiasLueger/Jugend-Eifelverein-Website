@@ -2,7 +2,7 @@ import EventList from "../components/EventList/EventList";
 
 export default function Events() {
 	return (
-		<main style={{ padding: "1rem 0" }}>
+		<main className="pt-[116px]">
 			<h2>Events</h2>
 			<EventList />
 		</main>

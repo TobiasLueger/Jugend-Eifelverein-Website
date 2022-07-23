@@ -37,7 +37,7 @@ export default function Event(props: any) {
 						</div>
 
 						<div className="bg-[#133a4a] relative w-screen -left-[4.5%] text-white flex flex-col lg:flex-row justify-between items-center py-[31px] px-[15px] lg:px-[50px] text-[20px] lg:text-[22px]">
-							<div>{data.acf.startdatum}</div>
+							<div className="mb-5 lg:mb-0">{data.acf.startdatum}</div>
 							<Button
 								href={`mailto:${data.acf.anmeldung}?subject=Anmeldung zu: ${data.title.rendered}&body=Name:</br>Vorname:`}
 								title="Anmelden"
