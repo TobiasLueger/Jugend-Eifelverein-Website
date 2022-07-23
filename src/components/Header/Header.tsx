@@ -16,7 +16,7 @@ const Header = ({}) => {
 	}, []);
 
 	return (
-		<header className="bg-white h-24  text-black flex items-center left-2/4 -translate-x-1/2 fixed w-11/12 rounded-b-3xl p-[15px] z-[100]">
+		<header className="bg-white h-24  text-black flex items-center left-2/4 -translate-x-1/2 fixed w-11/12 rounded-b-[12px] border-[#133849] border-b-[1px] border-x-[1px] p-[15px] z-[100]">
 			<div className="flex items-center w-full justify-between lg:justify-start">
 				<a href="/" className="flex items-center h-full mr-[50px]">
 					<img
@@ -60,7 +60,7 @@ const Header = ({}) => {
 										Über Uns
 									</Link>
 								</li>
-								<li className="lg:ml-12 mb-5 lg:mb-0">
+								<li className="lg:ml-14 mb-5 lg:mb-0">
 									<Link
 										className="font-lato font-bold text-[20px] lg:text-[18px]"
 										to="/events"
@@ -69,7 +69,7 @@ const Header = ({}) => {
 										Events
 									</Link>
 								</li>
-								<li className="lg:ml-12 mb-5 lg:mb-0">
+								<li className="lg:ml-14 mb-5 lg:mb-0">
 									<Link
 										className="font-lato font-bold text-[20px] lg:text-[18px]"
 										to="/berichte"
@@ -78,7 +78,7 @@ const Header = ({}) => {
 										Berichte
 									</Link>
 								</li>
-								<li className="lg:ml-12 mb-5 lg:mb-0">
+								<li className="lg:ml-14 mb-5 lg:mb-0">
 									<Link
 										className="font-lato font-bold text-[20px] lg:text-[18px]"
 										to="/mitglied-werden"
@@ -87,7 +87,7 @@ const Header = ({}) => {
 										Mitglied werden
 									</Link>
 								</li>
-								<li className="lg:ml-12 mb-10 lg:mb-0">
+								<li className="lg:ml-14 mb-10 lg:mb-0">
 									<a
 										href="https://eifelverein-rheinbach.de/"
 										target="blank"

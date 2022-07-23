@@ -16,38 +16,39 @@ export default function Teaser({
 	slug: string;
 }) {
 	return (
-		<div
-			className="w-full flex flex-col bg-[#133849] p-10 rounded-2xl transition-all hover:scale-[102%]"
-			key={key}
-		>
-			<div className="w-full">
-				<img className="rounded-2xl" src={data.bild} alt="" />
-			</div>
-			<div className="w-full pt-5 text-white">
-				<p>{data.startdatum}</p>
-				<p>{data.startzeit}</p>
-				{data.enddatum && <p>/ {data.enddatum}</p>}
-				{data.endzeit && <p>/ {data.endzeit}</p>}
-				<h2>{title}</h2>
-				<p>{data.fur_wen}</p>
-				<p
-					className="text-[24px] text-white"
-					dangerouslySetInnerHTML={{ __html: content }}
-				></p>
+		<NavLink to={"/events/" + slug}>
+			<div
+				className="w-full relative block bg-[#fffaea] rounded-[6px] border-[#133849] border-[1px] group overflow-hidden"
+				key={key}
+			>
+				<div className="w-full h-[179px] lg:h-[210px] relative overflow-hidden object-cover">
+					<img
+						className="w-full h-[179px] lg:h-[210px] relative overflow-hidden object-cover transition-all group-hover:scale-[102%]"
+						src={data.bild}
+						alt=""
+					/>
+				</div>
+				<div className="w-full py-[20px] lg:py-[25px] px-[25px] lg:px-[30px] text-[#133849]">
+					<div className="flex flex-row">
+						<p>{data.startdatum}</p>
+						{data.startzeit && <p className="ml-2">{data.startzeit} Uhr</p>}
+						{data.enddatum && <p className="ml-2">- {data.enddatum}</p>}
+						{data.endzeit && <p className="ml-2"> {data.endzeit} Uhr</p>}
+					</div>
 
-				{data.enthaltene_leistungen && <p>{data.enthaltene_leistungen}</p>}
-				{data.kosten && <p>{data.kosten}</p>}
-				{data.voraussetzung && <p>{data.voraussetzung}</p>}
-				{data.treffpunkt && <p>{data.treffpunkt}</p>}
-				{data.ort && <p>{data.ort}</p>}
+					<h2>{title}</h2>
+					<p dangerouslySetInnerHTML={{ __html: content }}></p>
 
-				<NavLink
-					to={"/events/" + slug}
-					className="flex justify-center items-center justify-self-start font-bold rounded-2xl bg-green-700 text-white py-[12px] px-[70px] w-fit"
-				>
-					Anmelden
-				</NavLink>
+					<div className="flex justify-center items-center justify-self-start font-bold rounded-2xl bg-green-700 text-white py-[12px] px-[70px] w-fit">
+						Mehr Anzeigen
+					</div>
+				</div>
+				{data.ausgebucht && (
+					<div className="absolute flex items-center justify-center rounded-[4px] bg-[#fff] text-[#af2a3c] left-[12px] lg:left-[25px] top-[15px] lg:top-[18px] px-[12px] lg:px-[20px] py-[4px] lg:py-[5px]">
+						AUSGEBUCHT
+					</div>
+				)}
 			</div>
-		</div>
+		</NavLink>
 	);
 }

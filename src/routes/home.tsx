@@ -13,7 +13,7 @@ export default function Home() {
 				<section>
 					<h2>Events</h2>
 					<p> hier kannst du alle unsere Events sehen</p>
-					<EventList count="3" />
+					<EventList home={true} />
 					<a href="/events" className="btn mx-auto">
 						Mehr Events
 					</a>
