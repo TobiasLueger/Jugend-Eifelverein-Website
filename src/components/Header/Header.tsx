@@ -16,7 +16,7 @@ const Header = ({}) => {
 	}, []);
 
 	return (
-		<header className="bg-white h-24  text-black flex items-center left-2/4 -translate-x-1/2 fixed w-11/12 rounded-b-3xl p-[15px] z-[100]">
+		<header className="bg-white h-24  text-black flex items-center left-2/4 -translate-x-1/2 fixed w-11/12 rounded-b-[12px] border-[#133849] border-b-[1px] border-x-[1px] p-[15px] z-[100]">
 			<div className="flex items-center w-full justify-between lg:justify-start">
 				<a href="/" className="flex items-center h-full mr-[50px]">
 					<img
@@ -53,45 +53,45 @@ const Header = ({}) => {
 							>
 								<li className="lg:ml-12 mb-5 lg:mb-0">
 									<Link
-										className="font-lato font-bold text-[20px] lg:text-[18px]"
+										className="font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
 										to="/ueber-uns"
 										onClick={() => toggleClass(false)}
 									>
 										Über Uns
 									</Link>
 								</li>
-								<li className="lg:ml-12 mb-5 lg:mb-0">
+								<li className="lg:ml-14 mb-5 lg:mb-0">
 									<Link
-										className="font-lato font-bold text-[20px] lg:text-[18px]"
+										className="font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
 										to="/events"
 										onClick={() => toggleClass(false)}
 									>
 										Events
 									</Link>
 								</li>
-								<li className="lg:ml-12 mb-5 lg:mb-0">
+								<li className="lg:ml-14 mb-5 lg:mb-0">
 									<Link
-										className="font-lato font-bold text-[20px] lg:text-[18px]"
+										className="font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
 										to="/berichte"
 										onClick={() => toggleClass(false)}
 									>
 										Berichte
 									</Link>
 								</li>
-								<li className="lg:ml-12 mb-5 lg:mb-0">
+								<li className="lg:ml-14 mb-5 lg:mb-0">
 									<Link
-										className="font-lato font-bold text-[20px] lg:text-[18px]"
-										to="/mitglied-werden"
+										className="font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
+										to="/newsletter"
 										onClick={() => toggleClass(false)}
 									>
-										Mitglied werden
+										Newsletter
 									</Link>
 								</li>
-								<li className="lg:ml-12 mb-10 lg:mb-0">
+								<li className="lg:ml-14 mb-10 lg:mb-0">
 									<a
 										href="https://eifelverein-rheinbach.de/"
 										target="blank"
-										className="font-lato font-bold text-[20px] lg:text-[18px]"
+										className="font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
 									>
 										Eifelverein
 									</a>

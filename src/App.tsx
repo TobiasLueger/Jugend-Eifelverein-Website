@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { Routes, Route } from "react-router-dom";
-import Member from "./routes/member";
+import Newsletter from "./routes/newsletter";
 import Home from "./routes/home";
 import About from "./routes/about";
 import Events from "./routes/events";
@@ -18,7 +18,7 @@ interface footerProps {
 
 const App: React.FC<footerProps> = () => {
 	return (
-		<div className="App bg-white relative overflow-hidden">
+		<div className="App bg-[#fffaea] relative overflow-hidden">
 			<Header />
 			<Routes>
 				<Route path="*" element={<NotFound />} />
@@ -26,7 +26,7 @@ const App: React.FC<footerProps> = () => {
 				<Route path="/ueber-uns" element={<About />} />
 				<Route path="/events" element={<Events />} />
 				<Route path="/berichte" element={<News />} />
-				<Route path="/mitglied-werden" element={<Member />} />
+				<Route path="/newsletter" element={<Newsletter />} />
 				<Route path="/events/:id" element={<Event />} />
 			</Routes>
 			<Footer />
