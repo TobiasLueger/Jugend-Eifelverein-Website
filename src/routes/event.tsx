@@ -73,7 +73,7 @@ export default function Event(props: any) {
 				{!loading && (
 					<>
 						<div
-							className={`bg-[center_center] bg-no-repeat bg-cover overflow-hidden relative -mt-8 w-screen -left-[4.5%]`}
+							className={`bg-[center_center] bg-no-repeat bg-cover overflow-hidden relative -mt-8 w-screen -left-[4.7%]`}
 							style={{
 								backgroundImage: `url("${data.acf.bild}")`,
 							}}
@@ -81,7 +81,7 @@ export default function Event(props: any) {
 							<div className="min-h-[300px] lg:min-h-[507px] relative left-0"></div>
 						</div>
 
-						<div className="bg-[#133a4a] relative w-screen -left-[4.5%] text-white flex flex-col lg:flex-row justify-between items-center py-[31px] px-[15px] lg:px-[50px] text-[20px] lg:text-[22px]">
+						<div className="bg-[#133a4a] relative w-screen -left-[4.7%] text-white flex flex-col lg:flex-row justify-between items-center py-[31px] px-[15px] lg:px-[50px] text-[20px] lg:text-[22px]">
 							<div className="mb-5 lg:mb-0">{data.acf.startdatum}</div>
 							<button
 								className="w-[100%] lg:w-fit font-bold flex justify-center items-center rounded-xl bg-green-700 w-fit text-white py-[12px] px-[70px]"
