@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import footerImg from "../../../src/images/footer.svg";
+import eifelvereinLogoImg from "../../../src/images/eifelverein-logo.png";
 import {
 	InstagramLogo,
 	FacebookLogo,
@@ -11,7 +13,7 @@ const Footer = ({}) => {
 	return (
 		<footer className="w-full text-white bottom-0">
 			<img
-				src="src/images/footer.svg"
+				src={footerImg}
 				className="w-[102%] relative -left-[2px] -bottom-[2px] max-w-[102%]"
 			></img>
 			<div className="bg-[#133a4a] w-full">
@@ -104,11 +106,7 @@ const Footer = ({}) => {
 							href="https://eifelverein-rheinbach.de/"
 							className="flex items-center h-full"
 						>
-							<img
-								src="src/images/eifelverein-logo.png"
-								alt="Logo"
-								className="w-[100px]"
-							/>
+							<img src={eifelvereinLogoImg} alt="Logo" className="w-[100px]" />
 						</a>
 					</div>
 				</div>

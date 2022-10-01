@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { List, X } from "phosphor-react";
+import logoImg from "../../../src/images/wier-logo.jpeg";
 
 const Header = ({}) => {
 	const [isActive, setActive] = useState();
@@ -19,11 +20,7 @@ const Header = ({}) => {
 		<header className="bg-white h-24  text-black flex items-center left-2/4 -translate-x-1/2 fixed w-11/12 rounded-b-[12px] border-[#133849] border-b-[1px] border-x-[1px] p-[15px] z-[100]">
 			<div className="flex items-center w-full justify-between lg:justify-start">
 				<a href="/" className="flex items-center h-full mr-[50px]">
-					<img
-						src="https://jugend.eifel-53359.de/www/img/wier-logo.jpeg"
-						alt="Logo"
-						className="w-[100px] min-w-[100px]"
-					/>
+					<img src={logoImg} alt="Logo" className="w-[100px] min-w-[100px]" />
 				</a>
 				<div
 					className="space-y-2 block lg:hidden cursor-pointer"
