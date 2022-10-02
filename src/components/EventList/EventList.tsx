@@ -10,7 +10,7 @@ export default function EventList({ home }: { home?: boolean }) {
 	}: { eventData: any; loading: boolean; error: boolean } =
 		useEventData("events");
 	return (
-		<div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-5">
+		<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-5">
 			{loading && (
 				<CircleNotch
 					size={40}
@@ -23,7 +23,6 @@ export default function EventList({ home }: { home?: boolean }) {
 			{error && <div>Leider wurden gerade keine Events gefunden</div>}
 			{home
 				? eventData.map((event: any) => {
-						console.log("event", event.acf.startseite);
 						if (event.acf.startseite) {
 							return (
 								<Teaser
@@ -32,7 +31,6 @@ export default function EventList({ home }: { home?: boolean }) {
 									data={event.acf}
 									id={event.id}
 									slug={event.slug}
-									key={event.title.rendered}
 								/>
 							);
 						}
@@ -45,7 +43,6 @@ export default function EventList({ home }: { home?: boolean }) {
 								data={event.acf}
 								id={event.id}
 								slug={event.slug}
-								key={event.title.rendered}
 							/>
 						);
 				  })}
