@@ -50,20 +50,21 @@ const Footer = ({}) => {
 						>
 							Eifelverein
 						</a>
-						<Link
+						<a
+							href="https://jugend.eifel-53359.de/api/wp-admin"
+							target="blank"
 							className="font-lato text-[20px] lg:text-[18px] text-center lg:text-left"
-							to="/api/wp-admin"
 						>
 							Login
-						</Link>
-						<div className="flex flex-row justify-center lg:justify-start mt-5">
+						</a>
+						<div className="flex flex-row justify-center lg:justify-start mt-5 lg:-ml-1">
 							<a href="https://www.instagram.com/eifeljugendrheinbach/">
 								<InstagramLogo size={40} color="#67B31F" weight="bold" />
 							</a>
 
-							<a href="">
+							{/* <a href="">
 								<FacebookLogo size={40} color="#67B31F" weight="bold" />
-							</a>
+							</a> */}
 						</div>
 					</div>
 					<div className="border-b-2 lg:border-r-2 border-[#fff]"></div>
@@ -71,7 +72,7 @@ const Footer = ({}) => {
 						<h3 className="font-lato font-bold text-[24px] leading-[24px] mb-2 text-center">
 							Unser Newsletter
 						</h3>
-						<p className="font-lato italic text-[16px] leading-[16px] mb-8 text-center w-full">
+						<p className="font-lato text-[16px] leading-[16px] mb-8 text-center w-full">
 							Abbonier unseren Newsletter um auf dem laufenden zu bleiben.
 						</p>
 

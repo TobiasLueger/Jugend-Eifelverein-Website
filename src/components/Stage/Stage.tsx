@@ -19,7 +19,7 @@ export default function Stage() {
 							<h1 className="font-lato font-bold text-[24px] leading-[24px] lg:text-[60px] lg:leading-[60px] text-[#67B31F]">
 								WIER
 							</h1>
-							<p className="font-lato font-bold text-[22px] leading-[22px] lg:text-[50px] lg:leading-[50px] text-white ml-5 lg:ml-12">
+							<p className="font-lato font-bold text-[22px] leading-[22px] lg:text-[50px] lg:leading-[50px] text-white lg:ml-12">
 								sind mehr als nur wandern
 							</p>
 						</div>

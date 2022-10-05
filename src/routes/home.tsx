@@ -1,5 +1,6 @@
 import Stage from "../components/Stage/Stage";
 import EventList from "../components/EventList/EventList";
+import Button from "../components/Button/Button";
 
 export default function Home() {
 	return (
@@ -14,8 +15,8 @@ export default function Home() {
 					<h2>Events</h2>
 					<p> hier kannst du alle unsere Events sehen</p>
 					<EventList home={true} />
-					<a href="/events" className="btn mx-auto">
-						Mehr Events
+					<a href="/events" className="mx-auto w-fit">
+						<Button title="MEHR EVENTS" />
 					</a>
 				</section>
 				<section>

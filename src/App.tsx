@@ -18,7 +18,7 @@ interface footerProps {
 
 const App: React.FC<footerProps> = () => {
 	return (
-		<div className="App bg-[#fffaea] relative overflow-hidden">
+		<div className="App bg-[#f1f5f9] relative overflow-hidden">
 			<Header />
 			<Routes>
 				<Route path="*" element={<NotFound />} />
