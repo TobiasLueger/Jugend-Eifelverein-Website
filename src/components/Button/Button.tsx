@@ -3,7 +3,7 @@ import { FrameCorners } from "phosphor-react";
 export default function Button({
 	title,
 	icon,
-	className,
+	className = "",
 }: {
 	title?: string;
 	icon?: string;
@@ -15,13 +15,13 @@ export default function Button({
 		<div
 			className={`${className} font-bold flex justify-center items-center w-fit ${
 				icon
-					? "py-[5px] px-[5px] rounded-lg bg-[#133a4a] text-pink-50"
-					: "py-[12px] px-[70px] rounded-xl bg-[#67b31b] text-white"
+					? "py-[5px] px-[5px] rounded-lg bg-[#f1f5f9] "
+					: "py-[12px] px-[70px] rounded-xl bg-[#15803d] text-white"
 			}`}
 		>
 			{title}
 			{icon == "frame-corners" ? (
-				<FrameCorners size={30} color="#67b31b" weight="bold" />
+				<FrameCorners size={30} color="#15803d" weight="regular" />
 			) : null}
 		</div>
 	);

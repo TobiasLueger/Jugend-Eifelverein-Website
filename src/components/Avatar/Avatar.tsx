@@ -1,11 +1,19 @@
-import { User } from "phosphor-react";
+import avatar from "../../images/avatar.png";
 
-export default function Button({ name }: { name?: string }) {
+export default function Button({
+	name,
+	className,
+}: {
+	name?: string;
+	className?: string;
+}) {
 	return (
-		<div className="flex flex-row">
-			<div className="p-2 bg-white w-fit rounded-full shadow-lg mr-2">
-				<User size={30} color="#272f30" weight="bold" />
-			</div>
+		<div className={`flex flex-row ${className}`}>
+			<img
+				src={avatar}
+				className="shadow-lg mr-2 rounded-full h-9 w-9"
+				alt="avatar img"
+			/>
 			<p className="m-0 font-medium items-center flex">
 				{name ? name : "Veranstalter"}
 			</p>

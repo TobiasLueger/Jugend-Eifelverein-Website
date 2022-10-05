@@ -17,7 +17,7 @@ const Header = ({}) => {
 	}, []);
 
 	return (
-		<header className="bg-white h-24  text-black flex items-center left-2/4 -translate-x-1/2 fixed w-11/12 rounded-b-[12px] border-[#133849] border-b-[1px] border-x-[1px] p-[15px] z-[100]">
+		<header className="bg-white h-24  text-black flex items-center lg:left-2/4 lg:-translate-x-1/2 fixed w-full lg:w-11/12 rounded-b-xl border-b-[1px] border-x-[1px] p-[15px] z-[100] shadow-md">
 			<div className="flex items-center w-full justify-between lg:justify-start">
 				<a href="/" className="flex items-center h-full mr-[50px]">
 					<img src={logoImg} alt="Logo" className="w-[100px] min-w-[100px]" />
@@ -35,7 +35,7 @@ const Header = ({}) => {
 				<div
 					className={
 						isActive
-							? "block fixed h-screen bg-white pt-24 lg:p-0 top-0 -z-[1] -left-[32px] navi-w lg:flex justify-center"
+							? "block fixed h-screen bg-white pt-24 lg:p-0 top-0 -z-[1] left-0 w-full lg:flex justify-center"
 							: "hidden lg:flex lg:w-full items-center justify-between"
 					}
 				>
