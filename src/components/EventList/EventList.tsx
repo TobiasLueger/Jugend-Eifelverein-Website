@@ -2,6 +2,7 @@ import Teaser from "../Teaser/Teaser";
 import useEventData from "../../lib/getData";
 import { CircleNotch } from "phosphor-react";
 import { NavLink } from "react-router-dom";
+import Button from "../Button/Button";
 
 export default function EventList({ home }: { home?: boolean }) {
 	const {
@@ -10,8 +11,12 @@ export default function EventList({ home }: { home?: boolean }) {
 		error,
 	}: { eventData: any; loading: boolean; error: boolean } =
 		useEventData("events");
+
+	let teasercount = 0;
+	const maxHomeTeaser = 5;
+
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-5">
+		<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-5 mt-5">
 			{loading && (
 				<CircleNotch
 					size={40}
@@ -24,7 +29,8 @@ export default function EventList({ home }: { home?: boolean }) {
 			{error && <div>Leider wurden gerade keine Events gefunden</div>}
 			{home
 				? eventData.map((event: any) => {
-						if (event.acf.startseite) {
+						if (event.acf.startseite && teasercount <= maxHomeTeaser) {
+							teasercount += 1;
 							return (
 								<NavLink
 									to={"/events/" + event.slug}
@@ -57,6 +63,11 @@ export default function EventList({ home }: { home?: boolean }) {
 							</NavLink>
 						);
 				  })}
+			{home && (
+				<NavLink to={"/events"} className="h-full">
+					<Teaser showMore={true} />
+				</NavLink>
+			)}
 		</div>
 	);
 }

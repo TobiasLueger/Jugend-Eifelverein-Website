@@ -15,9 +15,6 @@ export default function Home() {
 					<h2>Events</h2>
 					<p> hier kannst du alle unsere Events sehen</p>
 					<EventList home={true} />
-					<a href="/events" className="mx-auto w-fit">
-						<Button title="MEHR EVENTS" />
-					</a>
 				</section>
 				<section>
 					<h2>Berichte</h2>

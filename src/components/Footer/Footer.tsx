@@ -69,7 +69,7 @@ const Footer = ({}) => {
 					</div>
 					<div className="border-b-2 lg:border-r-2 border-[#fff]"></div>
 					<div className="w-full lg:w-6/12 px-20 flex flex-col items-center py-5 lg:py-0">
-						<h3 className="font-lato font-bold text-[24px] leading-[24px] mb-2 text-center">
+						<h3 className="font-lato font-bold text-[24px] text-white leading-[24px] mb-2 text-center">
 							Unser Newsletter
 						</h3>
 						<p className="font-lato text-[16px] leading-[16px] mb-8 text-center w-full">
