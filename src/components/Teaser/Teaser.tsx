@@ -1,6 +1,7 @@
 import Button from "../Button/Button";
 import Avatar from "../Avatar/Avatar";
 import Pill from "../Pill/Pill";
+import { useState } from "react";
 
 export default function Teaser({
 	title,
@@ -10,15 +11,32 @@ export default function Teaser({
 	showMore = false,
 }: {
 	title?: string;
-	content?: string;
+	content: string;
 	data?: any;
 	id?: number;
 	showMore?: boolean;
 }) {
+	const [hover, setHover] = useState(false);
+	const [delayHandler, setDelayHandler] = useState(setTimeout(() => {}));
+
+	const handleMouseEnter = () => {
+		setDelayHandler(
+			setTimeout(() => {
+				setHover(true);
+			}, 500)
+		);
+	};
+
+	const handleMouseLeave = () => {
+		clearTimeout(delayHandler);
+		setHover(false);
+	};
 	return (
 		<div
-			className="w-full h-full relative block group overflow-hidden  min-w-[340px] md:min-w-0"
+			className="teaser w-full h-full relative block group hover:z-[1] min-w-[340px] md:min-w-0"
 			key={id}
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
 		>
 			<div className="w-full h-[179px]a lg:h-[210px] relative overflow-hidden object-cover rounded-[12px]">
 				{showMore ? (
@@ -46,7 +64,7 @@ export default function Teaser({
 				)}
 			</div>
 			{!showMore && (
-				<div className="w-full pt-[20px] pb-[10px] lg:py-[5px] text-[#133849]">
+				<div className="w-full pt-[20px] pb-[10px] lg:py-[5px]">
 					<div className="mb-[10px] flex gap-3">
 						<div className="ml-3">
 							<h3 className="h5 mt-3 mb-2">{title}</h3>
@@ -74,13 +92,24 @@ export default function Teaser({
 									</div>
 								)}
 							</div>
-
-							{/* <p
-							className="mt-5"
-							dangerouslySetInnerHTML={{ __html: content }}
-						></p> */}
 						</div>
 					</div>
+				</div>
+			)}
+			{!showMore && hover && (
+				<div
+					className={`absolute block top-[-2rem] left-[-2rem] transition-all rounded-[12px] w-[calc(100%+4rem)] h-[calc(100%+4rem)] bg-white overflow-hidden`}
+				>
+					<img
+						className="w-full h-[179px] lg:h-[210px] rounded-[12px] relative overflow-hidden object-cover transition-all"
+						src={data.bild}
+						alt=""
+					/>
+					<h3 className="h5 mt-5 mx-5 mb-2 text-[#133a4a]">{title}</h3>
+					<p
+						className="mb-5 mx-5 h-[calc(100%-179px-48px-28px)] lg:h-[calc(100%-210px-48px-28px)] overflow-hidden line-clamp-4 text-ellipsis text-[#133a4a]"
+						dangerouslySetInnerHTML={{ __html: content }}
+					></p>
 				</div>
 			)}
 		</div>

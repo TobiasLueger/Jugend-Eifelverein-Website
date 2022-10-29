@@ -7,62 +7,72 @@
 		width: calc(100vw + 30px);
 	}
 
+	.line-clamp-4 {
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+	}
+
 	.btn {
 		@apply font-bold rounded-xl bg-green-700 w-fit text-white py-[12px] px-[70px] block;
 	}
 
 	.h1 {
-		@apply font-lato font-bold text-[24px] leading-[24px] lg:text-[55px] lg:leading-[55px] text-[#133a4a];
+		@apply font-lato font-bold text-[24px] leading-[24px] lg:text-[55px] lg:leading-[55px];
 	}
 
 	.h2 {
-		@apply font-lato font-bold text-[22px] leading-[22px] lg:text-[50px] lg:leading-[50px] text-[#133a4a];
+		@apply font-lato font-bold text-[22px] leading-[22px] lg:text-[50px] lg:leading-[50px];
 	}
 
 	.h3 {
-		@apply font-lato font-bold text-[20px] leading-[20px] lg:text-[40px] lg:leading-[40px] text-[#133a4a];
+		@apply font-lato font-bold text-[20px] leading-[20px] lg:text-[40px] lg:leading-[40px];
 	}
 
 	.h4 {
-		@apply font-lato font-bold text-[18px] leading-[18px] lg:text-[30px] lg:leading-[30px] text-[#133a4a];
+		@apply font-lato font-bold text-[18px] leading-[18px] lg:text-[30px] lg:leading-[30px];
 	}
 
 	.h5 {
-		@apply font-lato font-bold text-[16px] leading-[16px] lg:text-[20px] lg:leading-[20px] text-[#133a4a];
+		@apply font-lato font-bold text-[16px] leading-[16px] lg:text-[20px] lg:leading-[20px];
 	}
 
 	.h6 {
-		@apply font-lato font-bold text-[14px] leading-[14px] lg:text-[15px] lg:leading-[15px] text-[#133a4a];
+		@apply font-lato font-bold text-[14px] leading-[14px] lg:text-[15px] lg:leading-[15px];
+	}
+	/* TODO: make colored sections as seperator */
+	.section-colored {
+		@apply relative text-white before:absolute before:bg-[#b6cce3] before:w-screen before:h-full;
 	}
 }
 
 @layer base {
+	body {
+		@apply text-[#133a4a];
+	}
+
 	h1 {
-		@apply font-lato font-bold text-[24px] leading-[24px] lg:text-[55px] lg:leading-[55px] text-[#133a4a];
+		@apply font-lato font-bold text-[24px] leading-[24px] lg:text-[55px] lg:leading-[55px];
 	}
 
 	h2 {
-		@apply font-lato font-bold text-[22px] leading-[22px] lg:text-[50px] lg:leading-[50px] text-[#133a4a];
+		@apply font-lato font-bold text-[22px] leading-[22px] lg:text-[50px] lg:leading-[50px];
 	}
 
 	h3 {
-		@apply font-lato font-bold text-[20px] leading-[20px] lg:text-[40px] lg:leading-[40px] text-[#133a4a];
+		@apply font-lato font-bold text-[20px] leading-[20px] lg:text-[40px] lg:leading-[40px];
 	}
 
 	h4 {
-		@apply font-lato font-bold text-[18px] leading-[18px] lg:text-[30px] lg:leading-[30px] text-[#133a4a];
+		@apply font-lato font-bold text-[18px] leading-[18px] lg:text-[30px] lg:leading-[30px];
 	}
 
 	h5 {
-		@apply font-lato font-bold text-[16px] leading-[16px] lg:text-[20px] lg:leading-[20px] text-[#133a4a];
+		@apply font-lato font-bold text-[16px] leading-[16px] lg:text-[20px] lg:leading-[20px];
 	}
 
 	h6 {
-		@apply font-lato font-bold text-[14px] leading-[14px] lg:text-[15px] lg:leading-[15px] text-[#133a4a];
-	}
-
-	p {
-		@apply my-5;
+		@apply font-lato font-bold text-[14px] leading-[14px] lg:text-[15px] lg:leading-[15px];
 	}
 
 	main {

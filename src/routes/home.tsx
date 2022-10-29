@@ -11,7 +11,7 @@ export default function Home() {
 					<h2>WIER</h2>
 					<p> wer sind wir eigentlich und was machen wir!</p>
 				</section>
-				<section>
+				<section className="section-colored">
 					<h2>Events</h2>
 					<p> hier kannst du alle unsere Events sehen</p>
 					<EventList home={true} />
