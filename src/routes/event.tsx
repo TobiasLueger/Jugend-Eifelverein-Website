@@ -1,6 +1,7 @@
 import useEventData from "../lib/getData";
 import { useParams } from "react-router";
 import Button from "../components/Button/Button";
+import sendMail from "../lib/sendMail";
 
 // TODO: MAKE EVENT DETAIL PAGE
 
@@ -39,6 +40,7 @@ export default function Event(props: any) {
 								href={`mailto:${data.acf.anmeldung}?subject=Anmeldung zu: ${data.title.rendered}&body=Name:</br>Vorname:</br>`}
 							>
 								<Button title="Anmelden" className="w-[100%] lg:w-fit" />
+								<button onClick={sendMail}> Cooler Senden Button</button>
 							</a>
 						</div>
 
