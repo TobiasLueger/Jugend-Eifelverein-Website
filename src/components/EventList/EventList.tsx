@@ -17,14 +17,10 @@ export default function EventList({ home }: { home?: boolean }) {
 
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-5 mt-5">
-			{loading && (
-				<CircleNotch
-					size={40}
-					className="animate-spin"
-					color="#133849"
-					weight="bold"
-				/>
-			)}
+			{loading &&
+				[...Array(3)].map((e, i) => (
+					<Teaser content="" loading={true} id={i} />
+				))}
 
 			{error && <div>Leider wurden gerade keine Events gefunden</div>}
 			{home
@@ -33,7 +29,7 @@ export default function EventList({ home }: { home?: boolean }) {
 							teasercount += 1;
 							return (
 								<NavLink
-									to={"/events/" + event.slug}
+									to={"/veranstaltungen/" + event.slug}
 									className="h-full"
 									key={event.id}
 								>
@@ -50,7 +46,7 @@ export default function EventList({ home }: { home?: boolean }) {
 				: eventData.map((event: any) => {
 						return (
 							<NavLink
-								to={"/events/" + event.slug}
+								to={"/veranstaltungen/" + event.slug}
 								className="h-full"
 								key={event.id}
 							>
@@ -64,8 +60,8 @@ export default function EventList({ home }: { home?: boolean }) {
 						);
 				  })}
 			{home && (
-				<NavLink to={"/events"} className="h-full">
-					<Teaser showMore={true} />
+				<NavLink to={"/veranstaltungen"} className="h-full">
+					<Teaser content="" showMore={true} />
 				</NavLink>
 			)}
 		</div>

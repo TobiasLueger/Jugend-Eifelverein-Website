@@ -9,12 +9,14 @@ export default function Teaser({
 	data,
 	id,
 	showMore = false,
+	loading = false,
 }: {
 	title?: string;
 	content: string;
 	data?: any;
 	id?: number;
 	showMore?: boolean;
+	loading?: boolean;
 }) {
 	const [hover, setHover] = useState(false);
 	const [delayHandler, setDelayHandler] = useState(setTimeout(() => {}));
@@ -38,32 +40,62 @@ export default function Teaser({
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 		>
-			<div className="w-full h-[179px]a lg:h-[210px] relative overflow-hidden object-cover rounded-[12px]">
-				{showMore ? (
-					<div className="bg-[#133a4a] h-[179px] lg:h-[210px] w-full text-white font-bold text-4xl flex justify-end items-center px-3 transition-all group-hover:text-3xl">
-						<div className="w-full h-1 bg-white mr-6"></div>MEHR EVENTS
+			{loading ? (
+				<>
+					<div className="bg-[#c8cdd1] w-full h-[179px]a lg:h-[210px] relative overflow-hidden object-cover rounded-[12px]">
+						<div className="bg-[#c8cdd1] h-[179px] lg:h-[210px] w-full"></div>
 					</div>
-				) : (
-					<>
-						<img
-							className="w-full h-[179px] lg:h-[210px] relative overflow-hidden object-cover transition-all group-hover:scale-[102%]"
-							src={data.bild}
-							alt=""
-						/>
-						{data.ausgebucht && (
-							<div className="absolute bottom-[10px] lg:bottom-[15px] right-[10px] lg:right-[15px]">
-								<Pill bookedUp={data.ausgebucht} />
+					<div className="w-full pt-[20px] pb-[10px] lg:py-[5px]">
+						<div className="mb-[10px] flex gap-3">
+							<div className="ml-3">
+								<h3 className="h5 mt-3 mb-2">
+									<div className="h-[21px] w-24 bg-[#c8cdd1] rounded-[12px]"></div>
+								</h3>
+								<p className="m-0 mb-1 items-center flex">
+									<span className="mr-2">
+										<div className="bg-[#c8cdd1] h-[20px] w-[20px] rounded-full"></div>
+									</span>
+									<div className="h-[18px] w-20 bg-[#c8cdd1] rounded-[12px]"></div>
+								</p>
+
+								<div className="flex flex-row flex-wrap mt-3">
+									<div className="mr-2">
+										<div className="bg-[#c8cdd1] h-[20px] w-[20px] rounded-full"></div>
+									</div>
+									<div className="h-[18px] w-40 bg-[#c8cdd1] rounded-[12px]"></div>
+								</div>
 							</div>
-						)}
-						{data.freie_plaetze && (
-							<div className="absolute bottom-[10px] lg:bottom-[15px] right-[10px] lg:right-[15px]">
-								<Pill freePlaces={data.freie_plaetze} />
-							</div>
-						)}
-					</>
-				)}
-			</div>
-			{!showMore && (
+						</div>
+					</div>
+				</>
+			) : (
+				<div className="w-full h-[179px]a lg:h-[210px] relative bg-[#c8cdd1] overflow-hidden object-cover rounded-[12px]">
+					{showMore ? (
+						<div className="bg-[#133a4a] h-[179px] lg:h-[210px] w-full text-white font-bold text-4xl flex justify-end items-center px-3 transition-all group-hover:text-3xl">
+							<div className="w-full h-1 bg-white mr-6"></div>MEHR EVENTS
+						</div>
+					) : (
+						<>
+							<img
+								className="w-full h-[179px] lg:h-[210px] relative overflow-hidden object-cover transition-all group-hover:scale-[102%]"
+								src={data.bild}
+								alt=""
+							/>
+							{data.ausgebucht && (
+								<div className="absolute bottom-[10px] lg:bottom-[15px] right-[10px] lg:right-[15px]">
+									<Pill bookedUp={data.ausgebucht} />
+								</div>
+							)}
+							{data.freie_plaetze && (
+								<div className="absolute bottom-[10px] lg:bottom-[15px] right-[10px] lg:right-[15px]">
+									<Pill freePlaces={data.freie_plaetze} />
+								</div>
+							)}
+						</>
+					)}
+				</div>
+			)}
+			{!showMore && !loading && (
 				<div className="w-full pt-[20px] pb-[10px] lg:py-[5px]">
 					<div className="mb-[10px] flex gap-3">
 						<div className="ml-3">
@@ -96,12 +128,12 @@ export default function Teaser({
 					</div>
 				</div>
 			)}
-			{!showMore && hover && (
+			{!showMore && !loading && hover && (
 				<div
 					className={`absolute block top-[-2rem] left-[-2rem] transition-all rounded-[12px] w-[calc(100%+4rem)] h-[calc(100%+4rem)] bg-white overflow-hidden`}
 				>
 					<img
-						className="w-full h-[179px] lg:h-[210px] rounded-[12px] relative overflow-hidden object-cover transition-all"
+						className="bg-[#c8cdd1] w-full h-[179px] lg:h-[210px] rounded-[12px] relative overflow-hidden object-cover transition-all"
 						src={data.bild}
 						alt=""
 					/>

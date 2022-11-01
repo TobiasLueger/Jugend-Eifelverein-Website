@@ -24,9 +24,6 @@ export default function Stage() {
 							</p>
 						</div>
 					</div>
-					<div className="shadow-2xl absolute right-0 rounded-full bottom-24 hidden lg:flex w-[390px] h-[390px] flex justify-center items-center ">
-						<div className=" w-[90%] h-[90%] bg-[url('../images/gruppenfoto.png')] bg-cover bg-no-repeat bg-center right-0 rounded-full bottom-24 z-[1]"></div>
-					</div>
 					<div
 						className="absolute bottom-4 left-2/4 -translate-x-1/2 rounded-full bg-white p-2 animate-bounceCenter cursor-pointer"
 						onClick={scrollDown}
@@ -35,7 +32,6 @@ export default function Stage() {
 					</div>
 				</div>
 			</div>
-			<div className="h-[100px] bg-[#133849]"></div>
 		</>
 	);
 }
