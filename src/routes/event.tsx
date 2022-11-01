@@ -40,6 +40,7 @@ export default function Event(props: any) {
 								href={`mailto:${data.acf.anmeldung}?subject=Anmeldung zu: ${data.title.rendered}&body=Name:</br>Vorname:</br>`}
 							>
 								<Button title="Anmelden" className="w-[100%] lg:w-fit" />
+								//TODO: make sendgrid work
 								<button onClick={sendMail}> Cooler Senden Button</button>
 							</a>
 						</div>
