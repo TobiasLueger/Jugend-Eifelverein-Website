@@ -24,10 +24,10 @@ const App: React.FC<footerProps> = () => {
 				<Route path="*" element={<NotFound />} />
 				<Route path="/" element={<Home />} />
 				<Route path="/ueber-uns" element={<About />} />
-				<Route path="/events" element={<Events />} />
+				<Route path="/veranstaltungen" element={<Events />} />
 				<Route path="/berichte" element={<News />} />
 				<Route path="/newsletter" element={<Newsletter />} />
-				<Route path="/events/:id" element={<Event />} />
+				<Route path="/veranstaltungen/:id" element={<Event />} />
 			</Routes>
 			<Footer />
 		</div>

@@ -7,6 +7,12 @@
 		width: calc(100vw + 30px);
 	}
 
+	.line-clamp-4 {
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+	}
+
 	.btn {
 		@apply font-bold rounded-xl bg-green-700 w-fit text-white py-[12px] px-[70px] block;
 	}
@@ -34,9 +40,17 @@
 	.h6 {
 		@apply font-lato font-bold text-[14px] leading-[14px] lg:text-[15px] lg:leading-[15px];
 	}
+	/* TODO: make colored sections as seperator */
+	.section-colored {
+		@apply relative text-white before:absolute before:bg-[#b6cce3] before:w-screen before:h-full;
+	}
 }
 
 @layer base {
+	body {
+		@apply text-[#133a4a];
+	}
+
 	h1 {
 		@apply font-lato font-bold text-[24px] leading-[24px] lg:text-[55px] lg:leading-[55px];
 	}
@@ -59,10 +73,6 @@
 
 	h6 {
 		@apply font-lato font-bold text-[14px] leading-[14px] lg:text-[15px] lg:leading-[15px];
-	}
-
-	p {
-		@apply my-5;
 	}
 
 	main {

@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { List, X } from "phosphor-react";
 import logoImg from "../../../src/images/wier-logo.jpeg";
 
 const Header = ({}) => {
-	const [isActive, setActive] = useState();
+	const [isNavActive, setNavActive] = useState();
 
 	const toggleClass = (state: any = undefined) => {
-		setActive(state === undefined ? !isActive : state);
+		setNavActive(state === undefined ? !isNavActive : state);
 	};
 
 	useEffect(() => {
@@ -26,7 +26,7 @@ const Header = ({}) => {
 					className="space-y-2 block lg:hidden cursor-pointer"
 					onClick={() => toggleClass()}
 				>
-					{isActive ? (
+					{isNavActive ? (
 						<X size={40} color="#67B31F" weight="bold" />
 					) : (
 						<List size={40} color="#67B31F" weight="bold" />
@@ -34,7 +34,7 @@ const Header = ({}) => {
 				</div>
 				<div
 					className={
-						isActive
+						isNavActive
 							? "block fixed h-screen bg-white pt-24 lg:p-0 top-0 -z-[1] left-0 w-full lg:flex justify-center"
 							: "hidden lg:flex lg:w-full items-center justify-between"
 					}
@@ -43,46 +43,62 @@ const Header = ({}) => {
 						<nav>
 							<ul
 								className={
-									isActive
+									isNavActive
 										? "flex flex-col lg:flex-row items-center justify-between h-full"
 										: "flex items-center justify-between h-full"
 								}
 							>
 								<li className="lg:ml-12 mb-5 lg:mb-0">
-									<Link
-										className="font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
+									<NavLink
+										className={({ isActive }) =>
+											isActive
+												? "font-lato font-bold text-[20px] lg:text-[18px] transition-all text-[#67b31b] hover:text-[#67b31b]"
+												: "font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
+										}
 										to="/ueber-uns"
 										onClick={() => toggleClass(false)}
 									>
 										Über Uns
-									</Link>
+									</NavLink>
 								</li>
 								<li className="lg:ml-14 mb-5 lg:mb-0">
-									<Link
-										className="font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
-										to="/events"
+									<NavLink
+										className={({ isActive }) =>
+											isActive
+												? "font-lato font-bold text-[20px] lg:text-[18px] transition-all text-[#67b31b] hover:text-[#67b31b]"
+												: "font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
+										}
+										to="/veranstaltungen"
 										onClick={() => toggleClass(false)}
 									>
-										Events
-									</Link>
+										Veranstaltungen
+									</NavLink>
 								</li>
 								<li className="lg:ml-14 mb-5 lg:mb-0">
-									<Link
-										className="font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
+									<NavLink
+										className={({ isActive }) =>
+											isActive
+												? "font-lato font-bold text-[20px] lg:text-[18px] transition-all text-[#67b31b] hover:text-[#67b31b]"
+												: "font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
+										}
 										to="/berichte"
 										onClick={() => toggleClass(false)}
 									>
 										Berichte
-									</Link>
+									</NavLink>
 								</li>
 								<li className="lg:ml-14 mb-5 lg:mb-0">
-									<Link
-										className="font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
+									<NavLink
+										className={({ isActive }) =>
+											isActive
+												? "font-lato font-bold text-[20px] lg:text-[18px] transition-all text-[#67b31b] hover:text-[#67b31b]"
+												: "font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
+										}
 										to="/newsletter"
 										onClick={() => toggleClass(false)}
 									>
 										Newsletter
-									</Link>
+									</NavLink>
 								</li>
 								<li className="lg:ml-14 mb-10 lg:mb-0">
 									<a

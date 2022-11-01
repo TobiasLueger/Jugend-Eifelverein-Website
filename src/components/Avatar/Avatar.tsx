@@ -14,9 +14,6 @@ export default function Button({
 				className="shadow-lg mr-2 rounded-full h-9 w-9"
 				alt="avatar img"
 			/>
-			<p className="m-0 font-medium items-center flex">
-				{name ? name : "Veranstalter"}
-			</p>
 		</div>
 	);
 }

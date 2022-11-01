@@ -9,8 +9,6 @@ export default function Button({
 	icon?: string;
 	className?: string;
 }) {
-	console.log("Titel: ", title);
-	console.log("icon: ", icon);
 	return (
 		<div
 			className={`${className} font-bold flex justify-center items-center w-fit ${
@@ -19,9 +17,11 @@ export default function Button({
 					: "py-[12px] px-[70px] rounded-xl bg-[#15803d] text-white"
 			}`}
 		>
-			{title}
 			{icon == "frame-corners" ? (
 				<FrameCorners size={30} color="#15803d" weight="regular" />
+			) : null}
+			{title ? (
+				<span className={`${icon ? "ml-2 text-[#15803d]" : ""}`}>{title}</span>
 			) : null}
 		</div>
 	);
