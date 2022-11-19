@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import footerImg from "../../../src/images/footer.svg";
+import eifelvereinLogoImg from "../../../src/images/eifelverein-logo.png";
 import {
 	InstagramLogo,
 	FacebookLogo,
@@ -11,7 +13,7 @@ const Footer = ({}) => {
 	return (
 		<footer className="w-full text-white bottom-0">
 			<img
-				src="src/images/footer.svg"
+				src={footerImg}
 				className="w-[102%] relative -left-[2px] -bottom-[2px] max-w-[102%]"
 			></img>
 			<div className="bg-[#133a4a] w-full">
@@ -48,28 +50,29 @@ const Footer = ({}) => {
 						>
 							Eifelverein
 						</a>
-						<Link
+						<a
+							href="https://jugend.eifel-53359.de/api/wp-admin"
+							target="blank"
 							className="font-lato text-[20px] lg:text-[18px] text-center lg:text-left"
-							to="/api/wp-admin"
 						>
 							Login
-						</Link>
-						<div className="flex flex-row justify-center lg:justify-start mt-5">
+						</a>
+						<div className="flex flex-row justify-center lg:justify-start mt-5 lg:-ml-1">
 							<a href="https://www.instagram.com/eifeljugendrheinbach/">
 								<InstagramLogo size={40} color="#67B31F" weight="bold" />
 							</a>
 
-							<a href="">
+							{/* <a href="">
 								<FacebookLogo size={40} color="#67B31F" weight="bold" />
-							</a>
+							</a> */}
 						</div>
 					</div>
 					<div className="border-b-2 lg:border-r-2 border-[#fff]"></div>
 					<div className="w-full lg:w-6/12 px-20 flex flex-col items-center py-5 lg:py-0">
-						<h3 className="font-lato font-bold text-[24px] leading-[24px] mb-2 text-center">
+						<h3 className="font-lato font-bold text-[24px] text-white leading-[24px] mb-2 text-center">
 							Unser Newsletter
 						</h3>
-						<p className="font-lato italic text-[16px] leading-[16px] mb-8 text-center w-full">
+						<p className="font-lato text-[16px] leading-[16px] mb-8 text-center w-full">
 							Abbonier unseren Newsletter um auf dem laufenden zu bleiben.
 						</p>
 
@@ -92,11 +95,7 @@ const Footer = ({}) => {
 							href="https://eifelverein-rheinbach.de/"
 							className="flex items-center h-full"
 						>
-							<img
-								src="src/images/eifelverein-logo.png"
-								alt="Logo"
-								className="w-[100px]"
-							/>
+							<img src={eifelvereinLogoImg} alt="Logo" className="w-[100px]" />
 						</a>
 					</div>
 				</div>

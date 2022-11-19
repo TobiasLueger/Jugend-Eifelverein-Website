@@ -1,62 +1,149 @@
-import { NavLink } from "react-router-dom";
+import Button from "../Button/Button";
+import Avatar from "../Avatar/Avatar";
+import Pill from "../Pill/Pill";
+import { useState } from "react";
 
 export default function Teaser({
 	title,
 	content,
 	data,
-	key,
 	id,
-	slug,
+	showMore = false,
+	loading = false,
 }: {
-	title: string;
+	title?: string;
 	content: string;
-	data: any;
-	key: string;
-	id: number;
-	slug: string;
+	data?: any;
+	id?: number;
+	showMore?: boolean;
+	loading?: boolean;
 }) {
+	const [hover, setHover] = useState(false);
+	const [delayHandler, setDelayHandler] = useState(setTimeout(() => {}));
+
+	const handleMouseEnter = () => {
+		setDelayHandler(
+			setTimeout(() => {
+				setHover(true);
+			}, 500)
+		);
+	};
+
+	const handleMouseLeave = () => {
+		clearTimeout(delayHandler);
+		setHover(false);
+	};
 	return (
-		<NavLink to={"/events/" + slug} className="h-full">
-			<div
-				className="w-full h-full relative block bg-[#fffaea] rounded-[6px] border-[#133849] border-[1px] group overflow-hidden"
-				key={key}
-			>
-				<div className="w-full h-[179px] lg:h-[210px] relative overflow-hidden object-cover">
+		<div
+			className="teaser w-full h-full relative block group hover:z-[1] min-w-[340px] md:min-w-0"
+			key={id}
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
+		>
+			{loading ? (
+				<>
+					<div className="bg-[#c8cdd1] w-full h-[179px]a lg:h-[210px] relative overflow-hidden object-cover rounded-[12px]">
+						<div className="bg-[#c8cdd1] h-[179px] lg:h-[210px] w-full"></div>
+					</div>
+					<div className="w-full pt-[20px] pb-[10px] lg:py-[5px]">
+						<div className="mb-[10px] flex gap-3">
+							<div className="ml-3">
+								<h3 className="h5 mt-3 mb-2">
+									<div className="h-[21px] w-24 bg-[#c8cdd1] rounded-[12px]"></div>
+								</h3>
+								<p className="m-0 mb-1 items-center flex">
+									<span className="mr-2">
+										<div className="bg-[#c8cdd1] h-[20px] w-[20px] rounded-full"></div>
+									</span>
+									<div className="h-[18px] w-20 bg-[#c8cdd1] rounded-[12px]"></div>
+								</p>
+
+								<div className="flex flex-row flex-wrap mt-3">
+									<div className="mr-2">
+										<div className="bg-[#c8cdd1] h-[20px] w-[20px] rounded-full"></div>
+									</div>
+									<div className="h-[18px] w-40 bg-[#c8cdd1] rounded-[12px]"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</>
+			) : (
+				<div className="w-full h-[179px]a lg:h-[210px] relative bg-[#c8cdd1] overflow-hidden object-cover rounded-[12px]">
+					{showMore ? (
+						<div className="bg-[#133a4a] h-[179px] lg:h-[210px] w-full text-white font-bold text-4xl flex justify-end items-center px-3 transition-all group-hover:text-3xl">
+							<div className="w-full h-1 bg-white mr-6"></div>MEHR EVENTS
+						</div>
+					) : (
+						<>
+							<img
+								className="w-full h-[179px] lg:h-[210px] relative overflow-hidden object-cover transition-all group-hover:scale-[102%]"
+								src={data.bild}
+								alt=""
+							/>
+							{data.ausgebucht && (
+								<div className="absolute bottom-[10px] lg:bottom-[15px] right-[10px] lg:right-[15px]">
+									<Pill bookedUp={data.ausgebucht} />
+								</div>
+							)}
+							{data.freie_plaetze && (
+								<div className="absolute bottom-[10px] lg:bottom-[15px] right-[10px] lg:right-[15px]">
+									<Pill freePlaces={data.freie_plaetze} />
+								</div>
+							)}
+						</>
+					)}
+				</div>
+			)}
+			{!showMore && !loading && (
+				<div className="w-full pt-[20px] pb-[10px] lg:py-[5px]">
+					<div className="mb-[10px] flex gap-3">
+						<div className="ml-3">
+							<h3 className="h5 mt-3 mb-2">{title}</h3>
+							<p className="m-0 mb-1 items-center flex">
+								<span className="mr-2">🧑</span>
+								{data.leitung ? data.leitung : "Veranstalter"}
+							</p>
+
+							<div className="flex flex-row flex-wrap">
+								<div className="mr-2">🕒</div>
+								{data.startdatum || data.enddatum ? (
+									<>
+										<div>
+											{data.startdatum && <span>{data.startdatum}</span>}
+										</div>
+										<div>
+											{data.enddatum && (
+												<span className="ml-2">- {data.enddatum}</span>
+											)}
+										</div>
+									</>
+								) : (
+									<div>
+										<span>Datum folgt</span>
+									</div>
+								)}
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
+			{!showMore && !loading && hover && (
+				<div
+					className={`absolute block top-[-2rem] left-[-2rem] transition-all rounded-[12px] w-[calc(100%+4rem)] h-[calc(100%+4rem)] bg-white overflow-hidden`}
+				>
 					<img
-						className="w-full h-[179px] lg:h-[210px] relative overflow-hidden object-cover transition-all group-hover:scale-[102%]"
+						className="bg-[#c8cdd1] w-full h-[179px] lg:h-[210px] rounded-[12px] relative overflow-hidden object-cover transition-all"
 						src={data.bild}
 						alt=""
 					/>
+					<h3 className="h5 mt-5 mx-5 mb-2 text-[#133a4a]">{title}</h3>
+					<p
+						className="mb-5 mx-5 h-[calc(100%-179px-48px-28px)] lg:h-[calc(100%-210px-48px-28px)] overflow-hidden line-clamp-4 text-ellipsis text-[#133a4a]"
+						dangerouslySetInnerHTML={{ __html: content }}
+					></p>
 				</div>
-				<div className="w-full py-[20px] lg:py-[25px] px-[25px] lg:px-[30px] text-[#133849]">
-					<div className="flex flex-row flex-wrap">
-						<div>
-							{data.startdatum && <span>{data.startdatum}</span>}
-							{data.startzeit && (
-								<span className="ml-2">{data.startzeit} Uhr</span>
-							)}
-						</div>
-						<div>
-							{data.enddatum && <span className="ml-2">- {data.enddatum}</span>}
-							{data.endzeit && (
-								<span className="ml-2"> {data.endzeit} Uhr</span>
-							)}
-						</div>
-					</div>
-
-					<h2>{title}</h2>
-					<p dangerouslySetInnerHTML={{ __html: content }}></p>
-
-					<div className="flex justify-center items-center justify-self-start font-bold rounded-2xl bg-green-700 text-white py-[12px] px-[70px] w-fit">
-						Mehr Anzeigen
-					</div>
-				</div>
-				{data.ausgebucht && (
-					<div className="absolute flex items-center justify-center rounded-[4px] bg-[#fff] text-[#af2a3c] left-[12px] lg:left-[25px] top-[15px] lg:top-[18px] px-[12px] lg:px-[20px] py-[4px] lg:py-[5px]">
-						AUSGEBUCHT
-					</div>
-				)}
-			</div>
-		</NavLink>
+			)}
+		</div>
 	);
 }

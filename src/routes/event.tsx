@@ -10,7 +10,6 @@ import { CircleNotch, X } from "phosphor-react";
 
 export default function Event(props: any) {
 	const params = useParams();
-	console.log("Props", params);
 
 	const {
 		eventData,
@@ -19,8 +18,6 @@ export default function Event(props: any) {
 	}: { eventData: any; loading: boolean; error: boolean } = useEventData(
 		`events?slug=${params.id}`
 	);
-
-	console.log("eventData", eventData[0], loading, error);
 
 	let data;
 
@@ -73,22 +70,22 @@ export default function Event(props: any) {
 				{!loading && (
 					<>
 						<div
-							className={`bg-[center_center] bg-no-repeat bg-cover overflow-hidden relative -mt-8 w-screen -left-[4.7%]`}
+
+							className={`bg-[center_center] bg-no-repeat bg-cover overflow-hidden relative -mt-8 w-screen left-2/4 -translate-x-1/2`}
+
 							style={{
 								backgroundImage: `url("${data.acf.bild}")`,
 							}}
 						>
 							<div className="min-h-[300px] lg:min-h-[507px] relative left-0"></div>
 						</div>
-
-						<div className="bg-[#133a4a] relative w-screen -left-[4.7%] text-white flex flex-col lg:flex-row justify-between items-center py-[31px] px-[15px] lg:px-[50px] text-[20px] lg:text-[22px]">
+						<div className="bg-[#133a4a] relative w-screen left-2/4 -translate-x-1/2 text-white flex flex-col lg:flex-row justify-between items-center py-[31px] px-[15px] lg:px-[50px] text-[20px] lg:text-[22px]">
 							<div className="mb-5 lg:mb-0">{data.acf.startdatum}</div>
-							<button
-								className="w-[100%] lg:w-fit font-bold flex justify-center items-center rounded-xl bg-green-700 w-fit text-white py-[12px] px-[70px]"
-								onClick={onClose}
+							<a
+								href={`mailto:${data.acf.anmeldung}?subject=Anmeldung zu: ${data.title.rendered}&body=Name:</br>Vorname:</br>`}
 							>
-								Anmelden
-							</button>
+								<Button title="Anmelden" className="w-[100%] lg:w-fit" />
+							</a>
 						</div>
 
 						<section>

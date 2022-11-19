@@ -18,16 +18,16 @@ interface footerProps {
 
 const App: React.FC<footerProps> = () => {
 	return (
-		<div className="App bg-[#fffaea] relative overflow-hidden">
+		<div className="App bg-[#f1f5f9] relative overflow-hidden">
 			<Header />
 			<Routes>
 				<Route path="*" element={<NotFound />} />
 				<Route path="/" element={<Home />} />
 				<Route path="/ueber-uns" element={<About />} />
-				<Route path="/events" element={<Events />} />
+				<Route path="/veranstaltungen" element={<Events />} />
 				<Route path="/berichte" element={<News />} />
 				<Route path="/newsletter" element={<Newsletter />} />
-				<Route path="/events/:id" element={<Event />} />
+				<Route path="/veranstaltungen/:id" element={<Event />} />
 			</Routes>
 			<Footer />
 		</div>

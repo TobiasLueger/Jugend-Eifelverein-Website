@@ -19,13 +19,10 @@ export default function Stage() {
 							<h1 className="font-lato font-bold text-[24px] leading-[24px] lg:text-[60px] lg:leading-[60px] text-[#67B31F]">
 								WIER
 							</h1>
-							<p className="font-lato font-bold text-[22px] leading-[22px] lg:text-[50px] lg:leading-[50px] text-white ml-5 lg:ml-12">
+							<p className="font-lato font-bold text-[22px] leading-[22px] lg:text-[50px] lg:leading-[50px] text-white lg:ml-12">
 								sind mehr als nur wandern
 							</p>
 						</div>
-					</div>
-					<div className="shadow-2xl absolute right-0 rounded-full bottom-24 hidden lg:flex w-[390px] h-[390px] flex justify-center items-center ">
-						<div className=" w-[90%] h-[90%] bg-[url('../images/gruppenfoto.png')] bg-cover bg-no-repeat bg-center right-0 rounded-full bottom-24 z-[1]"></div>
 					</div>
 					<div
 						className="absolute bottom-4 left-2/4 -translate-x-1/2 rounded-full bg-white p-2 animate-bounceCenter cursor-pointer"
@@ -35,7 +32,6 @@ export default function Stage() {
 					</div>
 				</div>
 			</div>
-			<div className="h-[100px] bg-[#133849]"></div>
 		</>
 	);
 }
