@@ -48,7 +48,7 @@
 
 @layer base {
 	body {
-		@apply text-[#133a4a];
+		@apply text-primary-500;
 	}
 
 	h1 {

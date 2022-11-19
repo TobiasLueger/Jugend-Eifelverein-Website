@@ -17,7 +17,7 @@ const Header = ({}) => {
 	}, []);
 
 	return (
-		<header className="bg-white h-24  text-black flex items-center lg:left-2/4 lg:-translate-x-1/2 fixed w-full lg:w-11/12 rounded-b-xl border-b-[1px] border-x-[1px] p-[15px] z-[100] shadow-md">
+		<header className="bg-white dark:bg-black h-24  text-black dark:text-white flex items-center lg:left-2/4 lg:-translate-x-1/2 fixed w-full lg:w-11/12 rounded-b-xl border-b-[1px] border-x-[1px] p-[15px] z-[100] shadow-md">
 			<div className="flex items-center w-full justify-between lg:justify-start">
 				<a href="/" className="flex items-center h-full mr-[50px]">
 					<img src={logoImg} alt="Logo" className="w-[100px] min-w-[100px]" />

@@ -16,7 +16,7 @@ const Footer = ({}) => {
 				src={footerImg}
 				className="w-[102%] relative -left-[2px] -bottom-[2px] max-w-[102%]"
 			></img>
-			<div className="bg-[#133a4a] w-full">
+			<div className="bg-primary-500 w-full">
 				<div className="relative left-2/4 -translate-x-1/2 w-11/12 p-[15px] flex flex-col lg:flex-row justify-between py-20">
 					<div className="flex flex-col w-full lg:w-3/12 pb-5 lg:pb-0">
 						<Link

@@ -71,7 +71,7 @@ export default function Teaser({
 			) : (
 				<div className="w-full h-[179px]a lg:h-[210px] relative bg-[#c8cdd1] overflow-hidden object-cover rounded-[12px]">
 					{showMore ? (
-						<div className="bg-[#133a4a] h-[179px] lg:h-[210px] w-full text-white font-bold text-4xl flex justify-end items-center px-3 transition-all group-hover:text-3xl">
+						<div className="bg-primary-500 h-[179px] lg:h-[210px] w-full text-white font-bold text-4xl flex justify-end items-center px-3 transition-all group-hover:text-3xl">
 							<div className="w-full h-1 bg-white mr-6"></div>MEHR EVENTS
 						</div>
 					) : (
@@ -137,9 +137,9 @@ export default function Teaser({
 						src={data.bild}
 						alt=""
 					/>
-					<h3 className="h5 mt-5 mx-5 mb-2 text-[#133a4a]">{title}</h3>
+					<h3 className="h5 mt-5 mx-5 mb-2 text-primary-500">{title}</h3>
 					<p
-						className="mb-5 mx-5 h-[calc(100%-179px-48px-28px)] lg:h-[calc(100%-210px-48px-28px)] overflow-hidden line-clamp-4 text-ellipsis text-[#133a4a]"
+						className="mb-5 mx-5 h-[calc(100%-179px-48px-28px)] lg:h-[calc(100%-210px-48px-28px)] overflow-hidden line-clamp-4 text-ellipsis text-primary-500"
 						dangerouslySetInnerHTML={{ __html: content }}
 					></p>
 				</div>
