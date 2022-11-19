@@ -85,18 +85,6 @@ const Footer = ({}) => {
 					</div>
 					<div className="border-b-2 lg:border-r-2 border-[#fff]"></div>
 					<div className="w-full lg:w-3/12 px-5 text-right flex flex-col items-center lg:items-end pb-5 lg:pb-0">
-						<Link
-							className="font-lato font-bold text-[16px] flex flex-row items-center transition-all group"
-							to="/message"
-						>
-							<p>Schreib uns eine Nachricht </p>
-							<ArrowRight
-								size={16}
-								color="#fff"
-								weight="bold"
-								className="ml-2  transition-all group-hover:ml-3"
-							/>
-						</Link>
 						<p className="mb-5">
 							Neukirchener Weg 11, <br />
 							53359 Rheinbach

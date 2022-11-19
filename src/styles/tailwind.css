@@ -82,4 +82,19 @@
 	section {
 		@apply my-5 w-full;
 	}
+
+	input,
+	textarea {
+		@apply rounded-[6px] border-[#133849] border-[1px];
+	}
+
+	input:focus,
+	textarea:focus,
+	input:focus-visible,
+	textarea:focus-visible,
+	input:active,
+	textarea:active,
+	input:not(.btn) {
+		@apply rounded-[6px] border-[#133849] border-[1px] outline-none;
+	}
 }
