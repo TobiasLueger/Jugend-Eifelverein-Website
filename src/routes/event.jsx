@@ -2,23 +2,52 @@ import useEventData from "../lib/getData";
 import { useParams } from "react-router";
 import Button from "../components/Button/Button";
 import sendMail from "../lib/sendMail";
+import emailjs from "@emailjs/browser";
+import { useRef } from "react";
 
 // TODO: MAKE EVENT DETAIL PAGE
-
-export default function Event(props: any) {
+/* export default function Event(props: any) { */
+export default function Event(props) {
 	const params = useParams();
 
-	const {
+	/* const {
 		eventData,
 		loading,
 		error,
-	}: { eventData: any; loading: boolean; error: boolean } = useEventData(
+	}: { eventData: any, loading: boolean, error: boolean } = useEventData(
+		`events?slug=${params.id}`
+	); */
+
+	const { eventData, loading, error } = useEventData(
 		`events?slug=${params.id}`
 	);
 
 	let data;
 
 	!loading ? (data = eventData[0]) : "";
+
+	const form = useRef();
+
+	const sendEmail = (e) => {
+		e.preventDefault();
+
+		emailjs
+			.sendForm(
+				import.meta.env.VITE_EMAILJS_SERVICE_ID,
+				import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+				form.current,
+				import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+			)
+			.then(
+				(result) => {
+					console.log(result.text);
+					console.log(form.current);
+				},
+				(error) => {
+					console.log(error.text);
+				}
+			);
+	};
 
 	return (
 		<>
@@ -36,13 +65,11 @@ export default function Event(props: any) {
 
 						<div className="bg-[#133a4a] relative w-screen left-2/4 -translate-x-1/2 text-white flex flex-col lg:flex-row justify-between items-center py-[31px] px-[15px] lg:px-[50px] text-[20px] lg:text-[22px]">
 							<div className="mb-5 lg:mb-0">{data.acf.startdatum}</div>
-							<a
-								href={`mailto:${data.acf.anmeldung}?subject=Anmeldung zu: ${data.title.rendered}&body=Name:</br>Vorname:</br>`}
-							>
-								<Button title="Anmelden" className="w-[100%] lg:w-fit" />
-								//TODO: make sendgrid work
-								<button onClick={sendMail}> Cooler Senden Button</button>
-							</a>
+							<Button
+								title="Anmelden"
+								className="w-[100%] lg:w-fit"
+								onClick={sendMail}
+							/>
 						</div>
 
 						<section>
@@ -60,6 +87,34 @@ export default function Event(props: any) {
 							{data.acf.voraussetzung && <p>{data.acf.voraussetzung}</p>}
 							{data.acf.treffpunkt && <p>{data.acf.treffpunkt}</p>}
 							{data.acf.ort && <p>{data.acf.ort}</p>}
+
+							<form ref={form} onSubmit={sendEmail}>
+								<label>Name</label>
+								<input type="text" name="from_name" />
+								<label>Email</label>
+								<input type="email" name="from_email" />
+								<input
+									type="email"
+									hidden
+									name="to_email"
+									value={data.acf.anmeldung}
+								/>
+								<input
+									type="text"
+									hidden
+									name="event"
+									value={data.title.rendered}
+								/>
+								<input
+									type="text"
+									hidden
+									name="to_name"
+									value={data.acf.leitung}
+								/>
+								<label>Message</label>
+								<textarea name="message" />
+								<input type="submit" value="Send" />
+							</form>
 						</section>
 					</>
 				)}
