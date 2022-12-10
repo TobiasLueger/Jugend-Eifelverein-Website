@@ -14,9 +14,9 @@ const Footer = ({}) => {
 		<footer className="w-full text-white bottom-0">
 			<img
 				src={footerImg}
-				className="w-[102%] relative -left-[2px] -bottom-[2px] max-w-[102%]"
+				className="w-[102%] relative -left-[2px] -bottom-[5px] max-w-[102%]"
 			></img>
-			<div className="bg-[#133a4a] w-full">
+			<div className="bg-blueMidnight w-full">
 				<div className="relative left-2/4 -translate-x-1/2 w-11/12 p-[15px] flex flex-col lg:flex-row justify-between py-20">
 					<div className="flex flex-col w-full lg:w-3/12 pb-5 lg:pb-0">
 						<Link
@@ -59,15 +59,15 @@ const Footer = ({}) => {
 						</a>
 						<div className="flex flex-row justify-center lg:justify-start mt-5 lg:-ml-1">
 							<a href="https://www.instagram.com/eifeljugendrheinbach/">
-								<InstagramLogo size={40} color="#67B31F" weight="bold" />
+								<InstagramLogo
+									size={40}
+									className="text-greenLight"
+									weight="bold"
+								/>
 							</a>
-
-							{/* <a href="">
-								<FacebookLogo size={40} color="#67B31F" weight="bold" />
-							</a> */}
 						</div>
 					</div>
-					<div className="border-b-2 lg:border-r-2 border-[#fff]"></div>
+					<div className="border-b-2 lg:border-r-2 border-white"></div>
 					<div className="w-full lg:w-6/12 px-20 flex flex-col items-center py-5 lg:py-0">
 						<h3 className="font-lato font-bold text-[24px] text-white leading-[24px] mb-2 text-center">
 							Unser Newsletter
@@ -77,13 +77,13 @@ const Footer = ({}) => {
 						</p>
 
 						<a
-							className="font-bold rounded-xl bg-green-700 w-fit text-white py-[12px] px-[70px]"
+							className="font-bold rounded-xl bg-greenDefault w-fit text-white py-[12px] px-[70px]"
 							href="https://jugend.eifel-53359.de/anmeldung_newsletter.html"
 						>
 							Anmelden
 						</a>
 					</div>
-					<div className="border-b-2 lg:border-r-2 border-[#fff]"></div>
+					<div className="border-b-2 lg:border-r-2 border-white"></div>
 					<div className="w-full lg:w-3/12 px-5 text-right flex flex-col items-center lg:items-end pb-5 lg:pb-0">
 						<Link
 							className="font-lato font-bold text-[16px] flex flex-row items-center transition-all group"
@@ -92,9 +92,8 @@ const Footer = ({}) => {
 							<p>Schreib uns eine Nachricht </p>
 							<ArrowRight
 								size={16}
-								color="#fff"
 								weight="bold"
-								className="ml-2  transition-all group-hover:ml-3"
+								className="ml-2 transition-all group-hover:ml-3 text-white"
 							/>
 						</Link>
 						<p className="mb-5">
@@ -112,10 +111,10 @@ const Footer = ({}) => {
 					</div>
 				</div>
 			</div>
-			<div className="bg-[#0D2833] w-full">
+			<div className="bg-blueDark w-full">
 				<div className="relative left-2/4 -translate-x-1/2 w-11/12 py-4 flex flex-row justify-between">
 					<div className="flex flex-row items-center">
-						<Copyright size={16} color="#fff" weight="bold" />
+						<Copyright size={16} className="text-white" weight="bold" />
 						2022 WIER. All Right Reserved
 					</div>
 					<div>

@@ -13,15 +13,21 @@ export default function Button({
 		<div
 			className={`${className} font-bold flex justify-center items-center w-fit ${
 				icon
-					? "py-[5px] px-[5px] rounded-lg bg-[#f1f5f9] "
-					: "py-[12px] px-[70px] rounded-xl bg-[#15803d] text-white"
+					? "py-[5px] px-[5px] rounded-lg bg-greyLight "
+					: "py-[12px] px-[70px] rounded-xl bg-greenDefault text-white"
 			}`}
 		>
 			{icon == "frame-corners" ? (
-				<FrameCorners size={30} color="#15803d" weight="regular" />
+				<FrameCorners
+					size={30}
+					className="text-greenDefault"
+					weight="regular"
+				/>
 			) : null}
 			{title ? (
-				<span className={`${icon ? "ml-2 text-[#15803d]" : ""}`}>{title}</span>
+				<span className={`${icon ? "ml-2 text-greenDefault" : ""}`}>
+					{title}
+				</span>
 			) : null}
 		</div>
 	);
