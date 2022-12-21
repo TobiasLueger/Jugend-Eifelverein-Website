@@ -70,7 +70,7 @@ export default function Event() {
 					<>
 						<div className="flex relative gap-4">
 							<div className="w-2/3 max-h-60">
-								<h2 className=" leading-snug tracking-normal">
+								<h2 className=" leading-snug tracking-normal overflow-hidden overflow-ellipsis box">
 									{data.title.rendered}
 								</h2>
 							</div>
@@ -83,19 +83,62 @@ export default function Event() {
 									/>
 								</div>
 							</div>
-							<div className="absolute bg-white w-2/3 h-full max-h-32 bottom-8 shadow-2xl rounded-[12px] flex flex-row justify-between p-4">
-								<div className="mb-5 lg:mb-0">
-									<p className="flex text-[25px] font-bold text-greyDark">
-										<Calendar
-											size={35}
-											className="text-greyDark"
-											weight="bold"
-										/>{" "}
-										Datum
-									</p>
-									{data.acf.startdatum} - {data.acf.enddatum}
+							<div className="absolute  w-full h-fit bottom-8 flex flex-row justify-between">
+								<div className="flex flex-wrap w-2/3 bg-white shadow-2xl rounded-[12px] p-4">
+									<div className="flex flex-col w-1/2 justify-between">
+										<div className="mb-5 lg:mb-0 ">
+											{data.acf.startdatum && (
+												<p className="flex gap-2 text-[20px] font-bold text-greyDark">
+													<Calendar
+														size={30}
+														className="text-greyDark"
+														weight="bold"
+													/>
+													{data.acf.startdatum}
+												</p>
+											)}
+										</div>
+										<div className="mb-5 lg:mb-0 flex">
+											{data.acf.startzeit && (
+												<p className="flex gap-2 text-[20px] font-bold text-greyDark">
+													<Clock
+														size={30}
+														className="text-greyDark"
+														weight="bold"
+													/>
+													{data.acf.startzeit} Uhr
+												</p>
+											)}
+										</div>
+									</div>
+									<div className="flex flex-col w-1/2 justify-between">
+										<div className="mb-5 lg:mb-0">
+											{data.acf.enddatum && (
+												<p className="flex gap-2 text-[20px] font-bold text-greyDark">
+													<Calendar
+														size={30}
+														className="text-greyDark"
+														weight="bold"
+													/>
+													{data.acf.enddatum}
+												</p>
+											)}
+										</div>
+										<div className="mb-5 lg:mb-0">
+											{data.acf.endzeit && (
+												<p className="flex gap-2 text-[20px] font-bold text-greyDark">
+													<Clock
+														size={30}
+														className="text-greyDark"
+														weight="bold"
+													/>
+													{data.acf.endzeit} Uhr
+												</p>
+											)}
+										</div>
+									</div>
 								</div>
-								<div>
+								<div className=" bg-white p-8 z-50 shadow-2xl rounded-[12px]">
 									<a
 										title="Anmelden"
 										className="btn w-[100%] lg:w-fit"
