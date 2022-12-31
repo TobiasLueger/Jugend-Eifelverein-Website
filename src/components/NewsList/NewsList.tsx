@@ -13,7 +13,7 @@ export default function NewsList({ home }: { home?: boolean }) {
 
 	let teasercount = 0;
 	const maxHomeTeaser = 5;
-
+	// TODO: build news pages
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-5 mt-5">
 			{loading &&

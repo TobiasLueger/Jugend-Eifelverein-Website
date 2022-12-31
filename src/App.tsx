@@ -7,6 +7,7 @@ import Home from "./routes/home";
 import About from "./routes/about";
 import Events from "./routes/events";
 import Event from "./routes/event";
+import NewsPage from "./routes/newsPage";
 import News from "./routes/news";
 import NotFound from "./routes/notFound";
 /* import axios from "axios"; */
@@ -28,6 +29,7 @@ const App: React.FC<footerProps> = () => {
 				<Route path="/berichte" element={<News />} />
 				<Route path="/newsletter" element={<Newsletter />} />
 				<Route path="/veranstaltungen/:id" element={<Event />} />
+				<Route path="/berichte/:id" element={<NewsPage />} />
 			</Routes>
 			<Footer />
 		</div>
