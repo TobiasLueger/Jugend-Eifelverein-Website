@@ -10,6 +10,7 @@ export default function Teaser({
 	id,
 	showMore = false,
 	loading = false,
+	layout = "event",
 }: {
 	title?: string;
 	content: string;
@@ -17,6 +18,7 @@ export default function Teaser({
 	id?: number;
 	showMore?: boolean;
 	loading?: boolean;
+	layout?: string;
 }) {
 	const [hover, setHover] = useState(false);
 	const [delayHandler, setDelayHandler] = useState(setTimeout(() => {}));
@@ -72,7 +74,8 @@ export default function Teaser({
 				<div className="w-full h-[179px]a lg:h-[210px] relative bg-greyloading overflow-hidden object-cover rounded-[12px]">
 					{showMore ? (
 						<div className="bg-blueMidnight h-[179px] lg:h-[210px] w-full text-white font-bold text-4xl flex justify-end items-center px-3 transition-all group-hover:text-3xl">
-							<div className="w-full h-1 bg-white mr-6"></div>MEHR EVENTS
+							<div className="w-full h-1 bg-white mr-6"></div>
+							{content}
 						</div>
 					) : (
 						<>
@@ -81,15 +84,19 @@ export default function Teaser({
 								src={data.bild}
 								alt=""
 							/>
-							{data.ausgebucht && (
-								<div className="absolute bottom-[10px] lg:bottom-[15px] right-[10px] lg:right-[15px]">
-									<Pill bookedUp={data.ausgebucht} />
-								</div>
-							)}
-							{data.freie_plaetze && (
-								<div className="absolute bottom-[10px] lg:bottom-[15px] right-[10px] lg:right-[15px]">
-									<Pill freePlaces={data.freie_plaetze} />
-								</div>
+							{layout == "event" && (
+								<>
+									{data.ausgebucht && (
+										<div className="absolute bottom-[10px] lg:bottom-[15px] right-[10px] lg:right-[15px]">
+											<Pill bookedUp={data.ausgebucht} />
+										</div>
+									)}
+									{data.freie_plaetze && (
+										<div className="absolute bottom-[10px] lg:bottom-[15px] right-[10px] lg:right-[15px]">
+											<Pill freePlaces={data.freie_plaetze} />
+										</div>
+									)}
+								</>
 							)}
 						</>
 					)}
@@ -100,28 +107,46 @@ export default function Teaser({
 					<div className="mb-[10px] flex gap-3">
 						<div className="ml-3">
 							<h3 className="h5 mt-3 mb-2">{title}</h3>
-							<p className="m-0 mb-1 items-center flex">
-								<span className="mr-2">🧑</span>
-								{data.leitung ? data.leitung : "Veranstalter"}
-							</p>
+							{layout == "event" && (
+								<p className="m-0 mb-1 items-center flex">
+									<span className="mr-2">🧑</span>
+									{data.leitung ? data.leitung : "Veranstalter"}
+								</p>
+							)}
 
 							<div className="flex flex-row flex-wrap">
 								<div className="mr-2">🕒</div>
-								{data.startdatum || data.enddatum ? (
+								{layout == "event" ? (
 									<>
-										<div>
-											{data.startdatum && <span>{data.startdatum}</span>}
-										</div>
-										<div>
-											{data.enddatum && (
-												<span className="ml-2">- {data.enddatum}</span>
-											)}
-										</div>
+										{data.startdatum || data.enddatum ? (
+											<>
+												<div>
+													{data.startdatum && <span>{data.startdatum}</span>}
+												</div>
+												<div>
+													{data.enddatum && (
+														<span className="ml-2">- {data.enddatum}</span>
+													)}
+												</div>
+											</>
+										) : (
+											<div>
+												<span>Datum folgt</span>
+											</div>
+										)}
 									</>
 								) : (
-									<div>
-										<span>Datum folgt</span>
-									</div>
+									<>
+										{data.datum ? (
+											<>
+												<div>{data.datum && <span>{data.datum}</span>}</div>
+											</>
+										) : (
+											<div>
+												<span>Datum folgt</span>
+											</div>
+										)}
+									</>
 								)}
 							</div>
 						</div>

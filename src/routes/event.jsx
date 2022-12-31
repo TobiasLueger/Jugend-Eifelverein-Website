@@ -1,4 +1,4 @@
-import useEventData from "../lib/getData";
+import useSlugData from "../lib/getData";
 import { useParams } from "react-router";
 import {
 	X,
@@ -26,9 +26,7 @@ export default function Event() {
 		`events?slug=${params.id}`
 	); */
 
-	const { eventData, loading, error } = useEventData(
-		`events?slug=${params.id}`
-	);
+	const { eventData, loading, error } = useSlugData(`events?slug=${params.id}`);
 
 	let data;
 

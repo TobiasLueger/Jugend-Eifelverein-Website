@@ -34,7 +34,7 @@
 	}
 
 	.h5 {
-		@apply font-lato font-bold text-[16px] leading-[16px] lg:text-[20px] lg:leading-[20px];
+		@apply font-lato font-bold text-[16px] leading-[16px] lg:text-[20px] lg:leading-[26px];
 	}
 
 	.h6 {
@@ -69,7 +69,7 @@
 	}
 
 	h5 {
-		@apply font-lato font-bold text-[16px] leading-[16px] lg:text-[20px] lg:leading-[20px];
+		@apply font-lato font-bold text-[16px] leading-[16px] lg:text-[20px] lg:leading-[26px];
 	}
 
 	h6 {

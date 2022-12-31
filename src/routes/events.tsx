@@ -8,7 +8,7 @@ export default function Events() {
 				Hier siehst du alle unsere tollen Veranstaltungen. Sie dich um und such
 				dir eine aus:
 			</p>
-			<EventList />
+			<EventList home={false} />
 		</main>
 	);
 }

@@ -1,5 +1,6 @@
 import Stage from "../components/Stage/Stage";
 import EventList from "../components/EventList/EventList";
+import NewsList from "../components/NewsList/NewsList";
 import Button from "../components/Button/Button";
 import TextImg from "../components/TextImg/TextImg";
 import GroupPicImg from "../images/gruppenfoto.png";
@@ -31,6 +32,7 @@ export default function Home() {
 				<section>
 					<h2 className="mb-5">Berichte</h2>
 					<p> wer sind wir eigentlich und was machen wir!</p>
+					<NewsList home={true} />
 				</section>
 			</main>
 		</>
