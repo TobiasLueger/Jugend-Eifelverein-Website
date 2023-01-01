@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import footerImg from "../../../src/images/footer.svg";
 import eifelvereinLogoImg from "../../../src/images/eifelverein-logo.png";
 import {
@@ -8,6 +9,11 @@ import {
 	ArrowRight,
 	Copyright,
 } from "phosphor-react";
+
+const navItemAvtive =
+	"font-lato text-[20px] lg:text-[18px] text-center lg:text-left text-greenLight hover:text-greenLight transition-all";
+const navItemDefault =
+	"font-lato text-[20px] lg:text-[18px] text-center lg:text-left hover:text-greenLight transition-all";
 
 const Footer = ({}) => {
 	return (
@@ -19,41 +25,49 @@ const Footer = ({}) => {
 			<div className="bg-blueMidnight w-full">
 				<div className="relative left-2/4 -translate-x-1/2 w-11/12 p-[15px] flex flex-col lg:flex-row justify-between py-20">
 					<div className="flex flex-col w-full lg:w-3/12 pb-5 lg:pb-0">
-						<Link
-							className="font-lato text-[20px] lg:text-[18px] text-center lg:text-left"
-							to="/about"
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? navItemAvtive : navItemDefault
+							}
+							to="/ueber-uns"
 						>
 							Über Uns
-						</Link>
-						<Link
-							className="font-lato text-[20px] lg:text-[18px] text-center lg:text-left"
-							to="/events"
+						</NavLink>
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? navItemAvtive : navItemDefault
+							}
+							to="/veranstaltungen"
 						>
-							Events
-						</Link>
-						<Link
-							className="font-lato text-[20px] lg:text-[18px] text-center lg:text-left"
+							Veranstaltungen
+						</NavLink>
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? navItemAvtive : navItemDefault
+							}
 							to="/berichte"
 						>
 							Berichte
-						</Link>
-						<Link
-							className="font-lato text-[20px] lg:text-[18px] text-center lg:text-left"
+						</NavLink>
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? navItemAvtive : navItemDefault
+							}
 							to="/newsletter"
 						>
 							Newsletter
-						</Link>
+						</NavLink>
 						<a
 							href="https://eifelverein-rheinbach.de/"
 							target="blank"
-							className="font-lato text-[20px] lg:text-[18px] text-center lg:text-left"
+							className="font-lato text-[20px] lg:text-[18px] text-center lg:text-left hover:text-greenLight transition-all"
 						>
 							Eifelverein
 						</a>
 						<a
 							href="https://jugend.eifel-53359.de/api/wp-admin"
 							target="blank"
-							className="font-lato text-[20px] lg:text-[18px] text-center lg:text-left"
+							className="font-lato text-[20px] lg:text-[18px] text-center lg:text-left hover:text-greenLight transition-all"
 						>
 							Login
 						</a>
@@ -76,26 +90,15 @@ const Footer = ({}) => {
 							Abbonier unseren Newsletter um auf dem laufenden zu bleiben.
 						</p>
 
-						<a
+						<Link
 							className="font-bold rounded-xl bg-greenDefault w-fit text-white py-[12px] px-[70px]"
-							href="https://jugend.eifel-53359.de/anmeldung_newsletter.html"
+							to="/newsletter"
 						>
 							Anmelden
-						</a>
+						</Link>
 					</div>
 					<div className="border-b-2 lg:border-r-2 border-white"></div>
 					<div className="w-full lg:w-3/12 px-5 text-right flex flex-col items-center lg:items-end pb-5 lg:pb-0">
-						<Link
-							className="font-lato font-bold text-[16px] flex flex-row items-center transition-all group"
-							to="/message"
-						>
-							<p>Schreib uns eine Nachricht </p>
-							<ArrowRight
-								size={16}
-								weight="bold"
-								className="ml-2 transition-all group-hover:ml-3 text-white"
-							/>
-						</Link>
 						<p className="mb-5">
 							Neukirchener Weg 11, <br />
 							53359 Rheinbach
@@ -115,7 +118,7 @@ const Footer = ({}) => {
 				<div className="relative left-2/4 -translate-x-1/2 w-11/12 py-4 flex flex-row justify-between">
 					<div className="flex flex-row items-center">
 						<Copyright size={16} className="text-white" weight="bold" />
-						2022 WIER. All Right Reserved
+						2023 WIER. All Right Reserved
 					</div>
 					<div>
 						<Link className="font-lato text-[16px] mr-4" to="/impressum">

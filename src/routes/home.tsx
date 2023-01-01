@@ -26,12 +26,12 @@ export default function Home() {
 				{/* <section className="section-colored"> */}
 				<section>
 					<h2 className="mb-5">Veranstaltungen</h2>
-					<p> hier kannst du alle unsere Veranstaltungen sehen</p>
+					<p> Schau dir gerne unsere Veranstaltungen an.</p>
 					<EventList home={true} />
 				</section>
 				<section>
 					<h2 className="mb-5">Berichte</h2>
-					<p> wer sind wir eigentlich und was machen wir!</p>
+					<p>Willst du interessante Berichte und News über uns?</p>
 					<NewsList home={true} />
 				</section>
 			</main>

@@ -12,6 +12,8 @@ import News from "./routes/news";
 import NotFound from "./routes/notFound";
 /* import axios from "axios"; */
 import "./styles/tailwind.css";
+import Impressum from "./routes/impressum";
+import Datenschutz from "./routes/datenschutz";
 
 interface footerProps {
 	allData?: object;
@@ -19,7 +21,7 @@ interface footerProps {
 
 const App: React.FC<footerProps> = () => {
 	return (
-		<div className="App bg-greyLight relative overflow-hidden">
+		<div className="App bg-greyLight relative overflow-hidden min-h-screen flex flex-col justify-between">
 			<Header />
 			<Routes>
 				<Route path="*" element={<NotFound />} />
@@ -28,6 +30,8 @@ const App: React.FC<footerProps> = () => {
 				<Route path="/veranstaltungen" element={<Events />} />
 				<Route path="/berichte" element={<News />} />
 				<Route path="/newsletter" element={<Newsletter />} />
+				<Route path="/impressum" element={<Impressum />} />
+				<Route path="/datenschutz" element={<Datenschutz />} />
 				<Route path="/veranstaltungen/:id" element={<Event />} />
 				<Route path="/berichte/:id" element={<NewsPage />} />
 			</Routes>

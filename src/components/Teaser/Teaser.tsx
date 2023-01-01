@@ -44,10 +44,10 @@ export default function Teaser({
 		>
 			{loading ? (
 				<>
-					<div className="bg-greyLoading w-full h-[179px]a lg:h-[210px] relative overflow-hidden object-cover rounded-[12px]">
+					<div className="bg-greyLoading w-full h-[179px]a lg:h-[210px] relative overflow-hidden object-cover rounded-[12px] animate-pulse">
 						<div className="bg-greyLoading h-[179px] lg:h-[210px] w-full"></div>
 					</div>
-					<div className="w-full pt-[20px] pb-[10px] lg:py-[5px]">
+					<div className="w-full pt-[20px] pb-[10px] lg:py-[5px] animate-pulse">
 						<div className="mb-[10px] flex gap-3">
 							<div className="ml-3">
 								<h3 className="h5 mt-3 mb-2">
@@ -73,9 +73,8 @@ export default function Teaser({
 			) : (
 				<div className="w-full h-[179px]a lg:h-[210px] relative bg-greyloading overflow-hidden object-cover rounded-[12px]">
 					{showMore ? (
-						<div className="bg-blueMidnight h-[179px] lg:h-[210px] w-full text-white font-bold text-4xl flex justify-end items-center px-3 transition-all group-hover:text-3xl">
-							<div className="w-full h-1 bg-white mr-6"></div>
-							{content}
+						<div className="bg-greyDark h-[179px] lg:h-[210px] w-full text-white font-bold text-4xl flex justify-center items-center px-3 transition-all group-hover:text-3xl">
+							MEHR
 						</div>
 					) : (
 						<>
