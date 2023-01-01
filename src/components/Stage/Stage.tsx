@@ -1,5 +1,6 @@
 import { CaretDown } from "phosphor-react";
 import { useState, useEffect } from "react";
+import stageImg from "../../../src/images/bg2.svg";
 
 export default function Stage() {
 	function scrollDown() {
@@ -14,7 +15,7 @@ export default function Stage() {
 		<>
 			<div className="w-screen h-screen relative overflow-hidden ">
 				<img
-					src="src/images/bg2.svg"
+					src={stageImg}
 					className="w-screen h-screen object-cover object-left-bottom z-0 absolute top-0 left-0"
 				/>
 				<div className="relative w-full h-full left-1/2 -translate-x-1/2 z-10">
