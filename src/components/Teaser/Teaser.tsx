@@ -20,7 +20,7 @@ export default function Teaser({
 	loading?: boolean;
 	layout?: string;
 }) {
-	const [hover, setHover] = useState(true);
+	const [hover, setHover] = useState(false);
 	const [delayHandler, setDelayHandler] = useState(setTimeout(() => {}));
 
 	const handleMouseEnter = () => {
@@ -167,7 +167,7 @@ export default function Teaser({
 						</h3>
 					</div>
 					<p
-						className="flex flex-col my-5 mx-5 lg:h-[calc(100%-270px-30px)] overflow-hidden  text-ellipsis text-blueMidnight after:content-['...'] after:bg-white after:w-[60px] after:absolute after:bottom-[11px] after:right-0 after:flex"
+						className="flex flex-col my-5 mx-5 lg:h-[calc(100%-270px-30px)] overflow-hidden  text-ellipsis text-blueMidnight"
 						dangerouslySetInnerHTML={{ __html: content }}
 					></p>
 				</div>

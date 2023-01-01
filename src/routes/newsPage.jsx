@@ -152,7 +152,7 @@ export default function NewsPage() {
 							<p>{data.acf.fur_wen}</p>
 							<p
 								className=""
-								dangerouslySetInnerHTML={{ __html: data.content.rendered }}
+								dangerouslySetInnerHTML={{ __html: data.acf.text }}
 							></p>
 
 							{data.acf.enthaltene_leistungen && (

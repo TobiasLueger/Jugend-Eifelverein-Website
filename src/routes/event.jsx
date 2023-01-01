@@ -26,11 +26,11 @@ export default function Event() {
 		`events?slug=${params.id}`
 	); */
 
-	const { eventData, loading, error } = useSlugData(`events?slug=${params.id}`);
+	const { slugData, loading, error } = useSlugData(`events?slug=${params.id}`);
 
 	let data;
 
-	!loading ? (data = eventData[0]) : "";
+	!loading ? (data = slugData[0]) : "";
 
 	const form = useRef();
 
@@ -152,7 +152,7 @@ export default function Event() {
 							<p>{data.acf.fur_wen}</p>
 							<p
 								className=""
-								dangerouslySetInnerHTML={{ __html: data.content.rendered }}
+								dangerouslySetInnerHTML={{ __html: data.acf.text }}
 							></p>
 
 							{data.acf.enthaltene_leistungen && (
