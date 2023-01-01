@@ -16,8 +16,13 @@ const Header = ({}) => {
 		});
 	}, []);
 
+	const navItemAvtive =
+		"font-lato font-bold text-[20px] lg:text-[18px] transition-all text-greenLight hover:text-greenLight";
+	const navItemDefault =
+		"font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-greenLight";
+
 	return (
-		<header className="bg-white dark:bg-black h-24  text-black dark:text-white flex items-center lg:left-2/4 lg:-translate-x-1/2 fixed w-full lg:w-11/12 rounded-b-xl border-b-[1px] border-x-[1px] p-[15px] z-[100] shadow-md">
+		<header className="bg-white h-24  text-greyDark flex items-center lg:left-2/4 lg:-translate-x-1/2 fixed w-full lg:w-11/12 rounded-b-xl border-b-[1px] border-x-[1px] p-[15px] z-[100] shadow-md max-w-[1600px]">
 			<div className="flex items-center w-full justify-between lg:justify-start">
 				<a href="/" className="flex items-center h-full mr-[50px]">
 					<img src={logoImg} alt="Logo" className="w-[100px] min-w-[100px]" />
@@ -27,9 +32,9 @@ const Header = ({}) => {
 					onClick={() => toggleClass()}
 				>
 					{isNavActive ? (
-						<X size={40} color="#67B31F" weight="bold" />
+						<X size={40} className="text-greenLight" weight="bold" />
 					) : (
-						<List size={40} color="#67B31F" weight="bold" />
+						<List size={40} className="text-greenLight" weight="bold" />
 					)}
 				</div>
 				<div
@@ -51,9 +56,7 @@ const Header = ({}) => {
 								<li className="lg:ml-12 mb-5 lg:mb-0">
 									<NavLink
 										className={({ isActive }) =>
-											isActive
-												? "font-lato font-bold text-[20px] lg:text-[18px] transition-all text-[#67b31b] hover:text-[#67b31b]"
-												: "font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
+											isActive ? navItemAvtive : navItemDefault
 										}
 										to="/ueber-uns"
 										onClick={() => toggleClass(false)}
@@ -64,9 +67,7 @@ const Header = ({}) => {
 								<li className="lg:ml-14 mb-5 lg:mb-0">
 									<NavLink
 										className={({ isActive }) =>
-											isActive
-												? "font-lato font-bold text-[20px] lg:text-[18px] transition-all text-[#67b31b] hover:text-[#67b31b]"
-												: "font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
+											isActive ? navItemAvtive : navItemDefault
 										}
 										to="/veranstaltungen"
 										onClick={() => toggleClass(false)}
@@ -77,9 +78,7 @@ const Header = ({}) => {
 								<li className="lg:ml-14 mb-5 lg:mb-0">
 									<NavLink
 										className={({ isActive }) =>
-											isActive
-												? "font-lato font-bold text-[20px] lg:text-[18px] transition-all text-[#67b31b] hover:text-[#67b31b]"
-												: "font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
+											isActive ? navItemAvtive : navItemDefault
 										}
 										to="/berichte"
 										onClick={() => toggleClass(false)}
@@ -90,9 +89,7 @@ const Header = ({}) => {
 								<li className="lg:ml-14 mb-5 lg:mb-0">
 									<NavLink
 										className={({ isActive }) =>
-											isActive
-												? "font-lato font-bold text-[20px] lg:text-[18px] transition-all text-[#67b31b] hover:text-[#67b31b]"
-												: "font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
+											isActive ? navItemAvtive : navItemDefault
 										}
 										to="/newsletter"
 										onClick={() => toggleClass(false)}
@@ -104,7 +101,7 @@ const Header = ({}) => {
 									<a
 										href="https://eifelverein-rheinbach.de/"
 										target="blank"
-										className="font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-[#67b31b]"
+										className="font-lato font-bold text-[20px] lg:text-[18px] transition-all hover:text-greenLight"
 									>
 										Eifelverein
 									</a>
