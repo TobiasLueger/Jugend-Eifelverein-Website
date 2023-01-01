@@ -35,7 +35,7 @@ export default function EventList({ home }: { home?: boolean }) {
 								>
 									<Teaser
 										title={event.title.rendered}
-										content={event.content.rendered}
+										content={event.acf.text}
 										data={event.acf}
 										id={event.id}
 									/>
@@ -52,7 +52,7 @@ export default function EventList({ home }: { home?: boolean }) {
 							>
 								<Teaser
 									title={event.title.rendered}
-									content={event.content.rendered}
+									content={event.acf.text}
 									data={event.acf}
 									id={event.id}
 								/>

@@ -20,7 +20,7 @@ export default function Teaser({
 	loading?: boolean;
 	layout?: string;
 }) {
-	const [hover, setHover] = useState(false);
+	const [hover, setHover] = useState(true);
 	const [delayHandler, setDelayHandler] = useState(setTimeout(() => {}));
 
 	const handleMouseEnter = () => {
@@ -37,7 +37,7 @@ export default function Teaser({
 	};
 	return (
 		<div
-			className="teaser w-full h-full relative block group hover:z-[1] min-w-[340px] md:min-w-0"
+			className="teaser w-full h-full relative block group hover:z-[1] min-w-[300px] md:min-w-0"
 			key={id}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
@@ -74,7 +74,7 @@ export default function Teaser({
 				<div className="w-full h-[179px]a lg:h-[210px] relative bg-greyloading overflow-hidden object-cover rounded-[12px]">
 					{showMore ? (
 						<div className="bg-greyDark h-[179px] lg:h-[210px] w-full text-white font-bold text-4xl flex justify-center items-center px-3 transition-all group-hover:text-3xl">
-							MEHR
+							MEHR...
 						</div>
 					) : (
 						<>
@@ -154,16 +154,20 @@ export default function Teaser({
 			)}
 			{!showMore && !loading && hover && (
 				<div
-					className={`absolute block top-[-2rem] left-[-2rem] transition-all rounded-[12px] w-[calc(100%+4rem)] h-[calc(100%+4rem)] bg-white overflow-hidden`}
+					className={`absolute block top-[-2rem] left-[-2rem] transition-all rounded-[12px] w-[calc(100%+4rem)] h-[calc(100%+4rem)] bg-white overflow-hidden `}
 				>
-					<img
-						className="bg-greyloading w-full h-[179px] lg:h-[210px] rounded-[12px] relative overflow-hidden object-cover transition-all"
-						src={data.bild}
-						alt=""
-					/>
-					<h3 className="h5 mt-5 mx-5 mb-2 text-blueMidnight">{title}</h3>
+					<div className="flex lg:h-[270px] justify-center items-center">
+						<img
+							className="bg-greyloading w-full lg:h-[270px] rounded-[12px] relative overflow-hidden object-cover transition-all filter brightness-50 absolute"
+							src={data.bild}
+							alt=""
+						/>
+						<h3 className="h5 mt-5 mx-5 mb-2 text-greyDark bg-white p-3 bg-opacity-90 absolute rounded-[8px]">
+							{title}
+						</h3>
+					</div>
 					<p
-						className="mb-5 mx-5 h-[calc(100%-179px-48px-28px)] lg:h-[calc(100%-210px-48px-28px)] overflow-hidden line-clamp-4 text-ellipsis text-blueMidnight"
+						className="flex flex-col my-5 mx-5 lg:h-[calc(100%-270px-30px)] overflow-hidden  text-ellipsis text-blueMidnight after:content-['...'] after:bg-white after:w-[60px] after:absolute after:bottom-[11px] after:right-0 after:flex"
 						dangerouslySetInnerHTML={{ __html: content }}
 					></p>
 				</div>
