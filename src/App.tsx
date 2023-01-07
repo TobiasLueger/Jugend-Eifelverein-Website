@@ -14,12 +14,16 @@ import NotFound from "./routes/notFound";
 import "./styles/tailwind.css";
 import Impressum from "./routes/impressum";
 import Datenschutz from "./routes/datenschutz";
+import CookieBot from "react-cookiebot";
+
+const domainGroupId = "7ac8eac0-7fec-493e-a324-eb874ee8aebc";
 
 interface footerProps {
 	allData?: object;
 }
 
 const App: React.FC<footerProps> = () => {
+	const [hasCookieBot, setHasCookieBot] = useState(undefined);
 	return (
 		<div className="App bg-greyLight relative overflow-hidden min-h-screen flex flex-col justify-between">
 			<Header />
@@ -35,6 +39,7 @@ const App: React.FC<footerProps> = () => {
 				<Route path="/veranstaltungen/:id" element={<Event />} />
 				<Route path="/berichte/:id" element={<NewsPage />} />
 			</Routes>
+			<CookieBot domainGroupId={domainGroupId} />
 			<Footer />
 		</div>
 	);

@@ -44,6 +44,71 @@
 	.section-colored {
 		@apply relative text-white before:absolute before:bg-red before:w-screen before:h-full;
 	}
+
+	/* Cookiebot-Styles */
+	#CybotCookiebotDialogPoweredByText,
+	#CybotCookiebotDialogPoweredbyImage {
+		display: none !important;
+	}
+
+	#CybotCookiebotDialogBodyEdgeMoreDetailsLink {
+		color: #15803d !important;
+	}
+
+	#CybotCookiebotDialogDetailBulkConsentLink:hover {
+		color: #15803d;
+	}
+
+	#CybotCookiebotDialogFooter #CybotCookiebotDialogBodyButtonAccept,
+	#CybotCookiebotDialogFooter #CybotCookiebotDialogBodyLevelButtonAccept,
+	#CybotCookiebotDialogFooter
+		#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll {
+		background-color: #15803d !important;
+		border-color: #15803d !important;
+	}
+
+	#CybotCookiebotDialogFooter #CybotCookiebotDialogBodyLevelButtonCustomize,
+	#CybotCookiebotDialogFooter
+		#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection {
+		border-color: #15803d !important;
+	}
+
+	#CybotCookiebotDialogFooter #CybotCookiebotDialogBodyButtonDecline {
+		border-color: #15803d !important;
+	}
+
+	#CybotCookiebotDialogFooter .CybotCookiebotDialogBodyButton {
+		border: 2px solid #15803d !important;
+	}
+
+	#CybotCookiebotDialogBodyFieldsetInnerContainer
+		input#CybotCookiebotDialogBodyLevelButtonNecessary:checked
+		+ span {
+		background-color: #d6d6d6 !important;
+	}
+
+	#CybotCookiebotDialogBodyFieldsetInnerContainer input:checked + span {
+		background-color: #15803d !important;
+	}
+
+	#CybotCookiebotDialogNavDeclaration:hover,
+	#CybotCookiebotDialogNavDetails:hover,
+	#CybotCookiebotDialogNavAbout:hover {
+		color: #15803d !important;
+	}
+
+	#CybotCookiebotDialogNavDeclaration[aria-selected="true"],
+	#CybotCookiebotDialogNavDetails[aria-selected="true"],
+	#CybotCookiebotDialogNavAbout[aria-selected="true"] {
+		border-bottom: 1px solid #15803d !important;
+		color: #15803d !important;
+	}
+
+	input#CybotCookiebotDialogBodyLevelButtonPreferencesInline:checked + span,
+	input#CybotCookiebotDialogBodyLevelButtonStatisticsInline:checked + span,
+	input#CybotCookiebotDialogBodyLevelButtonMarketingInline:checked + span {
+		background-color: #15803d !important;
+	}
 }
 
 @layer base {
