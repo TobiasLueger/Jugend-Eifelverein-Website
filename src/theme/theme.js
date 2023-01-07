@@ -14,7 +14,7 @@ const theme = {
 		grey: "#333333",
 		greyDark: "#222222",
 		red: "#cb1625",
-		green: "#67B31F",
+		green: "#67B31b",
 		white: "#ffffff",
 		black: "#000000",
 	},

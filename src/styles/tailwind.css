@@ -14,7 +14,7 @@
 	}
 
 	.btn {
-		@apply font-bold rounded-xl bg-green-700 w-fit text-white py-[12px] px-[70px] block;
+		@apply font-bold rounded-xl bg-greenDefault hover:bg-greenLight transition-all w-fit text-white py-[12px] px-[70px] block cursor-pointer;
 	}
 
 	.h1 {
@@ -34,7 +34,7 @@
 	}
 
 	.h5 {
-		@apply font-lato font-bold text-[16px] leading-[16px] lg:text-[20px] lg:leading-[20px];
+		@apply font-lato font-bold text-[16px] leading-[16px] lg:text-[20px] lg:leading-[26px];
 	}
 
 	.h6 {
@@ -42,13 +42,14 @@
 	}
 	/* TODO: make colored sections as seperator */
 	.section-colored {
-		@apply relative text-white before:absolute before:bg-[#b6cce3] before:w-screen before:h-full;
+		@apply relative text-white before:absolute before:bg-red before:w-screen before:h-full;
 	}
 }
 
 @layer base {
-	body {
-		@apply text-[#133a4a];
+	body,
+	html {
+		@apply text-greyDark m-0 p-0;
 	}
 
 	h1 {
@@ -56,7 +57,7 @@
 	}
 
 	h2 {
-		@apply font-lato font-bold text-[22px] leading-[22px] lg:text-[50px] lg:leading-[50px];
+		@apply font-lato font-bold text-[22px] leading-[22px] md:text-[38px] md:leading-[38px] lg:text-[50px] lg:leading-[50px];
 	}
 
 	h3 {
@@ -68,7 +69,7 @@
 	}
 
 	h5 {
-		@apply font-lato font-bold text-[16px] leading-[16px] lg:text-[20px] lg:leading-[20px];
+		@apply font-lato font-bold text-[16px] leading-[16px] lg:text-[20px] lg:leading-[26px];
 	}
 
 	h6 {
@@ -76,7 +77,7 @@
 	}
 
 	main {
-		@apply left-2/4 -translate-x-1/2 relative w-11/12 py-8;
+		@apply left-2/4 -translate-x-1/2 relative w-11/12 py-8 px-5 max-w-[1600px];
 	}
 
 	section {
@@ -85,16 +86,10 @@
 
 	input,
 	textarea {
-		@apply rounded-[6px] border-[#133849] border-[1px];
+		@apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-none;
 	}
 
-	input:focus,
-	textarea:focus,
-	input:focus-visible,
-	textarea:focus-visible,
-	input:active,
-	textarea:active,
-	input:not(.btn) {
-		@apply rounded-[6px] border-[#133849] border-[1px] outline-none;
+	label {
+		@apply block text-gray-700 text-sm font-bold mb-2;
 	}
 }
