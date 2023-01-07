@@ -47,7 +47,8 @@
 
 	/* Cookiebot-Styles */
 	#CybotCookiebotDialogPoweredByText,
-	#CybotCookiebotDialogPoweredbyImage {
+	#CybotCookiebotDialogPoweredbyImage,
+	#CybotCookiebotDialogHeader {
 		display: none !important;
 	}
 
