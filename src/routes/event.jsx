@@ -12,6 +12,11 @@ import {
 } from "phosphor-react";
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
+import {
+	EMAILJS_SERVICE_ID,
+	EMAILJS_TEMPLATE_ID,
+	EMAILJS_PUBLIC_KEY,
+} from "../lib/Env";
 
 // TODO: MAKE EVENT DETAIL PAGE
 /* export default function Event(props: any) { */
@@ -34,31 +39,45 @@ export default function Event() {
 
 	const form = useRef();
 
+	let serviceId, templateId, publicKey;
+
+	if (process.env.NODE_ENV === "production") {
+		// For production
+		serviceId = process.env.VERCEL_EMAILJS_SERVICE_ID;
+		templateId = process.env.VERCEL_EMAILJS_TEMPLATE_ID;
+		publicKey = process.env.VERCEL_EMAILJS_PUBLIC_KEY;
+	} else {
+		// For development
+		serviceId = EMAILJS_SERVICE_ID;
+		templateId = EMAILJS_TEMPLATE_ID;
+		publicKey = EMAILJS_PUBLIC_KEY;
+	}
+
+	const [isSendForm, setIsSendForm] = useState(false);
+
 	const sendEmail = (e) => {
 		e.preventDefault();
 
-		emailjs
-			.sendForm(
-				import.meta.env.VITE_EMAILJS_SERVICE_ID,
-				import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-				form.current,
-				import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-			)
-			.then(
-				(result) => {
-					console.log(result.text);
-					console.log(form.current);
-				},
-				(error) => {
-					console.log(error.text);
-				}
-			);
+		emailjs.sendForm(serviceId, templateId, form.current, publicKey).then(
+			(result) => {
+				console.log(result.text);
+			},
+			(error) => {
+				console.log(error.text);
+			}
+		);
+
+		setIsSendForm(true);
 	};
 
 	const [emailForm, setEmailForm] = useState(false);
 
 	const toggleEmailForm = () => {
 		setEmailForm(!emailForm);
+
+		setTimeout(() => {
+			setIsSendForm(false);
+		}, 500);
 	};
 
 	return (
@@ -229,36 +248,45 @@ export default function Event() {
 						weight="bold"
 						onClick={toggleEmailForm}
 					/>
-					<form ref={form} onSubmit={sendEmail} className="w-full">
-						<label className="text-lg">Name</label>
-						<input type="text" name="from_name" required />
-						<label className="text-lg mt-4">Email</label>
-						<input type="email" name="from_email" required />
-						<label className="text-lg mt-4">Message</label>
-						<textarea name="message" />
-						<input
-							type="email"
-							hidden
-							name="to_email"
-							readOnly
-							value={data.acf.anmeldung}
-						/>
-						<input
-							type="text"
-							hidden
-							name="event"
-							readOnly
-							value={data.title.rendered}
-						/>
-						<input
-							type="text"
-							hidden
-							name="to_name"
-							readOnly
-							value={data.acf.leitung}
-						/>
-						<input type="submit" value="Anmelden" className="btn mt-4" />
-					</form>
+					{isSendForm ? (
+						<div className="py-5">
+							<h4 className="mb-4 mt-4">Danke für deine Anmeldung :)</h4>
+							<h5>
+								Du wirst in den nächsten Minuten eine Bestätigungsmail bekommen.
+							</h5>
+						</div>
+					) : (
+						<form ref={form} onSubmit={sendEmail} className="w-full">
+							<label className="text-lg">Name</label>
+							<input type="text" name="from_name" required />
+							<label className="text-lg mt-4">Email</label>
+							<input type="email" name="from_email" required />
+							<label className="text-lg mt-4">Message</label>
+							<textarea name="message" />
+							<input
+								type="email"
+								hidden
+								name="to_email"
+								readOnly
+								value={data.acf.anmeldung}
+							/>
+							<input
+								type="text"
+								hidden
+								name="event"
+								readOnly
+								value={data.title.rendered}
+							/>
+							<input
+								type="text"
+								hidden
+								name="to_name"
+								readOnly
+								value={data.acf.leitung}
+							/>
+							<input type="submit" value="Anmelden" className="btn mt-4" />
+						</form>
+					)}
 				</div>
 			)}
 		</>
