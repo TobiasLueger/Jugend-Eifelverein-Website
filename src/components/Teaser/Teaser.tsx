@@ -117,14 +117,29 @@ export default function Teaser({
 								<div className="mr-2">🕒</div>
 								{layout == "event" ? (
 									<>
-										{data.startdatum || data.enddatum ? (
+										{data.datum || data.enddatum ? (
 											<>
 												<div>
-													{data.startdatum && <span>{data.startdatum}</span>}
+													{data.datum && (
+														<span>
+															{new Date(data.datum).toLocaleString("de-DE", {
+																day: "numeric",
+																month: "short",
+																year: "numeric",
+															})}
+														</span>
+													)}
 												</div>
 												<div>
 													{data.enddatum && (
-														<span className="ml-2">- {data.enddatum}</span>
+														<span className="ml-2">
+															-{" "}
+															{new Date(data.enddatum).toLocaleString("de-DE", {
+																day: "numeric",
+																month: "short",
+																year: "numeric",
+															})}
+														</span>
 													)}
 												</div>
 											</>
@@ -138,7 +153,17 @@ export default function Teaser({
 									<>
 										{data.datum ? (
 											<>
-												<div>{data.datum && <span>{data.datum}</span>}</div>
+												<div>
+													{data.datum && (
+														<span>
+															{new Date(data.datum).toLocaleString("de-DE", {
+																day: "numeric",
+																month: "short",
+																year: "numeric",
+															})}
+														</span>
+													)}
+												</div>
 											</>
 										) : (
 											<div>

@@ -18,27 +18,27 @@
 	}
 
 	.h1 {
-		@apply font-lato font-bold text-[24px] leading-[24px] lg:text-[55px] lg:leading-[55px];
+		@apply font-sans font-bold text-[24px] leading-[24px] lg:text-[55px] lg:leading-[55px];
 	}
 
 	.h2 {
-		@apply font-lato font-bold text-[22px] leading-[22px] lg:text-[50px] lg:leading-[50px];
+		@apply font-sans font-bold text-[22px] leading-[22px] lg:text-[50px] lg:leading-[50px];
 	}
 
 	.h3 {
-		@apply font-lato font-bold text-[20px] leading-[20px] lg:text-[40px] lg:leading-[40px];
+		@apply font-sans font-bold text-[20px] leading-[20px] lg:text-[40px] lg:leading-[40px];
 	}
 
 	.h4 {
-		@apply font-lato font-bold text-[18px] leading-[18px] lg:text-[30px] lg:leading-[30px];
+		@apply font-sans font-bold text-[18px] leading-[18px] lg:text-[30px] lg:leading-[30px];
 	}
 
 	.h5 {
-		@apply font-lato font-bold text-[16px] leading-[16px] lg:text-[20px] lg:leading-[26px];
+		@apply font-sans font-bold text-[16px] leading-[16px] lg:text-[20px] lg:leading-[26px];
 	}
 
 	.h6 {
-		@apply font-lato font-bold text-[14px] leading-[14px] lg:text-[15px] lg:leading-[15px];
+		@apply font-sans font-bold text-[14px] leading-[14px] lg:text-[15px] lg:leading-[15px];
 	}
 	/* TODO: make colored sections as seperator */
 	.section-colored {
@@ -47,33 +47,55 @@
 }
 
 @layer base {
+	/* latin-ext */
+	@font-face {
+		font-family: "Lato";
+		font-style: normal;
+		font-weight: 400;
+		font-display: swap;
+		src: url(../fonts/lato-ext.woff2) format("woff2");
+		unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+			U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+	}
+	/* latin */
+	@font-face {
+		font-family: "Lato";
+		font-style: normal;
+		font-weight: 400;
+		font-display: swap;
+		src: url(../fonts/lato.woff2) format("woff2");
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+			U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+			U+2215, U+FEFF, U+FFFD;
+	}
+
 	body,
 	html {
 		@apply text-greyDark m-0 p-0;
 	}
 
 	h1 {
-		@apply font-lato font-bold text-[24px] leading-[24px] lg:text-[55px] lg:leading-[55px];
+		@apply font-sans font-bold text-[24px] leading-[24px] lg:text-[55px] lg:leading-[55px];
 	}
 
 	h2 {
-		@apply font-lato font-bold text-[22px] leading-[22px] md:text-[38px] md:leading-[38px] lg:text-[50px] lg:leading-[50px];
+		@apply font-sans font-bold text-[22px] leading-[22px] md:text-[38px] md:leading-[38px] lg:text-[50px] lg:leading-[50px];
 	}
 
 	h3 {
-		@apply font-lato font-bold text-[20px] leading-[20px] lg:text-[40px] lg:leading-[40px];
+		@apply font-sans font-bold text-[20px] leading-[20px] lg:text-[40px] lg:leading-[40px];
 	}
 
 	h4 {
-		@apply font-lato font-bold text-[18px] leading-[18px] lg:text-[30px] lg:leading-[30px];
+		@apply font-sans font-bold text-[18px] leading-[18px] lg:text-[30px] lg:leading-[30px];
 	}
 
 	h5 {
-		@apply font-lato font-bold text-[16px] leading-[16px] lg:text-[20px] lg:leading-[26px];
+		@apply font-sans font-bold text-[16px] leading-[16px] lg:text-[20px] lg:leading-[26px];
 	}
 
 	h6 {
-		@apply font-lato font-bold text-[14px] leading-[14px] lg:text-[15px] lg:leading-[15px];
+		@apply font-sans font-bold text-[14px] leading-[14px] lg:text-[15px] lg:leading-[15px];
 	}
 
 	main {
