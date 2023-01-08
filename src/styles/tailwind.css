@@ -110,6 +110,35 @@
 	input#CybotCookiebotDialogBodyLevelButtonMarketingInline:checked + span {
 		background-color: #15803d !important;
 	}
+
+	#CookiebotWidget-widgetContent > div div:first-child div:nth-child(1) svg {
+		fill: #15803d !important;
+	}
+
+	#CookiebotWidget-widgetContent > div div:first-child div:nth-child(1) svg {
+		fill: #15803d !important;
+	}
+
+	#CookiebotWidget-widgetContent
+		> div
+		div:nth-child(2)
+		> div:nth-child(1)
+		div:nth-child(3) {
+		display: none !important;
+	}
+
+	#CookiebotWidget button[data-show-consent-id] {
+		color: #15803d !important;
+	}
+
+	#CookiebotWidget #CookiebotWidget-buttons #CookiebotWidget-btn-withdraw {
+		border-color: #15803d !important;
+	}
+
+	#CookiebotWidget #CookiebotWidget-buttons #CookiebotWidget-btn-change {
+		background-color: #15803d !important;
+		border-color: #15803d !important;
+	}
 }
 
 @layer base {
