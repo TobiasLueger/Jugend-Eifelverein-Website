@@ -20,6 +20,7 @@ import {
 	EMAILJS_PUBLIC_KEY,
 } from "../lib/Env";
 import Pill from "../components/Pill/Pill";
+import defaultImg from "../../src/images/default.jpg";
 
 // TODO: MAKE EVENT DETAIL PAGE
 export default function Event() {
@@ -101,7 +102,7 @@ export default function Event() {
 							<div className="w-full max-w-[100%] basis-[100%] lg:max-w-[50%] lg:basis-[50%] grow-0 shrink-0">
 								<div className="overflow-hidden rounded-[12px] shadow-xl w-full flex relative">
 									<img
-										src={data.acf.bild}
+										src={data.acf.bild ? data.acf.bild : defaultImg}
 										className="w-full object-cover h-full max-h-[500px]"
 										alt=""
 									/>

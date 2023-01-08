@@ -2,6 +2,7 @@ import Button from "../Button/Button";
 import Avatar from "../Avatar/Avatar";
 import Pill from "../Pill/Pill";
 import { useState } from "react";
+import defaultImg from "../../../src/images/default.jpg";
 
 export default function Teaser({
 	title,
@@ -80,7 +81,7 @@ export default function Teaser({
 						<>
 							<img
 								className="w-full h-[179px] lg:h-[210px] relative overflow-hidden object-cover transition-all group-hover:scale-[102%]"
-								src={data.bild}
+								src={data.bild ? data.bild : defaultImg}
 								alt=""
 							/>
 							{layout == "event" && (
@@ -184,7 +185,7 @@ export default function Teaser({
 					<div className="flex lg:h-[270px] justify-center items-center">
 						<img
 							className="bg-greyloading w-full lg:h-[270px] rounded-[12px] relative overflow-hidden object-cover transition-all filter brightness-50 absolute"
-							src={data.bild}
+							src={data.bild ? data.bild : defaultImg}
 							alt=""
 						/>
 						<h3 className="h5 mt-5 mx-5 mb-2 text-greyDark bg-white p-3 bg-opacity-90 absolute rounded-[8px]">
