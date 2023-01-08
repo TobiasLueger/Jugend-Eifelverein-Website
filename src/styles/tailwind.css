@@ -14,7 +14,7 @@
 	}
 
 	.btn {
-		@apply font-bold rounded-xl bg-greenDefault hover:bg-greenLight transition-all w-fit text-white py-[12px] px-[70px] block cursor-pointer;
+		@apply font-bold rounded-xl bg-greenDefault hover:bg-greenLight transition-all w-fit text-white py-[12px] px-[70px] block cursor-pointer disabled:bg-slate-300;
 	}
 
 	.h1 {
