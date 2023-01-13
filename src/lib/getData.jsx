@@ -12,13 +12,11 @@ const useSlugData = (slugtype) => {
 	useEffect(() => {
 		getData(slugtype)
 			.then((response) => {
-				console.log("Data:", new Date(response.data[0].acf.datum.split(" ")));
 				let sortAfterDate = response.data.sort(
 					(a, b) =>
 						new Date(...a.acf.datum.split("/")) -
 						new Date(...b.acf.datum.split("/"))
 				);
-				console.log("Data List:", sortAfterDate);
 				setSlugData(sortAfterDate);
 			})
 			.catch((error) => setError(true))
