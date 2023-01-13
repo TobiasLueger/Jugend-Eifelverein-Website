@@ -16,6 +16,7 @@ export default function Stage() {
 			<div className="w-screen h-screen relative overflow-hidden ">
 				<img
 					src={stageImg}
+					alt="Wir sind mehr als nur wandern"
 					className="w-screen h-screen object-cover object-left-bottom z-0 absolute top-0 left-0"
 				/>
 				<div className="relative w-full h-full left-1/2 -translate-x-1/2 z-10">

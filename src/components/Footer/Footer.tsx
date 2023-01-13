@@ -20,6 +20,7 @@ const Footer = ({}) => {
 		<footer className="w-full text-white bottom-0">
 			<img
 				src={footerImg}
+				alt="Bild von zwei Rehen im Wald"
 				className="w-[102%] relative -left-[2px] -bottom-[5px] max-w-[102%]"
 			></img>
 			<div className="bg-blueMidnight w-full">
@@ -72,7 +73,10 @@ const Footer = ({}) => {
 							Login
 						</a>
 						<div className="flex flex-row justify-center lg:justify-start mt-5 lg:-ml-1">
-							<a href="https://www.instagram.com/eifeljugendrheinbach/">
+							<a
+								href="https://www.instagram.com/eifeljugendrheinbach/"
+								aria-label="Link zum Instagram Account der Eifeljugend Rheinbach"
+							>
 								<InstagramLogo
 									size={40}
 									className="text-greenLight"

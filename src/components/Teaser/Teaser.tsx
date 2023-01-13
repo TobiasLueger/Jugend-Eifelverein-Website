@@ -82,7 +82,7 @@ export default function Teaser({
 							<img
 								className="w-full h-[179px] lg:h-[210px] relative overflow-hidden object-cover transition-all group-hover:scale-[102%]"
 								src={data.bild ? data.bild : defaultImg}
-								alt=""
+								alt={title}
 							/>
 							{layout == "event" && (
 								<>
@@ -110,7 +110,7 @@ export default function Teaser({
 							{layout == "event" && (
 								<p className="m-0 mb-1 items-center flex">
 									<span className="mr-2">🧑</span>
-									{data.leitung ? data.leitung : "Veranstalter"}
+									{data.fur_wen ? data.fur_wen : "Alle sind willkommen"}
 								</p>
 							)}
 
@@ -176,26 +176,6 @@ export default function Teaser({
 							</div>
 						</div>
 					</div>
-				</div>
-			)}
-			{!showMore && !loading && hover && (
-				<div
-					className={`absolute block top-[-2rem] left-[-2rem] transition-all rounded-[12px] w-[calc(100%+4rem)] h-[calc(100%+4rem)] bg-white overflow-hidden `}
-				>
-					<div className="flex lg:h-[270px] justify-center items-center">
-						<img
-							className="bg-greyloading w-full lg:h-[270px] rounded-[12px] relative overflow-hidden object-cover transition-all filter brightness-50 absolute"
-							src={data.bild ? data.bild : defaultImg}
-							alt=""
-						/>
-						<h3 className="h5 mt-5 mx-5 mb-2 text-greyDark bg-white p-3 bg-opacity-90 absolute rounded-[8px]">
-							{title}
-						</h3>
-					</div>
-					<p
-						className="flex flex-col my-5 mx-5 lg:h-[calc(100%-270px-30px)] overflow-hidden  text-ellipsis text-blueMidnight"
-						dangerouslySetInnerHTML={{ __html: content }}
-					></p>
 				</div>
 			)}
 		</div>
