@@ -54,12 +54,12 @@ export default function Teaser({
 								<h3 className="h5 mt-3 mb-2">
 									<div className="h-[21px] w-24 bg-greyloading rounded-[12px]"></div>
 								</h3>
-								<p className="m-0 mb-1 items-center flex">
+								<div className="m-0 mb-1 items-center flex">
 									<span className="mr-2">
 										<div className="bg-greyLoading h-[20px] w-[20px] rounded-full"></div>
 									</span>
 									<div className="h-[18px] w-20 bg-greyloading rounded-[12px]"></div>
-								</p>
+								</div>
 
 								<div className="flex flex-row flex-wrap mt-3">
 									<div className="mr-2">

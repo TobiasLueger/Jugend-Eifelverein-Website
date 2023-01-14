@@ -26,7 +26,10 @@ import defaultImg from "../../src/images/default.jpg";
 export default function Event() {
 	const params = useParams();
 
-	const { slugData, loading, error } = useSlugData(`events?slug=${params.id}`);
+	const { slugData, loading, error } = useSlugData(
+		`events?slug=${params.id}`,
+		true
+	);
 
 	let data;
 

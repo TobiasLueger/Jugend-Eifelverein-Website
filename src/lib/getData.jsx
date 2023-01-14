@@ -1,16 +1,22 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const getData = (slug) => {
-	return axios.get(`https://jugend.eifel-53359.de/api/wp-json/wp/v2/${slug}`);
+const getData = (slug, single) => {
+	if (single) {
+		return axios.get(`https://jugend.eifel-53359.de/api/wp-json/wp/v2/${slug}`);
+	} else {
+		return axios.get(
+			`https://jugend.eifel-53359.de/api/wp-json/wp/v2/${slug}/?per_page=100`
+		);
+	}
 };
 
-const useSlugData = (slugtype) => {
+const useSlugData = (slugtype, single = false) => {
 	const [slugData, setSlugData] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
 	useEffect(() => {
-		getData(slugtype)
+		getData(slugtype, single)
 			.then((response) => {
 				let sortAfterDate = response.data.sort(
 					(a, b) =>
