@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { List, X } from "phosphor-react";
 import logoImg from "../../../src/images/wier-logo.jpeg";
 
@@ -24,9 +24,9 @@ const Header = ({}) => {
 	return (
 		<header className="bg-white h-24  text-greyDark flex items-center lg:left-2/4 lg:-translate-x-1/2 fixed w-full lg:w-11/12 rounded-b-xl border-b-[1px] border-x-[1px] p-[15px] z-[100] shadow-md max-w-[1600px]">
 			<div className="flex items-center w-full justify-between lg:justify-start">
-				<a href="/" className="flex items-center h-full mr-[50px]">
+				<Link className="flex items-center h-full mr-[50px]" to="/">
 					<img src={logoImg} alt="Logo" className="w-[100px] min-w-[100px]" />
-				</a>
+				</Link>
 				<div
 					className="space-y-2 block lg:hidden cursor-pointer"
 					onClick={() => toggleClass()}
