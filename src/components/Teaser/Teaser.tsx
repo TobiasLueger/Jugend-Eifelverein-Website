@@ -109,7 +109,7 @@ export default function Teaser({
 							<h3 className="h5 mt-3 mb-2">{title}</h3>
 							{layout == "event" && (
 								<p className="m-0 mb-1 items-center flex">
-									<span className="mr-2">🧑</span>
+									<span className="mr-2 self-start">🧑</span>
 									{data.fur_wen ? data.fur_wen : "Alle sind willkommen"}
 								</p>
 							)}

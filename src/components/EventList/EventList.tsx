@@ -16,7 +16,7 @@ export default function EventList({ home }: { home?: boolean }) {
 	const maxHomeTeaser = 5;
 
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-5 mt-5">
+		<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-32 lg:mb-14 mt-5">
 			{loading &&
 				[...Array(3)].map((e, i) => (
 					<Teaser content="" loading={true} id={i} />

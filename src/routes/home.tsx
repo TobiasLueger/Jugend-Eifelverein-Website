@@ -10,7 +10,7 @@ export default function Home() {
 		<>
 			<Stage />
 			<main>
-				<section>
+				<section className="mb-32 lg:mb-14">
 					<h2 className="mb-5">WIER</h2>
 					<TextImg
 						content="sind die Jugend des Eifel- und Heimatvereins Rheinbach. Mit unserer Internetpräsenz machen wir Mitgliedern und interessierten Gästen ein Informationsangebot zum Verein und seinen Aktivitäten.
@@ -26,12 +26,14 @@ export default function Home() {
 				{/* <section className="section-colored"> */}
 				<section>
 					<h2 className="mb-5">Veranstaltungen</h2>
-					<p> Schau dir gerne unsere Veranstaltungen an.</p>
+					<p className="lg:pl-2"> Schau dir gerne unsere Veranstaltungen an.</p>
 					<EventList home={true} />
 				</section>
 				<section>
 					<h2 className="mb-5">Berichte</h2>
-					<p>Willst du interessante Berichte und News über uns?</p>
+					<p className="lg:pl-2">
+						Willst du interessante Berichte und News über uns?
+					</p>
 					<NewsList home={true} />
 				</section>
 			</main>

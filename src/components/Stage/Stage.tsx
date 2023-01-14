@@ -24,10 +24,10 @@ export default function Stage() {
 						<div className="w-fit my-0 mx-auto lg:m-0">
 							<h1 className="font-lato font-bold text-[30px] leading-[30px] lg:text-[60px] lg:leading-[60px] text-greenLight">
 								WIER
+								<p className="font-lato font-bold text-[28px] leading-[28px] lg:text-[50px] lg:leading-[50px] text-greenDark lg:ml-12">
+									sind mehr als nur wandern
+								</p>
 							</h1>
-							<p className="font-lato font-bold text-[28px] leading-[28px] lg:text-[50px] lg:leading-[50px] text-greenDark lg:ml-12">
-								sind mehr als nur wandern
-							</p>
 						</div>
 					</div>
 					<div
