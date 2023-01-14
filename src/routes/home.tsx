@@ -16,9 +16,7 @@ export default function Home() {
 						content="sind die Jugend des Eifel- und Heimatvereins Rheinbach. Mit unserer Internetpräsenz machen wir Mitgliedern und interessierten Gästen ein Informationsangebot zum Verein und seinen Aktivitäten.
 
 						Wir möchten Ihr Interesse am Wandern durch unser Wanderprogramm und die Wandervorschläge anregen. Wir ermutigen Sie, sich uns anzuschließen, Wandern zu Ihrem Hobby zu machen und zu erfahren: Wandern macht glücklich!
-						Bei uns werden Sie in einen Kreis freundlicher Menschen herzlich aufgenommen. Auch Gäste sind uns willkommen.
-						
-						In der Navigationsleiste (links) erhalten Sie nähere Informationen zu unserem Angebot."
+						Bei uns werden Sie in einen Kreis freundlicher Menschen herzlich aufgenommen. Auch Gäste sind uns willkommen."
 						picture={GroupPicImg}
 						pictureDirection="right"
 					/>
