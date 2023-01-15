@@ -5,7 +5,7 @@ import stageImg from "../../../src/images/bg2.svg";
 export default function Stage() {
 	function scrollDown() {
 		window.scrollTo({
-			top: window.innerHeight,
+			top: window.innerHeight - 70,
 			left: 0,
 			behavior: "smooth",
 		});
