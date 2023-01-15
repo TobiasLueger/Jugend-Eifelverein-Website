@@ -118,7 +118,7 @@ const Footer = ({}) => {
 				</div>
 			</div>
 			<div className="bg-blueDark w-full">
-				<div className="relative left-2/4 -translate-x-1/2 w-11/12 py-4 flex flex-row justify-between">
+				<div className="relative left-2/4 -translate-x-1/2 w-11/12 py-4 flex flex-col lg:flex-row justify-center lg:justify-between items-center">
 					<div className="flex flex-row items-center">
 						<Copyright size={16} className="text-white" weight="bold" />
 						2023 WIER. All Right Reserved
