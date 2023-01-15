@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: sitemap.xml
+Sitemap: https://eifeljugend-rheinbach.de/sitemap.xml
