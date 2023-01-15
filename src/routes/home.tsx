@@ -13,10 +13,15 @@ export default function Home() {
 				<section className="mb-32 lg:mb-14">
 					<h2 className="mb-5">WIER</h2>
 					<TextImg
-						content="sind die Jugend des Eifel- und Heimatvereins Rheinbach. Mit unserer Internetpräsenz machen wir Mitgliedern und interessierten Gästen ein Informationsangebot zum Verein und seinen Aktivitäten.
-
-						Wir möchten Ihr Interesse am Wandern durch unser Wanderprogramm und die Wandervorschläge anregen. Wir ermutigen Sie, sich uns anzuschließen, Wandern zu Ihrem Hobby zu machen und zu erfahren: Wandern macht glücklich!
-						Bei uns werden Sie in einen Kreis freundlicher Menschen herzlich aufgenommen. Auch Gäste sind uns willkommen."
+						content="
+						sind die Jugend des Eifel- und Heimatvereins Rheinbach. 
+						Wir führen als Jugendgruppe eine Vielzahl von Aktivitäten durch, die auf die Förderung der Natur- und Heimatverbundenheit junger Menschen ausgerichtet sind.
+						Dazu gehören zum Beispiel Wanderungen, Exkursionen, Naturbeobachtungen, Umweltprojekte, sowie Bildungs- und Informationsveranstaltungen.
+						Wir nehmen aber auch an Wettbewerben, Wochenendfreizeiten, Zeltlager und andere Aktivitäten teil.
+						Außerdem initiieren und organisieren wir als Jugend eigene Projekte und Veranstaltungen.
+						Wir bieten mit unserem Angebot eine Möglichkeit für junge Menschen Gleichgesinnte zu treffen und sich aktiv für die Umwelt und die Natur einzusetzten. 
+						Auch Gäste sind bei uns herzlich uns willkommen.
+						"
 						picture={GroupPicImg}
 						pictureDirection="right"
 					/>
