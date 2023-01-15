@@ -91,7 +91,7 @@ const Footer = ({}) => {
 							Unser Newsletter
 						</h3>
 						<p className="font-lato text-[16px] leading-[16px] mb-8 text-center w-full">
-							Abbonier unseren Newsletter um auf dem laufenden zu bleiben.
+							Aboniere unseren Newsletter, um auf dem Laufenden zu bleiben.
 						</p>
 
 						<Link

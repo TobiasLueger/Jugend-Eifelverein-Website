@@ -11,18 +11,29 @@ const getData = (slug, single) => {
 	}
 };
 
-const useSlugData = (slugtype, single = false) => {
+const useSlugData = (slugtype, single = false, news = false) => {
 	const [slugData, setSlugData] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
 	useEffect(() => {
 		getData(slugtype, single)
 			.then((response) => {
-				let sortAfterDate = response.data.sort(
-					(a, b) =>
-						new Date(...a.acf.datum.split("/")) -
-						new Date(...b.acf.datum.split("/"))
-				);
+				let sortAfterDate;
+
+				if (news) {
+					sortAfterDate = response.data.sort(
+						(a, b) =>
+							new Date(...b.acf.datum.split("/")) -
+							new Date(...a.acf.datum.split("/"))
+					);
+				} else {
+					sortAfterDate = response.data.sort(
+						(a, b) =>
+							new Date(...a.acf.datum.split("/")) -
+							new Date(...b.acf.datum.split("/"))
+					);
+				}
+
 				setSlugData(sortAfterDate);
 			})
 			.catch((error) => setError(true))

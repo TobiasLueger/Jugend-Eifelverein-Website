@@ -26,7 +26,7 @@ export default function NewsPage() {
 						<div className="flex flex-wrap flex-col-reverse lg:flex-row">
 							<div className="w-full max-w-[100%] basis-[100%] lg:max-w-[50%] lg:basis-[50%] grow-0 shrink-0 pr-8 mb-8 lg:mb-0">
 								<p
-									className="mt-10"
+									className="mt-10 lg:mt-0"
 									dangerouslySetInnerHTML={{ __html: data.acf.text }}
 								></p>
 							</div>

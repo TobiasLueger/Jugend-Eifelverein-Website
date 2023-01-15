@@ -9,7 +9,11 @@ export default function NewsList({ home }: { home?: boolean }) {
 		slugData,
 		loading,
 		error,
-	}: { slugData: any; loading: boolean; error: boolean } = useSlugData("news");
+	}: { slugData: any; loading: boolean; error: boolean } = useSlugData(
+		"news",
+		false,
+		true
+	);
 
 	let teasercount = 0;
 	const maxHomeTeaser = 5;

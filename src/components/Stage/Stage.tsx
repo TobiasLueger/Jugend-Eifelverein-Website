@@ -31,7 +31,7 @@ export default function Stage() {
 						</div>
 					</div>
 					<div
-						className="absolute bottom-4 left-2/4 -translate-x-1/2 rounded-full bg-white p-2 animate-bounceCenter cursor-pointer"
+						className="absolute bottom-11 left-2/4 -translate-x-1/2 rounded-full bg-white p-2 animate-bounceCenter cursor-pointer"
 						onClick={scrollDown}
 					>
 						<CaretDown size={30} className="text-greenLight" weight="bold" />
