@@ -15,7 +15,7 @@ export default function Home() {
 					<TextImg
 						content="
 						sind die Wanderjugend im Eifel- und Heimatverein Rheinbach. 
-						Wir führen als Jugendgruppe eine Vielzahl von Aktivitäten durch, die auf die Förderung der Natur- und Heimatverbundenheit junger Menschen ausgerichtet sind.
+						Wir führen als Jugendgruppe des Eifelvereins Rheinbach eine Vielzahl von Aktivitäten durch, die auf die Förderung der Natur- und Heimatverbundenheit junger Menschen ausgerichtet sind.
 						Dazu gehören zum Beispiel Wanderungen, Exkursionen, Naturbeobachtungen, Umweltprojekte, sowie Bildungs- und Informationsveranstaltungen.
 						Wir nehmen aber auch an Wettbewerben, Wochenendfreizeiten, Zeltlager und anderen Aktivitäten teil.
 						Außerdem initiieren und organisieren wir als Jugend eigene Projekte und Veranstaltungen.
