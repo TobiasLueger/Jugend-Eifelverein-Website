@@ -1,10 +1,12 @@
+import vertrauenPdf from "../data/Vertrauenspersonen_im_Eifelverein.pdf";
+
 export default function About() {
 	return (
 		<main className="pt-[116px]">
 			<h1>Über Uns</h1>
 			<br></br>
 			<div className="flex flex-wrap">
-				<div className="lg:w-1/2">
+				<div className="lg:w-1/2 pr-0 lg:pr-5">
 					<h4 className="mt-10">Wer sind WIER?</h4>
 					<br></br>
 					<p>
@@ -25,16 +27,41 @@ export default function About() {
 						künstlerisch, kreative Angebote fehlen bei uns nicht.
 					</p>
 				</div>
-			</div>
-			<br></br>
-			<div className="lg:w-1/2">
-				<h4 className="mt-10">Und Du?</h4>
-				<br></br>
-				<p>
-					Du hast Lust dich ehrenamtlich zu engagieren? Dann bist du immer
-					herzlich willkommen. Unser Familien- und Jugendteam freut sich auf
-					deine Unterstützung….
-				</p>
+				<div className="lg:w-1/2 pr-0 lg:pr-5">
+					<h4 className="mt-10">Unsere Vertrauenspersonen</h4>
+					<br></br>
+					<p>
+						Vielleicht kennst Du es auch, von anderen Kindern, Jugend- lichen
+						oder Erwachsenen (oder auch von Betreuerinnen und Betreuern) blöd
+						angequatscht, begrapscht oder mit peinlichen Sprüchen beschimpft zu
+						werden. Was angeblich Spaß sein soll, ist für die Betroffenen gar
+						nicht lustig. Mädchen und Jungen, junge Frauen und Männer wissen oft
+						nicht, was sie in solchen Situationen tun sollen. Manchmal ist es
+						alleine viel zu schwer, sich gegen Gemeinheiten und un- faires
+						Verhalten zu wehren, dann brauchst Du Hilfe, das ist normal. Hilfe
+						holen ist kein Petzen und kein Verrat, sondern mutig und Dein Recht!
+						<b className="ml-2">
+							Dies sind unsere Vertrauenspersonen im Eifelverein:
+						</b>
+					</p>
+					<br></br>
+					<a
+						href={vertrauenPdf}
+						target={"_blank"}
+						className="font-bold rounded-xl bg-greenDefault w-fit text-white py-[12px] px-[70px] mt-20"
+					>
+						Zu den Vertrauenspersonen
+					</a>
+				</div>
+				<div className="lg:w-1/2">
+					<h4 className="mt-10">Und Du?</h4>
+					<br></br>
+					<p>
+						Du hast Lust dich ehrenamtlich zu engagieren? Dann bist du immer
+						herzlich willkommen. Unser Familien- und Jugendteam freut sich auf
+						deine Unterstützung...
+					</p>
+				</div>
 			</div>
 		</main>
 	);
