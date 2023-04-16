@@ -276,7 +276,7 @@ export default function Event() {
 								<input type="text" name="from_name" required />
 								<label className="text-lg mt-4">Email*</label>
 								<input type="email" name="from_email" required />
-								<label className="text-lg mt-4">Name des Kindes / der Kinder*</label>
+								<label className="text-lg mt-4">Name des Kindes (Alter) / der Kinder (Alter)*</label>
 								<input type="text" name="from_child" required />
 								<label className="text-lg mt-4">Was soll noch mitgeteilt werden?</label>
 								<textarea name="message" />
@@ -304,7 +304,7 @@ export default function Event() {
 									<input type="text" name="from_name" required />
 									<label className="text-lg mt-4">Email*</label>
 									<input type="email" name="from_email" required />
-									<label className="text-lg mt-4">Name des Kindes / der Kinder*</label>
+									<label className="text-lg mt-4">Name des Kindes (Alter) / der Kinder (Alter)*</label>
 									<input type="text" name="from_child" required />
 									<label className="text-lg mt-4">Was soll noch mitgeteilt werden?</label>
 									<textarea name="message" />
