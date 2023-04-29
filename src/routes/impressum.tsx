@@ -14,7 +14,12 @@ export default function Impressum() {
 			<p>
 				e-Mail: <a href="mailto: peter.kempf@eifel-53359.de">peter.kempf@eifel-53359.de</a>
 			</p>
-			<p>Webmaster: Tobias Lüger</p>
+			<p>
+				Webmaster: Tobias Lüger{" "}
+				<a className="text-greenLight" href="https://tobias-lueger.de">
+					(www.tobias-lueger.de)
+				</a>
+			</p>
 			<br></br>
 			<h4>Haftungsausschluss</h4>
 			<br></br>
