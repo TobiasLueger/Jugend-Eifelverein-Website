@@ -6,7 +6,7 @@ export default function Impressum() {
 			<h4>Herausgeber</h4>
 			<br></br>
 			<p>Eifel- und Heimatverein Rheinbach e.V.</p>
-			<p>Koenenstr. 83</p>
+			<p>Koenenweg 83</p>
 			<p>53359 Rheinbach</p>
 			<br></br>
 			<p>Telefon: 02226/9097751</p>

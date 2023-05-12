@@ -51,7 +51,7 @@ const Footer = ({}) => {
 					<div className="border-b-2 lg:border-r-2 border-white"></div>
 					<div className="w-full lg:w-3/12 px-5 text-right flex flex-col items-center lg:items-end pb-5 lg:pb-0">
 						<p className="mb-5 mt-5 flex lg:justify-end justify-center lg:items-end items-center flex-col">
-							<span>Koenenstr. 83,</span>
+							<span>Koenenweg 83,</span>
 							<span className="mb-5">53359 Rheinbach</span>
 							<span>02226/9097751</span>
 						</p>
