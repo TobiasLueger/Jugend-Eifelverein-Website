@@ -15,6 +15,7 @@ import "./styles/tailwind.css";
 import Impressum from "./routes/impressum";
 import Datenschutz from "./routes/datenschutz";
 import CookieBot from "react-cookiebot";
+import { Analytics } from '@vercel/analytics/react';
 
 const domainGroupId = "7ac8eac0-7fec-493e-a324-eb874ee8aebc";
 
@@ -41,6 +42,7 @@ const App: React.FC<footerProps> = () => {
 			</Routes>
 			<CookieBot domainGroupId={domainGroupId} />
 			<Footer />
+			<Analytics mode="production"></Analytics>
 		</div>
 	);
 };
