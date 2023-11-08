@@ -17,6 +17,17 @@ export default function Newsletter() {
 
 	const [email, setEmail] = useState('');
 
+	/** 
+	 * TODO: implement cleverreach API
+	 * RESOURCES:
+	 * - https://rest.cleverreach.com/howto/index.php
+	 * - https://eu2.cleverreach.com/admin/account_rest.php
+	 * - https://eu2.cleverreach.com/admin/oauth_demo.php?code=e56b8bddd395c564eb06db7729112e7a0b9c0bc4&test=NDh0cU9qQUQ1TGM5dW5qUUk3YzFLODl3WFJQNUEwandLNC8vcEdNS2VHST0=
+	 * - https://rest.cleverreach.com/howto/#examples
+	 * 
+	*/ 
+
+
   	const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
@@ -34,7 +45,7 @@ export default function Newsletter() {
 			},
 			{
 			headers: {
-				Authorization: 'Bearer rRiuxpDunK0Q7f1CTdGK6gP4CtgqtNmz',
+				Authorization: 'Bearer {API-TOKEN}',
 				'Content-Type': 'application/json',
 			},
 			}
