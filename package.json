@@ -22,8 +22,7 @@
 		"react-dom": "^18.0.1",
 		"react-helmet": "^6.1.0",
 		"react-router-dom": "^6.3.0",
-		"storybook-react-router": "^1.0.8",
-		"web-vitals": "^3.5.0"
+		"storybook-react-router": "^1.0.8"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.18.6",
