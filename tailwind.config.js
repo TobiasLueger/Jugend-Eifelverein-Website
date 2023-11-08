@@ -17,7 +17,7 @@ module.exports = {
 				},
 			},
 			fontFamily: {
-				lato: ['"Lato"', "sans-serif"],
+				sans: ["Lato", "sans-serif"],
 			},
 			animation: {
 				bounceCenter: "bounceCenter 1s linear infinite",

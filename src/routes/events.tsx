@@ -3,8 +3,8 @@ import EventList from "../components/EventList/EventList";
 export default function Events() {
 	return (
 		<main className="pt-[116px]">
-			<h2>Events</h2>
-			<p className="ml-1 mt-2">
+			<h2>Veranstaltungen</h2>
+			<p className="mt-2 lg:pl-2">
 				Hier siehst du alle unsere tollen Veranstaltungen. Sie dich um und such
 				dir eine aus:
 			</p>

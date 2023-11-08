@@ -10,15 +10,18 @@ export default function Home() {
 		<>
 			<Stage />
 			<main>
-				<section>
+				<section className="mb-32 lg:mb-14">
 					<h2 className="mb-5">WIER</h2>
 					<TextImg
-						content="sind die Jugend des Eifel- und Heimatvereins Rheinbach. Mit unserer Internetpräsenz machen wir Mitgliedern und interessierten Gästen ein Informationsangebot zum Verein und seinen Aktivitäten.
-
-						Wir möchten Ihr Interesse am Wandern durch unser Wanderprogramm und die Wandervorschläge anregen. Wir ermutigen Sie, sich uns anzuschließen, Wandern zu Ihrem Hobby zu machen und zu erfahren: Wandern macht glücklich!
-						Bei uns werden Sie in einen Kreis freundlicher Menschen herzlich aufgenommen. Auch Gäste sind uns willkommen.
-						
-						In der Navigationsleiste (links) erhalten Sie nähere Informationen zu unserem Angebot."
+						content="
+						sind die Wanderjugend im Eifel- und Heimatverein Rheinbach. 
+						Wir führen als Jugendgruppe des Eifelvereins Rheinbach eine Vielzahl von Aktivitäten durch, die auf die Förderung der Natur- und Heimatverbundenheit junger Menschen ausgerichtet sind.
+						Dazu gehören zum Beispiel Wanderungen, Exkursionen, Naturbeobachtungen, Umweltprojekte, sowie Bildungs- und Informationsveranstaltungen.
+						Wir nehmen aber auch an Wettbewerben, Wochenendfreizeiten, Zeltlager und anderen Aktivitäten teil.
+						Außerdem initiieren und organisieren wir als Jugend eigene Projekte und Veranstaltungen.
+						Wir bieten mit unserem Angebot eine Möglichkeit für junge Menschen Gleichgesinnte zu treffen und sich aktiv für die Umwelt und die Natur einzusetzten. 
+						Auch Gäste sind bei uns herzlich willkommen.
+						"
 						picture={GroupPicImg}
 						pictureDirection="right"
 					/>
@@ -26,12 +29,14 @@ export default function Home() {
 				{/* <section className="section-colored"> */}
 				<section>
 					<h2 className="mb-5">Veranstaltungen</h2>
-					<p> Schau dir gerne unsere Veranstaltungen an.</p>
+					<p className="lg:pl-2"> Schau dir gerne unsere Veranstaltungen an.</p>
 					<EventList home={true} />
 				</section>
 				<section>
 					<h2 className="mb-5">Berichte</h2>
-					<p>Willst du interessante Berichte und News über uns?</p>
+					<p className="lg:pl-2">
+						Willst du interessante Berichte und News über uns?
+					</p>
 					<NewsList home={true} />
 				</section>
 			</main>

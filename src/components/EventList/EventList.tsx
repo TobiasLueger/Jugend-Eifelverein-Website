@@ -16,16 +16,20 @@ export default function EventList({ home }: { home?: boolean }) {
 	const maxHomeTeaser = 5;
 
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-5 mt-5">
+		<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-32 lg:mb-14 mt-5">
 			{loading &&
 				[...Array(3)].map((e, i) => (
-					<Teaser content="" loading={true} id={i} />
+					<Teaser content="" loading={true} key={i} id={i} />
 				))}
 
 			{error && <div>Leider wurden gerade keine Events gefunden</div>}
 			{home
 				? slugData.map((event: any) => {
-						if (event.acf.startseite && teasercount <= maxHomeTeaser) {
+						if (
+							event.acf.startseite &&
+							teasercount <= maxHomeTeaser &&
+							new Date(event.acf.datum) >= new Date()
+						) {
 							teasercount += 1;
 							return (
 								<NavLink
@@ -44,20 +48,22 @@ export default function EventList({ home }: { home?: boolean }) {
 						}
 				  })
 				: slugData.map((event: any) => {
-						return (
-							<NavLink
-								to={"/veranstaltungen/" + event.slug}
-								className="h-full"
-								key={event.id}
-							>
-								<Teaser
-									title={event.title.rendered}
-									content={event.acf.text}
-									data={event.acf}
-									id={event.id}
-								/>
-							</NavLink>
-						);
+						if (new Date(event.acf.datum) >= new Date()) {
+							return (
+								<NavLink
+									to={"/veranstaltungen/" + event.slug}
+									className="h-full"
+									key={event.id}
+								>
+									<Teaser
+										title={event.title.rendered}
+										content={event.acf.text}
+										data={event.acf}
+										id={event.id}
+									/>
+								</NavLink>
+							);
+						}
 				  })}
 			{home && (
 				<NavLink to={"/veranstaltungen"} className="h-full">
