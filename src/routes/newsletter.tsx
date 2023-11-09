@@ -24,7 +24,9 @@ export default function Newsletter() {
 	 * - https://eu2.cleverreach.com/admin/account_rest.php
 	 * - https://eu2.cleverreach.com/admin/oauth_demo.php?code=e56b8bddd395c564eb06db7729112e7a0b9c0bc4&test=NDh0cU9qQUQ1TGM5dW5qUUk3YzFLODl3WFJQNUEwandLNC8vcEdNS2VHST0=
 	 * - https://rest.cleverreach.com/howto/#examples
-	 * * https://rest.cleverreach.com/v3/groups.json/519468/receivers
+	 * - https://rest.cleverreach.com/explorer/v3/#!/groups-v3/create__post
+	 * 
+	 * https://rest.cleverreach.com/v3/groups.json/519468/receivers
 	 * 
 	*/ 
 
