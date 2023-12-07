@@ -1,5 +1,5 @@
 # Jugend-Eifelverein-Website
-Coole neue Jugend Seite für die Wanderjugend im Eifelverein Rheinbach
+Eine Webseite für die Wanderjugend im Eifelverein Rheinbach
 
 Start Project:
 ``yarn install``
