@@ -90,19 +90,19 @@ const ChristmasQuiz: React.FC = () => {
 		imageObjects.push({
 			x: Math.random() * (window.innerWidth - 300),
 			y: Math.random() * -400,
-			speed: 1.5 + Math.random() * 1.5,
+			speed: 0.5 + Math.random() * 1.5,
 			image,
 			animated: false,
 		});
 	}
 
-	for (let i = 0; i < 20; i++) {
+	for (let i = 0; i < 10; i++) {
 		const image = new Image();
 		image.src = muetze2;
 		imageObjects.push({
 			x: Math.random() * (window.innerWidth - 150),
 			y: Math.random() * -400,
-			speed: 1.5 + Math.random() * 1.5,
+			speed: 0.5 + Math.random() * 1.5,
 			image,
 			animated: false,
 		});
@@ -156,9 +156,14 @@ const ChristmasQuiz: React.FC = () => {
 	}, [canvasRef.current?.width, canvasRef.current?.height, buttonClickedRef.current]);
 
 	const [emailForm, setEmailForm] = useState(false);
+	const [isSendWaitlistForm, setIsSendWaitlistForm] = useState(false);
 
 	const toggleEmailForm = () => {
 		setEmailForm(!emailForm);
+	};
+
+	const gameFormSended = () => {
+		setIsSendWaitlistForm(!isSendWaitlistForm);
 	};
 
 	return (
@@ -184,31 +189,39 @@ const ChristmasQuiz: React.FC = () => {
 				</div>
 			</div>
 
-			<div className={`${emailForm ? "z-[100] opacity-100" : "-z-50 opacity-0"} flex fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl p-10 min-w-[60%] transition-all ease-in shadow-xl`}>
+			<div className={`${emailForm ? "z-[100] opacity-100" : "-z-50 opacity-0"} flex fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl p-10 min-w-[100%] md:min-w-[60%] transition-all ease-in shadow-xl`}>
 				<X size={32} className="text-blueMidnight absolute top-5 right-10 cursor-pointer" weight="bold" onClick={toggleEmailForm} />
 
-				<form onSubmit={handleSubmit} className="w-full">
-					<label className="text-lg">Vorname*</label>
-					<input type="text" name="from_name" onChange={handleInputName} required />
-					<label className="text-lg mt-4">Nachname*</label>
-					<input type="text" name="from_name" onChange={handleInputLastName} required />
-					<label className="text-lg mt-4">Email*</label>
-					<input type="email" name="from_email" onChange={handleInputEmail} required />
-					<label className="text-lg mt-4">Lösung*</label>
-					<input type="number" name="from_child" onChange={handleInputEntry} required />
-					<div className="flex gap-2 items-center mt-4">
-						<input type="checkbox" id="checkbox_id" required />
-						<label htmlFor="checkbox_id" className="p-0 m-0">
-							{" "}
-							Ich akzeptiere die{" "}
-							<a href="/datenschutz#weihnachtsraetsel" className="text-greenDefault underline">
-								Teilnahmebedingungen
-							</a>{" "}
-							des Weihnachtsrätsels.
-						</label>
+				{isSendWaitlistForm ? (
+					<div className="py-5">
+						<h4 className="mb-4 mt-4">Danke für deine Teilnahme :)</h4>
+						<h5>Du wirst von uns kontaktiert falls du gewonnen hast.</h5>
 					</div>
-					<input type="submit" value="Anmelden" className="btn !text-white mt-4" />
-				</form>
+				) : (
+					<form onSubmit={handleSubmit} className="w-full">
+						<label className="text-lg">Vorname*</label>
+						<input type="text" name="from_name" onChange={handleInputName} required />
+						<label className="text-lg mt-4">Nachname*</label>
+						<input type="text" name="from_name" onChange={handleInputLastName} required />
+						<label className="text-lg mt-4">Email*</label>
+						<input type="email" name="from_email" onChange={handleInputEmail} required />
+						<label className="text-lg mt-4">Lösung*</label>
+						<input type="number" name="from_child" onChange={handleInputEntry} required />
+						<div className="flex gap-2 items-center mt-4">
+							<input type="checkbox" id="checkbox_id" required />
+							<label htmlFor="checkbox_id" className="p-0 m-0">
+								{" "}
+								Ich akzeptiere die{" "}
+								<a href="/datenschutz#weihnachtsraetsel" className="text-greenDefault underline">
+									Teilnahmebedingungen
+								</a>{" "}
+								des Weihnachtsrätsels.
+							</label>
+						</div>
+						<input type="submit" value="Anmelden" className="btn !text-white mt-4 mb-4" onClick={gameFormSended} />
+						<span>* Pflichtfelder</span>
+					</form>
+				)}
 			</div>
 		</main>
 	);
