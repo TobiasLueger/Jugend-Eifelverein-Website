@@ -55,6 +55,7 @@ const ChristmasQuiz: React.FC = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		sendEmail(event);
+		setIsSendWaitlistForm(!isSendWaitlistForm);
 	};
 
 	const calculateCanvasSize = () => {
@@ -162,10 +163,6 @@ const ChristmasQuiz: React.FC = () => {
 		setEmailForm(!emailForm);
 	};
 
-	const gameFormSended = () => {
-		setIsSendWaitlistForm(!isSendWaitlistForm);
-	};
-
 	return (
 		<main className="pt-[116px] pb-96">
 			<h2>Weihnachtsquiz</h2>
@@ -218,7 +215,7 @@ const ChristmasQuiz: React.FC = () => {
 								des Weihnachtsrätsels.
 							</label>
 						</div>
-						<input type="submit" value="Teilnehmen" className="btn !text-white mt-4 mb-4" onClick={gameFormSended} />
+						<input type="submit" value="Teilnehmen" className="btn !text-white mt-4 mb-4" />
 						<span>* Pflichtfelder</span>
 					</form>
 				)}
