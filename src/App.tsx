@@ -10,12 +10,12 @@ import Event from "./routes/event";
 import NewsPage from "./routes/newsPage";
 import News from "./routes/news";
 import NotFound from "./routes/notFound";
-/* import axios from "axios"; */
 import "./styles/tailwind.css";
 import Impressum from "./routes/impressum";
 import Datenschutz from "./routes/datenschutz";
 import CookieBot from "react-cookiebot";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
+import ChristmasQuiz from "./routes/christmasquiz";
 
 const domainGroupId = "7ac8eac0-7fec-493e-a324-eb874ee8aebc";
 
@@ -39,6 +39,7 @@ const App: React.FC<footerProps> = () => {
 				<Route path="/datenschutz" element={<Datenschutz />} />
 				<Route path="/veranstaltungen/:id" element={<Event />} />
 				<Route path="/berichte/:id" element={<NewsPage />} />
+				<Route path="/weihnachtsquiz" element={<ChristmasQuiz />} />
 			</Routes>
 			<CookieBot domainGroupId={domainGroupId} />
 			<Footer />
