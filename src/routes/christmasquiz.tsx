@@ -213,12 +213,12 @@ const ChristmasQuiz: React.FC = () => {
 								{" "}
 								Ich akzeptiere die{" "}
 								<a href="/datenschutz#weihnachtsraetsel" className="text-greenDefault underline">
-									Teilnahmebedingungen
+									Datenschutz- und Teilnahmebedingungen
 								</a>{" "}
 								des Weihnachtsrätsels.
 							</label>
 						</div>
-						<input type="submit" value="Anmelden" className="btn !text-white mt-4 mb-4" onClick={gameFormSended} />
+						<input type="submit" value="Teilnehmen" className="btn !text-white mt-4 mb-4" onClick={gameFormSended} />
 						<span>* Pflichtfelder</span>
 					</form>
 				)}
