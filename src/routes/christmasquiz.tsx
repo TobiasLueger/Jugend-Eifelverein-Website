@@ -206,7 +206,7 @@ const ChristmasQuiz: React.FC = () => {
 						<label className="text-lg mt-4">Email*</label>
 						<input type="email" name="from_email" onChange={handleInputEmail} required />
 						<label className="text-lg mt-4">Lösung*</label>
-						<input type="number" name="from_child" onChange={handleInputEntry} required />
+						<input type="number" placeholder="7 oder 10 oder 12?" name="from_child" onChange={handleInputEntry} required />
 						<div className="flex gap-2 items-center mt-4">
 							<input type="checkbox" id="checkbox_id" required />
 							<label htmlFor="checkbox_id" className="p-0 m-0">
