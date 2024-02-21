@@ -45,12 +45,13 @@ const ChristmasQuiz: React.FC = () => {
 			Host: "smtp.elasticemail.com",
 			Username: "tobias-lueger@web.de",
 			Password: "E69AD8FBA84F5B6C9A678289749C33C01C3F",
-			To: "stefan-lueger@web.de",
+			To: "tobias-lueger@web.de",
 			From: "tobias-lueger@web.de",
 			Subject: `Weihnachtsrätsel Ergebnis von ${inputName} ${inputLastName}`,
 			Body: `${inputName} ${inputLastName} hat teilgenommen und sein Ergebnis ist:<br/>${inputEntry}<br/><br/> Er hat mit der Email ${inputEmail} teilgenommen. <br/><br/><br/>`,
 		}).then((message) => console.log("sended"));
 	};
+	//stefan-lueger@web.de
 
 	const handleSubmit = (event) => {
 		event.preventDefault();

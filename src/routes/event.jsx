@@ -156,12 +156,20 @@ export default function Event() {
 								<p className="mt-3" dangerouslySetInnerHTML={{ __html: data.acf.text }}></p>
 								<p className={`text-red ${data.acf.ausgebucht ? "mt-5 before:content-['❗'] flex" : "!hidden"}`}>Leider ist diese Veranstaltung derzeit ausgebucht. Trage Dich gerne auf unserer Warteliste ein. Wir informieren Dich, sobald ein Platz frei wird.</p>
 								<div className="flex gap-5 flex-wrap">
-									<button title="Anmelden" className="btn !w-[100%] lg:!w-fit mt-6" onClick={toggleEmailForm} disabled={data.acf.ausgebucht ? true : false}>
-										Anmelden
-									</button>
-									<button title="Warteliste" className={`btn !w-[100%] lg:!w-fit mt-4 lg:mt-6 ${data.acf.ausgebucht ? "" : "!hidden"}`} onClick={toggleWaitlistForm}>
-										Zur Warteliste
-									</button>
+									{data.acf.externe_anmeldung ? (
+										<a title="Anmelden" className="btn !w-[100%] lg:!w-fit mt-6" href={data.acf.externe_anmeldung} disabled={data.acf.ausgebucht ? true : false}>
+											Anmelden
+										</a>
+									) : (
+										<>
+											<button title="Anmelden" className="btn !w-[100%] lg:!w-fit mt-6" onClick={toggleEmailForm} disabled={data.acf.ausgebucht ? true : false}>
+												Anmelden
+											</button>
+											<button title="Warteliste" className={`btn !w-[100%] lg:!w-fit mt-4 lg:mt-6 ${data.acf.ausgebucht ? "" : "!hidden"}`} onClick={toggleWaitlistForm}>
+												Zur Warteliste
+											</button>
+										</>
+									)}
 								</div>
 							</div>
 							<div className="w-full max-w-[100%] basis-[100%] lg:max-w-[50%] lg:basis-[50%] grow-0 shrink-0">
