@@ -34,9 +34,7 @@ export default function Home() {
 				</section>
 				<section>
 					<h2 className="mb-5">Berichte</h2>
-					<p className="lg:pl-2">
-						Willst du interessante Berichte und News über uns?
-					</p>
+					<p className="lg:pl-2">Willst du interessante Berichte und News über uns?</p>
 					<NewsList home={true} />
 				</section>
 			</main>

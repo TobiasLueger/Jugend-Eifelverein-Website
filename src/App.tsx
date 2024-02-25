@@ -9,6 +9,9 @@ import Events from "./routes/events";
 import Event from "./routes/event";
 import NewsPage from "./routes/newsPage";
 import News from "./routes/news";
+import Login from "./routes/login";
+import Dashboard from "./routes/dashboard";
+Dashboard;
 import NotFound from "./routes/notFound";
 import "./styles/tailwind.css";
 import Impressum from "./routes/impressum";
@@ -39,6 +42,8 @@ const App: React.FC<footerProps> = () => {
 				<Route path="/datenschutz" element={<Datenschutz />} />
 				<Route path="/veranstaltungen/:id" element={<Event />} />
 				<Route path="/berichte/:id" element={<NewsPage />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/dashboard" element={<Dashboard />} />
 				{/* <Route path="/weihnachtsquiz" element={<ChristmasQuiz />} /> */}
 			</Routes>
 			<CookieBot domainGroupId={domainGroupId} />
