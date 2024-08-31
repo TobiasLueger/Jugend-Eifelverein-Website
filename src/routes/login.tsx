@@ -13,8 +13,6 @@ export default function Login() {
 		internPassword = INTERN_PASSWORD;
 	}
 
-	console.log(INTERN_PASSWORD);
-
 	const [pass, setPass] = useState("");
 	const [error, setError] = useState(false);
 

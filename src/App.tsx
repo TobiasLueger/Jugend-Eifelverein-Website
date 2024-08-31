@@ -27,7 +27,6 @@ interface footerProps {
 	allData?: object;
 }
 
-// TODO: Make Login and Dashboard Route https://www.robinwieruch.de/react-router-private-routes/
 const App: React.FC<footerProps> = () => {
 	const [hasCookieBot, setHasCookieBot] = useState(undefined);
 
