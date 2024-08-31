@@ -30,6 +30,9 @@ const Footer = ({}) => {
 						<a href="https://eifelverein-rheinbach.de/" target="blank" className="font-lato text-[20px] lg:text-[18px] text-center lg:text-left hover:text-greenLight transition-all">
 							Eifelverein
 						</a>
+						<NavLink className={({ isActive }) => (isActive ? navItemAvtive : navItemDefault)} to="/intern">
+							Intern
+						</NavLink>
 						<a href="https://jugend.eifel-53359.de/api/wp-admin" target="blank" className="font-lato text-[20px] lg:text-[18px] text-center lg:text-left hover:text-greenLight transition-all">
 							Login
 						</a>
