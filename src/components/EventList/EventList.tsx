@@ -10,7 +10,11 @@ export default function EventList({ home }: { home?: boolean }) {
 		loading,
 		error,
 	}: { slugData: any; loading: boolean; error: boolean } =
-		useSlugData("events");
+		useSlugData("events",
+			false,
+			false,
+			true
+		);
 
 	let teasercount = 0;
 	const maxHomeTeaser = 5;

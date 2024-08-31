@@ -11,7 +11,7 @@ const getData = (slug, single) => {
 	}
 };
 
-const useSlugData = (slugtype, single = false, news = false) => {
+const useSlugData = (slugtype, single = false, news = false, events = false) => {
 	const [slugData, setSlugData] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
@@ -26,12 +26,14 @@ const useSlugData = (slugtype, single = false, news = false) => {
 							new Date(...b.acf.datum.split("/")) -
 							new Date(...a.acf.datum.split("/"))
 					);
-				} else {
+				} else if (events) {
 					sortAfterDate = response.data.sort(
 						(a, b) =>
 							new Date(...a.acf.datum.split("/")) -
 							new Date(...b.acf.datum.split("/"))
 					);
+				} else {
+					sortAfterDate = response.data;
 				}
 
 				setSlugData(sortAfterDate);

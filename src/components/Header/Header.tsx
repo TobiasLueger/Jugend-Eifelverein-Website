@@ -7,7 +7,7 @@ import UserContext from "../User/UserContext";
 const Header = ({}) => {
 	const [isNavActive, setNavActive] = useState();
 
-	const { user } = useContext(UserContext);
+	const { user, handleLogout } = useContext(UserContext);
 
 	const toggleClass = (state: any = undefined) => {
 		setNavActive(state === undefined ? !isNavActive : state);

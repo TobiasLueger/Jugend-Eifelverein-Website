@@ -4,23 +4,7 @@ import Pill from "../Pill/Pill";
 import { useState } from "react";
 import defaultImg from "../../../src/images/default.jpg";
 
-export default function Teaser({
-	title,
-	content,
-	data,
-	id,
-	showMore = false,
-	loading = false,
-	layout = "event",
-}: {
-	title?: string;
-	content: string;
-	data?: any;
-	id?: number;
-	showMore?: boolean;
-	loading?: boolean;
-	layout?: string;
-}) {
+export default function Teaser({ title, content, data, id, showMore = false, loading = false, layout = "event" }: { title?: string; content: string; data?: any; id?: number; showMore?: boolean; loading?: boolean; layout?: string }) {
 	const [hover, setHover] = useState(false);
 	const [delayHandler, setDelayHandler] = useState(setTimeout(() => {}));
 
@@ -37,12 +21,7 @@ export default function Teaser({
 		setHover(false);
 	};
 	return (
-		<div
-			className="teaser w-full h-full relative block group hover:z-[1] min-w-[300px] md:min-w-0"
-			key={id}
-			onMouseEnter={handleMouseEnter}
-			onMouseLeave={handleMouseLeave}
-		>
+		<div className="teaser w-full h-full relative block group hover:z-[1] min-w-[300px] md:min-w-0" key={id} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
 			{loading ? (
 				<>
 					<div className="bg-greyLoading w-full h-[179px]a lg:h-[210px] relative overflow-hidden object-cover rounded-[12px] animate-pulse">
@@ -74,21 +53,15 @@ export default function Teaser({
 			) : (
 				<div className="w-full h-[179px]a lg:h-[210px] relative bg-greyloading overflow-hidden object-cover rounded-[12px]">
 					{showMore ? (
-						<div className="bg-greyDark h-[179px] lg:h-[210px] w-full text-white font-bold text-4xl flex justify-center items-center px-3 transition-all group-hover:text-3xl">
-							MEHR...
-						</div>
+						<div className="bg-greyDark h-[179px] lg:h-[210px] w-full text-white font-bold text-4xl flex justify-center items-center px-3 transition-all group-hover:text-3xl">MEHR...</div>
 					) : (
 						<>
-							<img
-								className="w-full h-[179px] lg:h-[210px] relative overflow-hidden object-cover transition-all group-hover:scale-[102%]"
-								src={data.bild ? data.bild : defaultImg}
-								alt={title}
-							/>
+							<img className="w-full h-[179px] lg:h-[210px] relative overflow-hidden object-cover transition-all group-hover:scale-[102%]" src={data.bild ? data.bild : defaultImg} alt={title} />
 							{layout == "event" && (
 								<>
 									{data.ausgebucht && (
 										<div className="absolute bottom-[10px] lg:bottom-[15px] right-[10px] lg:right-[15px]">
-											<Pill bookedUp={data.ausgebucht} />
+											<Pill waitlist={data.ausgebucht} />
 										</div>
 									)}
 									{data.freie_plaetze && (

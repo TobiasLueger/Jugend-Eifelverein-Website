@@ -18,7 +18,7 @@ const UserProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 
 	useEffect(() => {
-		if (localStorage.getItem("login")) {
+		if (localStorage.getItem("0fdaf5dd-d91b-4f8c-be18-fb1e89a5adc0")) {
 			setUser({ id: "1", name: "robin" });
 		}
 	}, []);
@@ -26,14 +26,13 @@ const UserProvider = ({ children }) => {
 	const handleLogin = (pass) => {
 		if (pass == internPassword) {
 			setUser({ id: "1", name: "robin" });
-			localStorage.setItem("login", "true");
-			console.log(pass);
+			localStorage.setItem("0fdaf5dd-d91b-4f8c-be18-fb1e89a5adc0", "true");
 			navigate("/intern");
 		}
 	};
 	const handleLogout = () => {
 		setUser(null);
-		localStorage.removeItem("login");
+		localStorage.removeItem("0fdaf5dd-d91b-4f8c-be18-fb1e89a5adc0");
 	};
 
 	return <UserContext.Provider value={{ user, handleLogin, handleLogout }}>{children}</UserContext.Provider>;
