@@ -5,8 +5,6 @@ import { INTERN_PASSWORD } from "../lib/Env";
 export default function Login() {
 	let internPassword: any;
 
-	console.log("ENVS:",process.env)
-
 	if (process.env.NODE_ENV === "production") {
 		// For production
 		internPassword = process.env.VERCEL_INTERN_PASSWORD;
