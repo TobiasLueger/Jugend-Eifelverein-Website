@@ -9,6 +9,7 @@ const navItemAvtive = "font-lato text-[20px] lg:text-[18px] text-center lg:text-
 const navItemDefault = "font-lato text-[20px] lg:text-[18px] text-center lg:text-left hover:text-greenLight transition-all";
 
 const Footer = ({}) => {
+	const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 	return (
 		<footer className="w-full text-white bottom-0">
 			<img src={footerImg} alt="Bild von zwei Rehen im Wald" className="w-[102%] relative -left-[2px] -bottom-[5px] max-w-[102%]"></img>
@@ -68,7 +69,7 @@ const Footer = ({}) => {
 				<div className="relative left-2/4 -translate-x-1/2 w-11/12 py-4 flex flex-col lg:flex-row justify-center lg:justify-between items-center">
 					<div className="flex flex-row items-center">
 						<Copyright size={16} className="text-white" weight="bold" />
-						2023 WIER. All Right Reserved
+						{currentYear} WIER. All Right Reserved
 					</div>
 					<div>
 						<Link className="font-lato text-[16px] mr-4" to="/impressum">
