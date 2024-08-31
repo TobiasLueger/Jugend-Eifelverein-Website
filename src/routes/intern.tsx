@@ -70,7 +70,7 @@ export default function Intern() {
             <h3 className="text-xl font-semibold mb-4">Bilder</h3>
             <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {images.map((img: any) => (
-                <li key={img.id} className="relative border border-gray-300 rounded-lg flex justify-center items-center">
+                <li key={img.id} className="relative border border-gray-300 rounded-lg flex justify-center items-center shadow-sm hover:shadow-md transition-shadow">
 									<a
                     href={img.acf.data.url}
                     download={img.acf.data.alt || img.title.rendered} // This ensures the image is downloaded instead of opened
