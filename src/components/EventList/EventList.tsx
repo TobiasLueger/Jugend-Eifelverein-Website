@@ -1,8 +1,6 @@
 import Teaser from "../Teaser/Teaser";
 import useSlugData from "../../lib/getData";
-import { CircleNotch } from "phosphor-react";
 import { NavLink } from "react-router-dom";
-import Button from "../Button/Button";
 
 export default function EventList({ home }: { home?: boolean }) {
 	const {
