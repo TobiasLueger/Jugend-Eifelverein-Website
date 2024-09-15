@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { List, X } from "phosphor-react";
 import logoImg from "../../../src/images/wier-logo.jpeg";
 import UserContext from "../User/UserContext";
+import Button from "../Button/Button";
 
 const Header = ({}) => {
 	const [isNavActive, setNavActive] = useState();
@@ -76,6 +77,10 @@ const Header = ({}) => {
 								)}
 							</ul>
 						</nav>
+						<NavLink className={({ isActive }) => (isActive ? navItemAvtive : navItemDefault)} to="/shop" onClick={() => toggleClass(false)}>
+							<Button title="Shop"/>
+						</NavLink>
+						
 					</div>
 				</div>
 			</div>

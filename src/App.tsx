@@ -19,6 +19,7 @@ import CookieBot from "react-cookiebot";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import UserProvider from "./components/User/UserProvider";
 import { Analytics } from "@vercel/analytics/react";
+import Shop from "./routes/shop";
 // import ChristmasQuiz from "./routes/christmasquiz";
 
 const domainGroupId = "7ac8eac0-7fec-493e-a324-eb874ee8aebc";
@@ -54,6 +55,7 @@ const App: React.FC<footerProps> = () => {
 					<Route path="/datenschutz" element={<Datenschutz />} />
 					<Route path="/veranstaltungen/:id" element={<Event />} />
 					<Route path="/berichte/:id" element={<NewsPage />} />
+					<Route path="/shop" element={<Shop />} />
 					{/* <Route path="/weihnachtsquiz" element={<ChristmasQuiz />} /> */}
 				</Routes>
 				<CookieBot domainGroupId={domainGroupId} />
