@@ -21,7 +21,7 @@ export default function Article({ title, data, id, loading = false }: { title?: 
 		setHover(false);
 	};
 	return (
-		<div className="teaser w-full h-full relative block group hover:z-[1] min-w-[300px] md:min-w-0 flex flex-col justify-between" key={id} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+		<div className={`teaser w-full h-full relative block group hover:z-[1] min-w-[300px] md:min-w-0`} key={id} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
 			{loading ? (
 				<>
 					<div className="bg-greyLoading w-full h-[179px]a lg:h-[210px] relative overflow-hidden object-cover rounded-[12px] animate-pulse">
@@ -51,8 +51,13 @@ export default function Article({ title, data, id, loading = false }: { title?: 
 					</div>
 				</>
 			) : (
-				<div className="w-full relative bg-greyloading overflow-hidden rounded-[12px]">
+				<div className={`w-full relative bg-greyloading overflow-hidden rounded-[12px] ${data.ausverkauft && "grayscale"}`}>
 					<img className="w-full relative overflow-hidden object-contain transition-all group-hover:scale-[102%]" src={data.artikel_bild ? data.artikel_bild : defaultImg} alt={title} />
+					{data.ausverkauft &&
+						<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+							<Pill lowPrice={data.ausverkauft} />
+						</div>
+					}
 				</div>
 			)}
 
@@ -62,11 +67,6 @@ export default function Article({ title, data, id, loading = false }: { title?: 
 						<div className="ml-3">
 							<h3 className="h5 mt-3 mb-2 flex gap-4 items-center">
 								{title}
-								{data.runtergesetzt && (
-									<div className=" lg:bottom-[15px] right-[10px] lg:right-[15px]">
-										<Pill lowPrice={data.runtergesetzt} />
-									</div>
-								)}
 							</h3>
 							{data.artikel_preis && 
 								<div className="flex flex-row gap-1">
@@ -79,6 +79,19 @@ export default function Article({ title, data, id, loading = false }: { title?: 
 									<p className={`m-0 mb-1 items-center flex ${data.runtergesetzt && "text-greyLoading line-through"}`}>
 										<span className="self-start">€</span>
 										{data.artikel_preis}
+									</p>
+									{data.runtergesetzt && (
+										"🔥"
+									)}
+								</div>
+							}
+							{data.artikel_groesen &&
+								<div className="flex flex-row gap-1">
+									<p className="m-0 mb-1 items-center flex gap-1">
+										<span className="self-start">Größen:</span>
+										{data.artikel_groesen_nummern && data.artikel_groesen_nummern.map((size: any, key:number) => {
+											return <span>{size}{data.artikel_groesen_nummern.length != (key + 1) && ","} </span>;
+										})}
 									</p>
 								</div>
 							}
