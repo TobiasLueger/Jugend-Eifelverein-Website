@@ -45,6 +45,10 @@
 		@apply relative text-white before:absolute before:bg-red before:w-screen before:h-full;
 	}
 
+	.generatedText a{
+		@apply text-greenLight hover:text-greenDefault;
+	}
+
 	/* Cookiebot-Styles */
 	#CybotCookiebotDialogPoweredByText,
 	#CybotCookiebotDialogPoweredbyImage,
