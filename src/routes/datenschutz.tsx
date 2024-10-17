@@ -80,7 +80,7 @@ export default function Datenschutz() {
 				Eifel- und Heimatverein Rheinbach e.V.<br></br>
 				Koenenweg 83<br></br>
 				53359 Rheinbach<br></br>
-				Telefon: 02226/9097751<br></br>
+				Telefon: 02226/8989061<br></br>
 				E-Mail: peter.kempf@eifel-53359.de<br></br>
 				<br></br>
 				Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.
