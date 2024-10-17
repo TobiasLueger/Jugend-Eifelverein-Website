@@ -57,7 +57,7 @@ const Footer = ({}) => {
 						<p className="mb-5 mt-5 flex lg:justify-end justify-center lg:items-end items-center flex-col">
 							<span>Koenenweg 83,</span>
 							<span className="mb-5">53359 Rheinbach</span>
-							<span>02226/9097751</span>
+							<span>02226/8989061</span>
 						</p>
 						<a href="https://eifelverein-rheinbach.de/" className="flex items-center h-full">
 							<img src={eifelvereinLogoImg} alt="Logo" className="w-[100px]" />

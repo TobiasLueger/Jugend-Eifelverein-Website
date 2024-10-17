@@ -9,7 +9,7 @@ export default function Impressum() {
 			<p>Koenenweg 83</p>
 			<p>53359 Rheinbach</p>
 			<br></br>
-			<p>Telefon: 02226/9097751</p>
+			<p>Telefon: 02226/8989061</p>
 			<br></br>
 			<p>
 				e-Mail: <a href="mailto: peter.kempf@eifel-53359.de">peter.kempf@eifel-53359.de</a>
