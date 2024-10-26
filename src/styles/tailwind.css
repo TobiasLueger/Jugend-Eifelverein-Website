@@ -17,6 +17,10 @@
 		@apply font-bold rounded-xl bg-greenDefault hover:bg-greenLight transition-all w-fit text-white py-[12px] px-[70px] block cursor-pointer disabled:bg-slate-300 disabled:cursor-no-drop;
 	}
 
+	.btn-secondary {
+		@apply font-bold rounded-xl border-greenDefault border-2 bg-white hover:text-greenLight hover:border-greenLight transition-all w-fit text-greenDefault py-[12px] px-[70px] block cursor-pointer disabled:bg-slate-300 disabled:cursor-no-drop;
+	}
+
 	.h1 {
 		@apply font-sans font-bold text-[24px] leading-[24px] lg:text-[55px] lg:leading-[55px];
 	}
