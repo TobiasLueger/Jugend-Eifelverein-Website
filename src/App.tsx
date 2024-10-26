@@ -20,6 +20,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import UserProvider from "./components/User/UserProvider";
 import { Analytics } from "@vercel/analytics/react";
 import Shop from "./routes/shop";
+import NewsletterDialog from "./components/NewsletterDialog/NewsletterDialog";
 // import ChristmasQuiz from "./routes/christmasquiz";
 
 const domainGroupId = "7ac8eac0-7fec-493e-a324-eb874ee8aebc";
@@ -59,6 +60,7 @@ const App: React.FC<footerProps> = () => {
 					{/* <Route path="/weihnachtsquiz" element={<ChristmasQuiz />} /> */}
 				</Routes>
 				<CookieBot domainGroupId={domainGroupId} />
+				<NewsletterDialog />
 				<Footer />
 				<Analytics mode="production"></Analytics>
 			</div>
