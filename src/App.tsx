@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Newsletter from "./routes/newsletter";
 import Home from "./routes/home";
 import About from "./routes/about";
@@ -20,6 +20,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import UserProvider from "./components/User/UserProvider";
 import { Analytics } from "@vercel/analytics/react";
 import NewsletterDialog from "./components/NewsletterDialog/NewsletterDialog";
+import Game from "./components/Game/Game";
 // import ChristmasQuiz from "./routes/christmasquiz";
 
 const domainGroupId = "7ac8eac0-7fec-493e-a324-eb874ee8aebc";
@@ -31,10 +32,15 @@ interface footerProps {
 const App: React.FC<footerProps> = () => {
 	const [hasCookieBot, setHasCookieBot] = useState(undefined);
 
+	const location = useLocation();
+  const { pathname } = location;
+
 	return (
 		<UserProvider>
 			<div className="App bg-greyLight relative overflow-hidden min-h-screen flex flex-col justify-between">
-				<Header />
+				{pathname !== "/game" &&
+					<Header />
+				}
 				<Routes>
 					<Route path="*" element={<NotFound />} />
 					<Route path="/" element={<Home />} />
@@ -56,10 +62,13 @@ const App: React.FC<footerProps> = () => {
 					<Route path="/veranstaltungen/:id" element={<Event />} />
 					<Route path="/berichte/:id" element={<NewsPage />} />
 					{/* <Route path="/weihnachtsquiz" element={<ChristmasQuiz />} /> */}
+					<Route path="/game" element={<Game />} />
 				</Routes>
 				<CookieBot domainGroupId={domainGroupId} />
 				<NewsletterDialog />
-				<Footer />
+				{pathname !== "/game" &&
+					<Footer />
+				}
 				<Analytics mode="production"></Analytics>
 			</div>
 		</UserProvider>
