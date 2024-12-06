@@ -9,9 +9,11 @@ import {
 import { Link } from "react-router-dom";
 import { Heart, Lightning, FirstAidKit } from "phosphor-react";
 import logoImg from "../../../src/images/favicon.png";
+import gameStartScreen from "../../../src/images/game/gameStartScreen.png";
+import playerChoiceSprite from "../../../src/images/game/playerChoiceSprite.png";
 
 const Game = () => {
-  const [phase, setPhase] = useState("intro");
+  const [phase, setPhase] = useState("start");
   const [selectedRoute, setSelectedRoute] = useState(null);
   const [preparationStep, setPreparationStep] = useState(0);
   const [day, setDay] = useState(1);
@@ -28,6 +30,10 @@ const Game = () => {
   const [laterEffectsQueue, setLaterEffectsQueue] = useState([]);
   const [showTip, setShowTip] = useState(false);
   const [currentTip, setCurrentTip] = useState("");
+  const [isMusicEnabled, setIsMusicEnabled] = useState(true);
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [hoveredCharacter, setHoveredCharacter] = useState(null);
+  const [characterFrame, setCharacterFrame] = useState(0);
 
   const introTexts = [
     "Stell dir vor, du bist auf einer 30-tägigen Wanderreise.",
@@ -40,21 +46,151 @@ const Game = () => {
 
   const audioRef = useRef(null);
 
+  const pixelatedStyle = {
+    imageRendering: "pixelated" as const,
+    imageRendering: "-moz-crisp-edges" as const,
+    imageRendering: "-webkit-crisp-edges" as const,
+  };
+
+  const startScreenStyle = {
+    ...pixelatedStyle,
+    backgroundImage: `url(${gameStartScreen})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    height: "100vh",
+    width: "100vw",
+    display: "flex",
+    flexDirection: "column" as const,
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative" as const,
+  };
+
   const startPreparation = async () => {
     setPhase("preparation");
-    try {
-      if (audioRef.current) {
-        await audioRef.current.play();
-      }
-    } catch (error) {
-      console.error("Audio playback failed:", error);
-    }
   };
 
   const selectRoute = (route) => {
     setSelectedRoute(route);
     setPhase("game");
   };
+
+  const toggleMusic = () => {
+    setIsMusicEnabled(!isMusicEnabled);
+  };
+
+  const startGame = () => {
+    setPhase("character-select");
+  };
+
+  const selectCharacter = (index) => {
+    setSelectedCharacter(index);
+    setPhase("intro");
+  };
+
+  useEffect(() => {
+    if (audioRef.current) {
+      if (isMusicEnabled) {
+        audioRef.current.play().catch(console.error);
+      } else {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+    }
+  }, [isMusicEnabled, phase]);
+
+  const SPRITE_WIDTH = 170.6666666667; // Each character is 170x170 in the 1024x1024 sprite sheet
+  const SPRITE_HEIGHT = 256;
+  const COLUMNS = 6;
+  const ROWS = 4;
+  const TOTAL_CHARACTERS = COLUMNS * ROWS;
+  const DISPLAY_SIZE = 150; // Size of the display box for each character
+
+  const characterSelectionStyle = {
+    container: {
+      background: "#1a1a1a",
+      minHeight: "100vh",
+      padding: "2rem",
+      display: "flex",
+      flexDirection: "column" as const,
+      alignItems: "center",
+    },
+    grid: {
+      display: "grid",
+      gridTemplateColumns: "repeat(6, 1fr)",
+      gap: "1rem",
+      width: "100%",
+      maxWidth: "1024px",
+      aspectRatio: "1",
+      padding: "2rem",
+      background: "rgba(0, 0, 0, 0.5)",
+      borderRadius: "1rem",
+    },
+    characterBox: {
+      width: "100%",
+      position: "relative" as const,
+      cursor: "pointer",
+      transition: "all 0.3s ease",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      perspective: "1000px",
+      overflow: "hidden",
+      border: "2px solid transparent",
+      borderRadius: "0.5rem",
+      background: "rgba(0, 0, 0, 0.3)",
+    },
+    character: {
+      width: "100%",
+      height: "100%",
+      position: "relative" as const,
+      overflow: "hidden",
+      imageRendering: "pixelated" as const,
+    },
+    selected: {
+      transform: "scale(1.05)",
+      borderColor: "rgb(74, 222, 128)",
+      boxShadow: "0 0 20px rgba(74, 222, 128, 0.3)",
+    },
+    spritesheet: {
+      position: "absolute" as const,
+      minWidth: "calc(1024px + 32px)",
+      height: "calc(1024px + 32px)",
+      imageRendering: "pixelated" as const,
+      transformOrigin: "top left",
+    },
+    characterName: {
+      position: "absolute" as const,
+      bottom: "-25px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      color: "white",
+      fontSize: "0.9rem",
+      whiteSpace: "nowrap" as const,
+      textAlign: "center" as const,
+      textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
+    },
+  };
+
+  const getCharacterName = (index) => {
+    const names = [
+      "Wanderer", "Bergsteiger", "Scout", "Ranger",
+      "Abenteurer", "Entdecker", "Naturfreund", "Pfadfinder",
+      "Kletterer", "Forscher", "Guide", "Sammler",
+      "Camper", "Tracker", "Pionier", "Navigator",
+      "Späher", "Waldläufer", "Reisender", "Erkunder",
+      "Wanderführer", "Naturkundler", "Bergführer", "Wegweiser"
+    ];
+    return names[index];
+  };
+
+  useEffect(() => {
+    const animationInterval = setInterval(() => {
+      setCharacterFrame((prev) => (prev + 1) % 2); // Toggle between 0 and 1 for idle animation
+    }, 500); // Change frame every 500ms
+
+    return () => clearInterval(animationInterval);
+  }, []);
 
   useEffect(() => {
     if (phase === "intro" && introIndex < introTexts.length) {
@@ -75,7 +211,6 @@ const Game = () => {
     };
   }, []);
 
-  // Funktion zum Anwenden von laterEffects
   const applyLaterEffects = () => {
     if (laterEffectsQueue.length > 0) {
       const effects = laterEffectsQueue.shift();
@@ -109,18 +244,15 @@ const Game = () => {
     );
     setLog((prevLog) => [...prevLog, `${message}`]);
 
-    // Füge späteren Effekt hinzu, falls vorhanden
     if (laterEffects) {
       setLaterEffectsQueue((prevQueue) => [...prevQueue, laterEffects]);
     }
 
-    // Zeige den Tipp an
     if (tip) {
       setCurrentTip(tip);
       setShowTip(true);
     }
 
-    // Verzögere die Anzeige der nächsten Entscheidung, um die Animation abzuwarten
     setTimeout(() => {
       setSelectedOption(null);
       setShowTip(false);
@@ -165,7 +297,6 @@ const Game = () => {
     return "bg-red-500";
   };
 
-  // Bestimmen der aktuellen Entscheidung basierend auf dem Phase und Route
   let currentDecision;
   if (phase === "preparation") {
     currentDecision = preparationDecisions[preparationStep];
@@ -179,7 +310,6 @@ const Game = () => {
     }
   }
 
-  // Slider-Optionen für die Routenwahl
   const routeOptions = [
     { value: 0, label: "Leicht", route: "easy" },
     { value: 50, label: "Mittel", route: "medium" },
@@ -187,12 +317,10 @@ const Game = () => {
   ];
   const [sliderValue, setSliderValue] = useState(50);
 
-  // Funktion zur Handhabung der Slider-Änderung
   const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
   };
 
-  // Funktion zur Bestätigung der Routenwahl
   const confirmRouteSelection = () => {
     let selected;
     if (sliderValue < 33) {
@@ -205,13 +333,147 @@ const Game = () => {
     selectRoute(selected);
   };
 
+  if (phase === "start") {
+    return (
+      <div style={startScreenStyle}>
+        <div style={{
+          background: "rgba(0, 0, 0, 0.7)",
+          padding: "2rem",
+          borderRadius: "10px",
+          textAlign: "center",
+          color: "white",
+        }}>
+          <h1 style={{ fontSize: "2.5rem", marginBottom: "2rem" }}>Wanderreise</h1>
+          <button
+            onClick={toggleMusic}
+            style={{
+              padding: "1rem 2rem",
+              margin: "1rem",
+              fontSize: "1.2rem",
+              backgroundColor: isMusicEnabled ? "#4CAF50" : "#f44336",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            Musik {isMusicEnabled ? "Aus" : "An"}
+          </button>
+          <button
+            onClick={startGame}
+            style={{
+              padding: "1rem 2rem",
+              margin: "1rem",
+              fontSize: "1.2rem",
+              backgroundColor: "#2196F3",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            Spiel Starten
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (phase === "character-select") {
+    return (
+      <div style={characterSelectionStyle.container}>
+        <h2 className="text-4xl mb-8 text-white font-bold">Wähle deinen Charakter</h2>
+        <div style={characterSelectionStyle.grid}>
+          {[...Array(TOTAL_CHARACTERS)].map((_, index) => {
+            const row = Math.floor(index / COLUMNS);
+            const col = index % COLUMNS;
+            const isHovered = hoveredCharacter === index;
+            const isSelected = selectedCharacter === index;
+            
+            return (
+              <div
+                key={index}
+                onClick={() => selectCharacter(index)}
+                onMouseEnter={() => setHoveredCharacter(index)}
+                onMouseLeave={() => setHoveredCharacter(null)}
+                style={{
+                  ...characterSelectionStyle.characterBox,
+                  ...(isSelected ? characterSelectionStyle.selected : {}),
+                }}
+                className={`rounded-lg ${
+                  isSelected
+                    ? "border-4 border-greenDefault bg-greenDefault bg-opacity-20"
+                    : "border-4 border-gray-700 hover:border-gray-500"
+                }`}
+              >
+                <div style={{
+                  ...characterSelectionStyle.character,
+                  transform: isHovered || isSelected ? 'scale(1.1)' : 'scale(1)',
+                  transition: 'transform 0.3s ease',
+                }}>
+                  <img
+                    src={playerChoiceSprite}
+                    alt={`Character ${index + 1}`}
+                    style={{
+                      ...characterSelectionStyle.spritesheet,
+                      transform: `translate(-${(col * SPRITE_WIDTH) + 32}px, -${(row * SPRITE_HEIGHT) + 32}px) `,
+                      transition: 'transform 0.3s ease',
+                    }}
+                  />
+                </div>
+                <div style={characterSelectionStyle.characterName}>
+                  {getCharacterName(index)}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        {selectedCharacter !== null && (
+          <div className="mt-12 flex flex-col items-center">
+            <div className="bg-black bg-opacity-50 p-8 rounded-xl text-center">
+              <div style={{
+                width: `${DISPLAY_SIZE * 1.5}px`,
+                height: `${DISPLAY_SIZE * 1.5}px`,
+                margin: "0 auto",
+                position: "relative",
+                overflow: "hidden",
+                imageRendering: "pixelated",
+              }}>
+                <img
+                  src={playerChoiceSprite}
+                  alt={`Selected Character ${selectedCharacter + 1}`}
+                  style={{
+                    ...characterSelectionStyle.spritesheet,
+                    transform: `translate(-${(selectedCharacter % COLUMNS) * SPRITE_WIDTH}px, -${Math.floor(selectedCharacter / COLUMNS) * SPRITE_HEIGHT}px) scale(${(DISPLAY_SIZE * 1.5)/SPRITE_HEIGHT}) ${1 + Math.sin(characterFrame * Math.PI) * 0.05}`,
+                    transition: 'transform 0.3s ease',
+                  }}
+                />
+              </div>
+              <p className="text-2xl mb-2 text-greenDefault font-bold">
+                {getCharacterName(selectedCharacter)}
+              </p>
+              <p className="text-gray-300 mb-4">
+                Ein erfahrener Wanderer der Eifel
+              </p>
+              <button
+                onClick={() => setPhase("intro")}
+                className="bg-greenDefault py-3 px-12 rounded-xl"
+              >
+                Abenteuer beginnen
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className="flex h-screen bg-[#151a1e] text-[#dbd1b7] relative">
       <audio id="audio" ref={audioRef} loop autoPlay>
         <source src="./forest.mp3" type="audio/mpeg" />
       </audio>
 
-      {/* Left Sidebar for Jokers */}
       {phase === "game" && (
         <div className="w-16 bg-[#202326] flex flex-col items-center py-4 space-y-4">
           <button
@@ -253,7 +515,6 @@ const Game = () => {
         </div>
       )}
 
-      {/* Main Content */}
       <div className="flex-1 flex flex-col justify-center items-center px-4 relative">
         {phase === "intro" && (
           <div>
@@ -448,7 +709,6 @@ const Game = () => {
         )}
       </div>
 
-      {/* Right Sidebar for Days */}
       {phase === "game" && (
         <div className="w-16 bg-[#202326] flex flex-col items-center py-4 space-y-1">
           {[...Array(30).keys()].map((index) => (
