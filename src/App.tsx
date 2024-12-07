@@ -21,6 +21,7 @@ import UserProvider from "./components/User/UserProvider";
 import { Analytics } from "@vercel/analytics/react";
 import NewsletterDialog from "./components/NewsletterDialog/NewsletterDialog";
 import Game from "./components/Game/Game";
+import GamePhaser from "./components/Game/GamePhaser";
 // import ChristmasQuiz from "./routes/christmasquiz";
 
 const domainGroupId = "7ac8eac0-7fec-493e-a324-eb874ee8aebc";
@@ -38,9 +39,7 @@ const App: React.FC<footerProps> = () => {
 	return (
 		<UserProvider>
 			<div className="App bg-greyLight relative overflow-hidden min-h-screen flex flex-col justify-between">
-				{pathname !== "/game" &&
-					<Header />
-				}
+				{pathname !== "/game" && pathname !== "/gamephaser" && <Header />}
 				<Routes>
 					<Route path="*" element={<NotFound />} />
 					<Route path="/" element={<Home />} />
@@ -63,10 +62,11 @@ const App: React.FC<footerProps> = () => {
 					<Route path="/berichte/:id" element={<NewsPage />} />
 					{/* <Route path="/weihnachtsquiz" element={<ChristmasQuiz />} /> */}
 					<Route path="/game" element={<Game />} />
+					<Route path="/gamePhaser" element={<GamePhaser />} />
 				</Routes>
 				<CookieBot domainGroupId={domainGroupId} />
 				<NewsletterDialog />
-				{pathname !== "/game" &&
+				{pathname !== "/game" && pathname !== "/gamephaser" &&
 					<Footer />
 				}
 				<Analytics mode="production"></Analytics>
