@@ -497,7 +497,8 @@ export class GameScene extends Phaser.Scene {
     continueButton.setSize(300, 50);
     continueButton
       .setInteractive()
-      .on('pointerdown', () => this.startRouteSelection())
+      // .on('pointerdown', () => this.startRouteSelection())
+      .on('pointerdown', () => this.scene.start('MapScene'))
       .on('pointerover', () => continueButton.setScale(1.1))
       .on('pointerout', () => continueButton.setScale(1));
   }

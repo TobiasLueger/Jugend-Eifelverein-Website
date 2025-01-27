@@ -3,6 +3,7 @@ import * as Phaser from 'phaser';
 import { StartScene } from './scenes/StartScene';
 import { CharacterSelectScene } from './scenes/CharacterSelectScene';
 import { GameScene } from './scenes/GameScene';
+import { MapScene } from './scenes/MapScene';
 
 // Main game component
 const GamePhaser = () => {
@@ -15,7 +16,7 @@ const GamePhaser = () => {
       type: Phaser.AUTO,
       parent: 'phaser-game',
       backgroundColor: '#1a1a1a',
-      scene: [StartScene, CharacterSelectScene, GameScene],
+      scene: [StartScene, CharacterSelectScene, GameScene, MapScene],
       scale: {
         mode: Phaser.Scale.RESIZE,
         width: '100%',
