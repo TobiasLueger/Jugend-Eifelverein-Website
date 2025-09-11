@@ -32,6 +32,32 @@ export default function Intern() {
   // State für Favoriten
   const [favorites, setFavorites] = useState<number[]>([]);
 
+  // Dateigrößen-Cache (URL -> Bytes)
+  const [fileSizes, setFileSizes] = useState<Record<string, number | null>>({});
+
+  const formatBytes = (bytes: number) => {
+    if (!bytes || bytes <= 0) return null;
+    const units = ["B", "KB", "MB", "GB", "TB"];
+    const i = Math.floor(Math.log(bytes) / Math.log(1024));
+    const value = bytes / Math.pow(1024, i);
+    return `${value.toFixed(value >= 100 ? 0 : value >= 10 ? 1 : 2)} ${units[i]}`;
+  };
+
+  const getSizeLabel = (url?: string) => {
+    if (!url) return null;
+    const size = fileSizes[url];
+    return typeof size === "number" && size > 0 ? formatBytes(size) : null;
+  };
+
+  const getItemSizeLabel = (item: any) => {
+    const filesizeFromApi = item?.acf?.data?.filesize;
+    if (typeof filesizeFromApi === 'number' && filesizeFromApi > 0) {
+      return formatBytes(filesizeFromApi);
+    }
+    const url = item?.acf?.data?.url;
+    return getSizeLabel(url);
+  };
+
   // Favoriten aus localStorage laden
   useEffect(() => {
     const savedFavorites = localStorage.getItem('intern-favorites');
@@ -48,6 +74,36 @@ export default function Intern() {
   useEffect(() => {
     localStorage.setItem('intern-favorites', JSON.stringify(favorites));
   }, [favorites]);
+
+  // Dateigrößen lazy laden (HEAD-Request), wenn URLs sich ändern
+  useEffect(() => {
+    const controller = new AbortController();
+    const loadSizes = async () => {
+      const urls: string[] = slugData
+        .map((i: any) => i?.acf?.data?.url)
+        .filter((u: string | undefined) => typeof u === 'string');
+      const unique = Array.from(new Set(urls));
+
+      const missing = unique.filter((u) => !(u in fileSizes));
+      if (missing.length === 0) return;
+
+      const results: Record<string, number | null> = {};
+      await Promise.all(
+        missing.map(async (u) => {
+          try {
+            const res = await fetch(u, { method: 'HEAD', signal: controller.signal });
+            const cl = res.headers.get('content-length');
+            results[u] = cl ? parseInt(cl, 10) : null;
+          } catch {
+            results[u] = null;
+          }
+        })
+      );
+      setFileSizes((prev) => ({ ...prev, ...results }));
+    };
+    loadSizes();
+    return () => controller.abort();
+  }, [slugData, fileSizes]);
 
   // Extrahiere alle verfügbaren Kategorien und Tags
   const allCategories = useMemo(() => {
@@ -355,6 +411,9 @@ export default function Intern() {
                         {getFileTypeIcon(item)}
                         <span className="hover:text-greenDefault">
                           {item.title.rendered}
+                          {getItemSizeLabel(item) && (
+                            <span className="ml-2 text-xs text-gray-500">{getItemSizeLabel(item)}</span>
+                          )}
                         </span>
                       </div>
                       <div className="flex items-center space-x-2">
@@ -406,6 +465,9 @@ export default function Intern() {
                       <File size={32} weight="bold" className="text-gray-600" />
                       <span className="hover:text-greenDefault">
                         {doc.title.rendered}
+                        {getItemSizeLabel(doc) && (
+                          <span className="ml-2 text-xs text-gray-500">{getItemSizeLabel(doc)}</span>
+                        )}
                       </span>
                     </div>
                     <div className="flex items-center space-x-2">
@@ -460,6 +522,9 @@ export default function Intern() {
                       <File size={32} weight="bold" className="text-gray-600" />
                       <span className="hover:text-greenDefault">
                         {doc.title.rendered}
+                        {getItemSizeLabel(doc) && (
+                          <span className="ml-2 text-xs text-gray-500">{getItemSizeLabel(doc)}</span>
+                        )}
                       </span>
                     </div>
                     <div className="flex items-center space-x-2">
@@ -507,14 +572,16 @@ export default function Intern() {
                     <a
                       href={img.acf.data.url}
                       download={img.acf.data.alt || img.title.rendered}
-                      className=""
+                      className="w-full"
                       title="Download"
                     >
-                      <img
-                        src={img.acf.data.url}
-                        alt={img.acf.data.alt || img.title.rendered}
-                        className="w-full h-auto rounded-lg shadow-sm"
-                      />
+                      <div className="relative w-full">
+                        <img
+                          src={img.acf.data.url}
+                          alt={img.acf.data.alt || img.title.rendered}
+                          className="w-full h-auto rounded-lg shadow-sm"
+                        />
+                      </div>
                     </a>
                     {/* Favoriten Button */}
                     <button
