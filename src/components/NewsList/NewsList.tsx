@@ -1,8 +1,8 @@
 import Teaser from "../Teaser/Teaser";
 import useSlugData from "../../lib/getData";
-import { CircleNotch } from "phosphor-react";
 import { NavLink } from "react-router-dom";
-import Button from "../Button/Button";
+
+const HOME_TEASERS = 3;
 
 export default function NewsList({ home }: { home?: boolean }) {
 	const {
@@ -15,37 +15,33 @@ export default function NewsList({ home }: { home?: boolean }) {
 		true
 	);
 
-	let teasercount = 0;
-	const maxHomeTeaser = 5;
+	const homeNews = home ? slugData.slice(0, HOME_TEASERS) : [];
+
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-5 mt-5">
 			{loading &&
-				[...Array(3)].map((e, i) => (
+				[...Array(HOME_TEASERS)].map((e, i) => (
 					<Teaser content="" loading={true} id={i} key={i} />
 				))}
 
 			{error && <div>Leider wurden gerade keine Events gefunden</div>}
 			{home
-				? slugData.map((news: any, key:number) => {
-						if (news.acf.startseite && teasercount <= maxHomeTeaser) {
-							teasercount += 1;
-							return (
-								<NavLink
-									to={"/berichte/" + news.slug}
-									className="h-full"
-									key={news.id}
-								>
-									<Teaser
-										title={news.title.rendered}
-										content={news.acf.text}
-										data={news.acf}
-										id={news.id}
-										key={key}
-										layout="news"
-									/>
-								</NavLink>
-							);
-						}
+				? homeNews.map((news: any) => {
+						return (
+							<NavLink
+								to={"/berichte/" + news.slug}
+								className="h-full"
+								key={news.id}
+							>
+								<Teaser
+									title={news.title.rendered}
+									content={news.acf.text}
+									data={news.acf}
+									id={news.id}
+									layout="news"
+								/>
+							</NavLink>
+						);
 				  })
 				: slugData.map((news: any, key:number) => {
 						return (
