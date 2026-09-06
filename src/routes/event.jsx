@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { X, CurrencyEur, Clock, MapPin, MapTrifold, UsersThree, ClipboardText, Calendar, BagSimple, UserCircle } from "phosphor-react";
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
-import { EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY, EMAILJS_WAITLIST_TEMPLATE_ID } from "../lib/Env";
+import { EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY } from "../lib/Env";
 import Pill from "../components/Pill/Pill";
 import defaultImg from "../../src/images/default.jpg";
 
@@ -18,28 +18,66 @@ export default function Event() {
 
 	const form = useRef();
 
-	let serviceId, templateId, publicKey, waitlistTemplateId;
+	let serviceId, templateId, publicKey;
 
 	if (process.env.NODE_ENV === "production") {
 		// For production
 		serviceId = process.env.VERCEL_EMAILJS_SERVICE_ID;
 		templateId = process.env.VERCEL_EMAILJS_TEMPLATE_ID;
-		waitlistTemplateId = process.env.VERCEL_EMAILJS_WAITLIST_TEMPLATE_ID;
 		publicKey = process.env.VERCEL_EMAILJS_PUBLIC_KEY;
 	} else {
 		// For development
 		serviceId = EMAILJS_SERVICE_ID;
 		templateId = EMAILJS_TEMPLATE_ID;
 		publicKey = EMAILJS_PUBLIC_KEY;
-		waitlistTemplateId = EMAILJS_WAITLIST_TEMPLATE_ID;
 	}
 
 	const [isSendForm, setIsSendForm] = useState(false);
 
+	const getFormParams = (formElement, type) => {
+		const fd = new FormData(formElement);
+		const from_name = fd.get("from_name");
+		const from_email = fd.get("from_email");
+		const from_child = fd.get("from_child");
+		const message = fd.get("message") || "—";
+		const to_email = fd.get("to_email");
+		const to_name = fd.get("to_name");
+		const event = fd.get("event");
+		const isWaitlist = type === "waitlist";
+
+		return {
+			from_name,
+			from_email,
+			from_child,
+			message,
+			to_email,
+			to_name,
+			event,
+			email_subject: isWaitlist
+				? `Anmeldung zur Warteliste der Veranstaltung: ${event}`
+				: `Anmeldung zur Veranstaltung: ${event}`,
+			reply_subject: isWaitlist
+				? `Anmeldung zur Warteliste der Veranstaltung: ${event}`
+				: `Anmeldung zur Veranstaltung: ${event}`,
+			organizer_intro: isWaitlist
+				? `du hast eine neue Anmeldung zur Warteliste von ${from_name} zur Veranstaltung ${event} bekommen.`
+				: `du hast eine neue Anmeldung von ${from_name} zur Veranstaltung ${event} bekommen.`,
+			organizer_cta: isWaitlist
+				? `Sobald wieder ein Platz oder mehrere frei sind kannst du ${from_name} eine Mail an ${from_email} schreiben.`
+				: `Schreibe ${from_name} eine Bestätigungsmail an ${from_email}`,
+			reply_intro: isWaitlist
+				? `Danke für deine Eintragung auf die Warteliste für die Veranstaltung: ${event}.`
+				: `Danke für die Anmeldung zur Veranstaltung: ${event}.`,
+			reply_followup: isWaitlist
+				? "Sobald wieder ein Platz frei wird, melden wir uns bei dir."
+				: "Wir melden uns rechtzeitig vor dem Termin der Veranstaltung mit weiteren Informationen wieder bei dir.",
+		};
+	};
+
 	const sendEmail = (e) => {
 		e.preventDefault();
 
-		emailjs.sendForm(serviceId, templateId, form.current, publicKey).then(
+		emailjs.send(serviceId, templateId, getFormParams(form.current, "registration"), publicKey).then(
 			(result) => {
 				console.log(result.text);
 			},
@@ -66,7 +104,7 @@ export default function Event() {
 	const sendWaitlist = (e) => {
 		e.preventDefault();
 
-		emailjs.sendForm(serviceId, waitlistTemplateId, form.current, publicKey).then(
+		emailjs.send(serviceId, templateId, getFormParams(form.current, "waitlist"), publicKey).then(
 			(result) => {
 				console.log(result.text);
 			},
@@ -87,6 +125,10 @@ export default function Event() {
 			setIsSendWaitlistForm(false);
 		}, 500);
 	};
+
+	const eventTitle = !loading && data ? data.title.rendered : "";
+	const organizerName = !loading && data ? data.acf.leitung : "";
+	const organizerEmail = !loading && data ? data.acf.anmeldung : "";
 
 	return (
 		<>
@@ -292,10 +334,10 @@ export default function Event() {
 								<input type="text" name="from_child" required />
 								<label className="text-lg mt-4">Was soll noch mitgeteilt werden?</label>
 								<textarea name="message" />
-								<input type="email" hidden name="to_email" readOnly value={data.acf.anmeldung} />
-								<input type="text" hidden name="event" readOnly value={data.title.rendered} />
-								<input type="text" hidden name="to_name" readOnly value={data.acf.leitung} />
-								<input type="submit" value="Anmelden" className="btn mt-4" />
+								<input type="email" hidden name="to_email" readOnly value={organizerEmail} />
+								<input type="text" hidden name="event" readOnly value={eventTitle} />
+								<input type="text" hidden name="to_name" readOnly value={organizerName} />
+								<input type="submit" value="Anmelden" className="btn !w-[100%] lg:!w-fit mt-6" />
 							</form>
 						)}
 					</div>
@@ -320,10 +362,10 @@ export default function Event() {
 									<input type="text" name="from_child" required />
 									<label className="text-lg mt-4">Was soll noch mitgeteilt werden?</label>
 									<textarea name="message" />
-									<input type="email" hidden name="to_email" readOnly value={data.acf.anmeldung} />
-									<input type="text" hidden name="event" readOnly value={data.title.rendered} />
-									<input type="text" hidden name="to_name" readOnly value={data.acf.leitung} />
-									<input type="submit" value="Anmelden" className="btn mt-4" />
+									<input type="email" hidden name="to_email" readOnly value={organizerEmail} />
+									<input type="text" hidden name="event" readOnly value={eventTitle} />
+									<input type="text" hidden name="to_name" readOnly value={organizerName} />
+									<input type="submit" value="Anmelden" className="btn !w-[100%] lg:!w-fit mt-6" />
 								</form>
 							)}
 						</div>
