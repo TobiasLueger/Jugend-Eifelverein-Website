@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { X, CurrencyEur, Clock, MapPin, MapTrifold, UsersThree, ClipboardText, Calendar, BagSimple, UserCircle } from "phosphor-react";
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
-import { EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY } from "../lib/Env";
+import { EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_REPLY_TEMPLATE_ID, EMAILJS_PUBLIC_KEY } from "../lib/Env";
 import Pill from "../components/Pill/Pill";
 import defaultImg from "../../src/images/default.jpg";
 
@@ -17,32 +17,54 @@ export default function Event() {
 	!loading ? (data = slugData[0]) : "";
 
 	const form = useRef();
+	const waitlistFormRef = useRef();
 
-	let serviceId, templateId, publicKey;
+	let serviceId, templateId, replyTemplateId, publicKey;
 
 	if (process.env.NODE_ENV === "production") {
 		// For production
 		serviceId = process.env.VERCEL_EMAILJS_SERVICE_ID;
 		templateId = process.env.VERCEL_EMAILJS_TEMPLATE_ID;
+		replyTemplateId = process.env.VERCEL_EMAILJS_REPLY_TEMPLATE_ID;
 		publicKey = process.env.VERCEL_EMAILJS_PUBLIC_KEY;
 	} else {
 		// For development
 		serviceId = EMAILJS_SERVICE_ID;
 		templateId = EMAILJS_TEMPLATE_ID;
+		replyTemplateId = EMAILJS_REPLY_TEMPLATE_ID;
 		publicKey = EMAILJS_PUBLIC_KEY;
 	}
 
 	const [isSendForm, setIsSendForm] = useState(false);
 
+	const stripHtml = (value) =>
+		String(value || "")
+			.replace(/<[^>]*>/g, "")
+			.replace(/&nbsp;/g, " ")
+			.replace(/&amp;/g, "&")
+			.replace(/&quot;/g, '"')
+			.replace(/&#0?39;/g, "'")
+			.replace(/&lt;/g, "<")
+			.replace(/&gt;/g, ">")
+			.trim();
+
+	const eventTitle = !loading && data ? stripHtml(data.title.rendered) : "";
+	const organizerName = !loading && data ? stripHtml(data.acf.leitung) : "";
+	const organizerEmail = !loading && data ? data.acf.anmeldung : "";
+
 	const getFormParams = (formElement, type) => {
+		if (!formElement) {
+			throw new Error("Formular nicht gefunden");
+		}
+
 		const fd = new FormData(formElement);
-		const from_name = fd.get("from_name");
-		const from_email = fd.get("from_email");
-		const from_child = fd.get("from_child");
-		const message = fd.get("message") || "—";
-		const to_email = fd.get("to_email");
-		const to_name = fd.get("to_name");
-		const event = fd.get("event");
+		const from_name = String(fd.get("from_name") || "").trim();
+		const from_email = String(fd.get("from_email") || "").trim();
+		const from_child = String(fd.get("from_child") || "").trim();
+		const message = String(fd.get("message") || "").trim() || "—";
+		const to_email = String(fd.get("to_email") || organizerEmail || "").trim();
+		const to_name = stripHtml(fd.get("to_name") || organizerName || "Team");
+		const event = stripHtml(fd.get("event") || eventTitle);
 		const isWaitlist = type === "waitlist";
 
 		return {
@@ -74,19 +96,21 @@ export default function Event() {
 		};
 	};
 
+	// Linked Auto-Reply + Strato liefert die Veranstalter-Mail manchmal leer aus.
+	// Deshalb bewusst zwei getrennte Sends ohne Template-Verknüpfung.
+	const sendMails = (templateParams, onSuccess) => {
+		emailjs
+			.send(serviceId, templateId, templateParams, publicKey)
+			.then(() => emailjs.send(serviceId, replyTemplateId, templateParams, publicKey))
+			.then(() => onSuccess())
+			.catch((error) => {
+				console.log(error?.text || error);
+			});
+	};
+
 	const sendEmail = (e) => {
 		e.preventDefault();
-
-		emailjs.send(serviceId, templateId, getFormParams(form.current, "registration"), publicKey).then(
-			(result) => {
-				console.log(result.text);
-			},
-			(error) => {
-				console.log(error.text);
-			}
-		);
-
-		setIsSendForm(true);
+		sendMails(getFormParams(e.target, "registration"), () => setIsSendForm(true));
 	};
 
 	const [emailForm, setEmailForm] = useState(false);
@@ -103,17 +127,7 @@ export default function Event() {
 
 	const sendWaitlist = (e) => {
 		e.preventDefault();
-
-		emailjs.send(serviceId, templateId, getFormParams(form.current, "waitlist"), publicKey).then(
-			(result) => {
-				console.log(result.text);
-			},
-			(error) => {
-				console.log(error.text);
-			}
-		);
-
-		setIsSendWaitlistForm(true);
+		sendMails(getFormParams(e.target, "waitlist"), () => setIsSendWaitlistForm(true));
 	};
 
 	const [waitlistForm, setWaitlistForm] = useState(false);
@@ -125,10 +139,6 @@ export default function Event() {
 			setIsSendWaitlistForm(false);
 		}, 500);
 	};
-
-	const eventTitle = !loading && data ? data.title.rendered : "";
-	const organizerName = !loading && data ? data.acf.leitung : "";
-	const organizerEmail = !loading && data ? data.acf.anmeldung : "";
 
 	return (
 		<>
@@ -198,22 +208,20 @@ export default function Event() {
 								<p className="mt-3 generatedText" dangerouslySetInnerHTML={{ __html: data.acf.text }}></p>
 								<p className={`text-red ${data.acf.ausgebucht ? "mt-5 before:content-['❗'] flex" : "!hidden"}`}>Leider ist diese Veranstaltung derzeit ausgebucht. Trage Dich gerne auf unserer Warteliste ein. Wir informieren Dich, sobald ein Platz frei wird.</p>
 								<div className="flex gap-5 flex-wrap">
-									{data.acf.externe_anmeldung ? (
-										<a title="Anmelden" className="btn !w-[100%] mt-6" href={data.acf.externe_anmeldung} disabled={data.acf.ausgebucht ? true : false}>
+									{data.acf.ausgebucht ? (
+										<button title="Warteliste" className="btn !w-[100%] lg:!w-fit mt-6" onClick={toggleWaitlistForm}>
+											Zur Warteliste
+										</button>
+									) : data.acf.externe_anmeldung ? (
+										<a title="Anmelden" className="btn !w-[100%] lg:!w-fit mt-6" href={data.acf.externe_anmeldung}>
 											Anmelden
 										</a>
 									) : (
-										<>
-											{ data.acf.anmeldung &&
-												<button title="Anmelden" className="btn !w-[100%] mt-6" onClick={toggleEmailForm} disabled={data.acf.ausgebucht ? true : false}>
-													Anmelden
-												</button>
-											}
-											
-											<button title="Warteliste" className={`btn !w-[100%] mt-4 lg:mt-6 ${data.acf.ausgebucht ? "" : "!hidden"}`} onClick={toggleWaitlistForm}>
-												Zur Warteliste
+										data.acf.anmeldung && (
+											<button title="Anmelden" className="btn !w-[100%] lg:!w-fit mt-6" onClick={toggleEmailForm}>
+												Anmelden
 											</button>
-										</>
+										)
 									)}
 								</div>
 							</div>
@@ -222,7 +230,7 @@ export default function Event() {
 									<img src={data.acf.bild ? data.acf.bild : defaultImg} className="w-full object-cover h-full max-h-[500px]" alt="" />
 									{(data.acf.ausgebucht || data.acf.freie_plaetze) && (
 										<div className="absolute top-[10px] lg:top-[15px] right-[10px] lg:right-[15px]">
-											<Pill bookedUp={data.acf.ausgebucht} freePlaces={data.acf.freie_plaetze} customeClass="text-[16px]" />
+											<Pill bookedUp={data.acf.ausgebucht} freePlaces={data.acf.ausgebucht ? undefined : data.acf.freie_plaetze} customeClass="text-[16px]" />
 										</div>
 									)}
 								</div>
@@ -352,7 +360,7 @@ export default function Event() {
 									<h5>Du wirst in den nächsten Minuten eine Bestätigungsmail bekommen.</h5>
 								</div>
 							) : (
-								<form ref={form} onSubmit={sendWaitlist} className="w-full">
+								<form ref={waitlistFormRef} onSubmit={sendWaitlist} className="w-full">
 									<h5 className="mb-5">Zur Warteliste anmelden:</h5>
 									<label className="text-lg">Name*</label>
 									<input type="text" name="from_name" required />

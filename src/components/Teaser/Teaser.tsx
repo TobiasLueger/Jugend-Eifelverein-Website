@@ -60,12 +60,12 @@ export default function Teaser({ title, content, data, id, showMore = false, loa
 							{layout == "event" && (
 								<>
 									{data.ausgebucht && (
-										<div className="absolute bottom-[10px] lg:bottom-[15px] right-[10px] lg:right-[15px]">
+										<div className="absolute top-[10px] lg:top-[15px] right-[10px] lg:right-[15px]">
 											<Pill waitlist={data.ausgebucht} />
 										</div>
 									)}
-									{data.freie_plaetze && (
-										<div className="absolute bottom-[10px] lg:bottom-[15px] right-[10px] lg:right-[15px]">
+									{!data.ausgebucht && data.freie_plaetze && (
+										<div className="absolute top-[10px] lg:top-[15px] right-[10px] lg:right-[15px]">
 											<Pill freePlaces={data.freie_plaetze} />
 										</div>
 									)}
