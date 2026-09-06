@@ -199,18 +199,18 @@ export default function Event() {
 								<p className={`text-red ${data.acf.ausgebucht ? "mt-5 before:content-['❗'] flex" : "!hidden"}`}>Leider ist diese Veranstaltung derzeit ausgebucht. Trage Dich gerne auf unserer Warteliste ein. Wir informieren Dich, sobald ein Platz frei wird.</p>
 								<div className="flex gap-5 flex-wrap">
 									{data.acf.externe_anmeldung ? (
-										<a title="Anmelden" className="btn !w-[100%] lg:!w-fit mt-6" href={data.acf.externe_anmeldung} disabled={data.acf.ausgebucht ? true : false}>
+										<a title="Anmelden" className="btn !w-[100%] mt-6" href={data.acf.externe_anmeldung} disabled={data.acf.ausgebucht ? true : false}>
 											Anmelden
 										</a>
 									) : (
 										<>
 											{ data.acf.anmeldung &&
-												<button title="Anmelden" className="btn !w-[100%] lg:!w-fit mt-6" onClick={toggleEmailForm} disabled={data.acf.ausgebucht ? true : false}>
+												<button title="Anmelden" className="btn !w-[100%] mt-6" onClick={toggleEmailForm} disabled={data.acf.ausgebucht ? true : false}>
 													Anmelden
 												</button>
 											}
 											
-											<button title="Warteliste" className={`btn !w-[100%] lg:!w-fit mt-4 lg:mt-6 ${data.acf.ausgebucht ? "" : "!hidden"}`} onClick={toggleWaitlistForm}>
+											<button title="Warteliste" className={`btn !w-[100%] mt-4 lg:mt-6 ${data.acf.ausgebucht ? "" : "!hidden"}`} onClick={toggleWaitlistForm}>
 												Zur Warteliste
 											</button>
 										</>
@@ -337,7 +337,7 @@ export default function Event() {
 								<input type="email" hidden name="to_email" readOnly value={organizerEmail} />
 								<input type="text" hidden name="event" readOnly value={eventTitle} />
 								<input type="text" hidden name="to_name" readOnly value={organizerName} />
-								<input type="submit" value="Anmelden" className="btn !w-[100%] lg:!w-fit mt-6" />
+								<input type="submit" value="Anmelden" className="btn !w-[100%] mt-6" />
 							</form>
 						)}
 					</div>
@@ -365,7 +365,7 @@ export default function Event() {
 									<input type="email" hidden name="to_email" readOnly value={organizerEmail} />
 									<input type="text" hidden name="event" readOnly value={eventTitle} />
 									<input type="text" hidden name="to_name" readOnly value={organizerName} />
-									<input type="submit" value="Anmelden" className="btn !w-[100%] lg:!w-fit mt-6" />
+									<input type="submit" value="Anmelden" className="btn !w-[100%] mt-6" />
 								</form>
 							)}
 						</div>
