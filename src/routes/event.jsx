@@ -36,6 +36,7 @@ export default function Event() {
 	}
 
 	const [isSendForm, setIsSendForm] = useState(false);
+	const [isSubmittingForm, setIsSubmittingForm] = useState(false);
 
 	const stripHtml = (value) =>
 		String(value || "")
@@ -105,12 +106,18 @@ export default function Event() {
 			.then(() => onSuccess())
 			.catch((error) => {
 				console.log(error?.text || error);
+				setIsSubmittingForm(false);
+				setIsSubmittingWaitlistForm(false);
 			});
 	};
 
 	const sendEmail = (e) => {
 		e.preventDefault();
-		sendMails(getFormParams(e.target, "registration"), () => setIsSendForm(true));
+		setIsSubmittingForm(true);
+		sendMails(getFormParams(e.target, "registration"), () => {
+			setIsSubmittingForm(false);
+			setIsSendForm(true);
+		});
 	};
 
 	const [emailForm, setEmailForm] = useState(false);
@@ -120,14 +127,20 @@ export default function Event() {
 
 		setTimeout(() => {
 			setIsSendForm(false);
+			setIsSubmittingForm(false);
 		}, 500);
 	};
 
 	const [isSendWaitlistForm, setIsSendWaitlistForm] = useState(false);
+	const [isSubmittingWaitlistForm, setIsSubmittingWaitlistForm] = useState(false);
 
 	const sendWaitlist = (e) => {
 		e.preventDefault();
-		sendMails(getFormParams(e.target, "waitlist"), () => setIsSendWaitlistForm(true));
+		setIsSubmittingWaitlistForm(true);
+		sendMails(getFormParams(e.target, "waitlist"), () => {
+			setIsSubmittingWaitlistForm(false);
+			setIsSendWaitlistForm(true);
+		});
 	};
 
 	const [waitlistForm, setWaitlistForm] = useState(false);
@@ -137,6 +150,7 @@ export default function Event() {
 
 		setTimeout(() => {
 			setIsSendWaitlistForm(false);
+			setIsSubmittingWaitlistForm(false);
 		}, 500);
 	};
 
@@ -345,7 +359,17 @@ export default function Event() {
 								<input type="email" hidden name="to_email" readOnly value={organizerEmail} />
 								<input type="text" hidden name="event" readOnly value={eventTitle} />
 								<input type="text" hidden name="to_name" readOnly value={organizerName} />
-								<input type="submit" value="Anmelden" className="btn !w-[100%] mt-6" />
+								<button type="submit" className="btn !w-[100%] mt-6 !flex items-center justify-center gap-3" disabled={isSubmittingForm}>
+									{isSubmittingForm ? (
+										<>
+											<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent mr-1" aria-hidden="true"></span>
+											<span>Anmeldung wird gesendet...</span>
+										</>
+									) : (
+										"Anmelden"
+									)}
+								</button>
+								{isSubmittingForm && <p className="mt-3 text-sm text-greyDark">Bitte kurz warten. Deine Anmeldung wird gerade verschickt.</p>}
 							</form>
 						)}
 					</div>
@@ -373,7 +397,17 @@ export default function Event() {
 									<input type="email" hidden name="to_email" readOnly value={organizerEmail} />
 									<input type="text" hidden name="event" readOnly value={eventTitle} />
 									<input type="text" hidden name="to_name" readOnly value={organizerName} />
-									<input type="submit" value="Anmelden" className="btn !w-[100%] mt-6" />
+									<button type="submit" className="btn !w-[100%] mt-6 flex items-center justify-center gap-3" disabled={isSubmittingWaitlistForm}>
+										{isSubmittingWaitlistForm ? (
+											<>
+												<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" aria-hidden="true"></span>
+												<span>Mails werden gesendet...</span>
+											</>
+										) : (
+											"Anmelden"
+										)}
+									</button>
+									{isSubmittingWaitlistForm && <p className="mt-3 text-sm text-greyDark">Bitte kurz warten. Deine Anmeldung zur Warteliste wird gerade verschickt.</p>}
 								</form>
 							)}
 						</div>
