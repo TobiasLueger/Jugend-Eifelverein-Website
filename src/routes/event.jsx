@@ -401,7 +401,7 @@ export default function Event() {
 										{isSubmittingForm ? (
 											<>
 												<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent mr-1" aria-hidden="true"></span>
-												<span>Anmeldung wird gesendet...</span>
+												<span>Wartelisten-Anmeldung wird gesendet...</span>
 											</>
 										) : (
 											"Anmelden"
