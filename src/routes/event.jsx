@@ -397,11 +397,11 @@ export default function Event() {
 									<input type="email" hidden name="to_email" readOnly value={organizerEmail} />
 									<input type="text" hidden name="event" readOnly value={eventTitle} />
 									<input type="text" hidden name="to_name" readOnly value={organizerName} />
-									<button type="submit" className="btn !w-[100%] mt-6 flex items-center justify-center gap-3" disabled={isSubmittingWaitlistForm}>
-										{isSubmittingWaitlistForm ? (
+									<button type="submit" className="btn !w-[100%] mt-6 !flex items-center justify-center gap-3" disabled={isSubmittingWaitlistForm}>
+										{isSubmittingForm ? (
 											<>
-												<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" aria-hidden="true"></span>
-												<span>Mails werden gesendet...</span>
+												<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent mr-1" aria-hidden="true"></span>
+												<span>Anmeldung wird gesendet...</span>
 											</>
 										) : (
 											"Anmelden"
