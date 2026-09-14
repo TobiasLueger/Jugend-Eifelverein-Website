@@ -97,12 +97,13 @@ export default function Event() {
 		};
 	};
 
-	// Linked Auto-Reply + Strato liefert die Veranstalter-Mail manchmal leer aus.
-	// Deshalb bewusst zwei getrennte Sends ohne Template-Verknüpfung.
+	// Zwei getrennte Sends (ohne Linked Auto-Reply), parallel statt nacheinander,
+	// damit der Spinner nicht die Summe beider Strato-SMTP-Zeiten abwarten muss.
 	const sendMails = (templateParams, onSuccess) => {
-		emailjs
-			.send(serviceId, templateId, templateParams, publicKey)
-			.then(() => emailjs.send(serviceId, replyTemplateId, templateParams, publicKey))
+		Promise.all([
+			emailjs.send(serviceId, templateId, templateParams, publicKey),
+			emailjs.send(serviceId, replyTemplateId, templateParams, publicKey),
+		])
 			.then(() => onSuccess())
 			.catch((error) => {
 				console.log(error?.text || error);
